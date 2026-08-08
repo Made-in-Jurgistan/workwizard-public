@@ -1,12 +1,18 @@
 <div align="center">
 
 <a href="https://github.com/Made-in-Jurgistan/workwizard-public">
-  <img src="assets/logo.png" alt="WorkWizard wizard logo" width="64" />
+  <img src="assets/logo.png" alt="WorkWizard wizard logo" width="96" />
 </a>
 
 <br />
 
-<img src="assets/WW.png" alt="WorkWizard" width="260" />
+<img src="assets/WW.png" alt="WorkWizard" width="320" />
+
+<br />
+
+<p align="right">
+  <img src="assets/made-in-jurgistan.svg" alt="Made in Jurgistan" width="120" />
+</p>
 
 </div>
 
