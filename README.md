@@ -104,7 +104,7 @@ or photo     interests         per exercise    scored       PDF
 | --- | --- |
 | **Upload** | Mistral OCR extracts structured text from PDF, DOCX, or image. MinerU is available as a self-hosted GDPR fallback. |
 | **Personalise** | Student picks up to 5 of 54 curated interests across 6 categories, all bilingual. |
-| **Transform** | Kimi K2 rewrites each exercise in the chosen context, calibrated by grade band, subject, and detected content type. |
+| **Transform** | Kimi K2 rewrites each exercise in the chosen context, calibrated by grade band, subject, and detected content type; quality checks can preserve the source when needed. |
 | **Review** | Original and transformed shown side by side with multi-dimensional quality scores and answer-revelation checks. |
 | **Download** | WeasyPrint renders a per-grade styled PDF; accessibility criteria are tested and conformance is not claimed without an audit. |
 
@@ -115,13 +115,13 @@ or photo     interests         per exercise    scored       PDF
 | **Interest personalisation** | 54 interests across 6 categories (games, sports, TV and film, fantasy, superheroes, creative), bilingual EN/DE |
 | **Grade-aware pedagogy** | 7 grade bands (1-2 through 13) with calibrated scaffolding, Bloom's levels, and motivation emphasis |
 | **Answer protection** | Bilingual regex guard rejects any output that leaks a solution; enforced as a hard constraint |
-| **Quality scoring** | Heuristic multi-dimensional scorer plus optional structured LLM evaluation; retry loop at a configurable threshold. Latency and quality are measured in CI and pilot runs. |
+| **Quality scoring** | Heuristic multi-dimensional scorer plus optional structured LLM evaluation, source-preservation checks, and safe fallback for invalid output. Latency and quality are measured in CI and pilot runs. |
 | **Semantic caching** | Estimated 40-60% fewer API calls via embedding deduplication and borderline-match validation (to be verified in pilot) |
 | **RAG enrichment** | pgvector knowledge base with quality scoring and cultural safety checks |
-| **Narrative diversity** | Anti-repetition engine ensuring varied narrative contexts across exercises |
+| **Narrative diversity** | Anti-repetition engine ensuring varied narrative contexts across story-based exercises; direct drills remain concise |
 | **Model routing** | Automatic thinking vs. instant mode selection based on content type and difficulty |
 | **Accessible output** | WeasyPrint and Jinja2 templates, with applicable [WCAG 2.2](https://www.w3.org/TR/WCAG22/) AA criteria as a test target and per-grade CSS; no conformance claim without an audit |
-| **Print-first design** | Screen time is subtracted rather than stacked; the model runs once, the student works offline |
+| **Print-first design** | Screen time is subtracted rather than stacked; transformation is bounded, and the student works offline |
 
 ## 🏗️ Architecture
 
@@ -166,10 +166,10 @@ or photo     interests         per exercise    scored       PDF
 ## 🎓 Pedagogical foundation
 
 <details>
-<summary><strong>Expand: 9 active frameworks within a 13-framework taxonomy</strong></summary>
+<summary><strong>Expand: 13 active frameworks within a 13-framework taxonomy</strong></summary>
 <br />
 
-The repository documents a 13-framework pedagogical taxonomy in its research and product documentation, but **nine frameworks are active in the running backend, not all 13**. The backend routes those nine pedagogy labels to each content type's primary and secondary guidance. Eight additional, conditional prompt blocks operationalize selected mechanisms such as self-explanation, desirable difficulties, interleaving, worked examples, UDL, spaced review, attribution framing, and value connection. The table below lists the full taxonomy for design context; it should not be read as proof that all 13 frameworks are independently implemented.
+The running backend uses all 13 frameworks in the pedagogical taxonomy through 16 routed guidance labels. Three labels are Self-Determination Theory sub-labels, while the remaining labels map directly to the 13 framework concepts. Additional conditional pedagogical blocks operationalize mechanisms such as self-explanation, desirable difficulties, interleaving, worked examples, UDL, spaced review, attribution framing, and value connection. These frameworks guide design; they are not evidence that WorkWizard itself improves outcomes.
 
 | Framework | Citation | Role |
 | --- | --- | --- |

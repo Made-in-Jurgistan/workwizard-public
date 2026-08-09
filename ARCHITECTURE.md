@@ -64,7 +64,7 @@ or photo     interests         per exercise    scored       PDF
 |------|--------------|
 | **Upload** | OCR extracts structured text from PDF, DOCX, or image |
 | **Personalise** | Student picks up to 5 of 54 curated bilingual interests |
-| **Transform** | LLM rewrites each exercise in the chosen interest context |
+| **Transform** | LLM rewrites each exercise in the chosen interest context; quality checks can preserve the original when output is unsafe or incomplete |
 | **Review** | Original and transformed shown side by side with quality scores |
 | **Download** | Per-grade styled PDF for offline student work |
 
@@ -89,7 +89,7 @@ or photo     interests         per exercise    scored       PDF
 - **Grade-aware** — 7 grade bands with calibrated scaffolding and age-appropriate humor
 - **Subject-aware** — hint discipline and evaluation criteria adapt to subject domain
 - **Pedagogically grounded** — all 13 frameworks active (16 routed labels)
-- **Quality-scored** — multi-dimensional scoring with LLM-as-judge (K2.6 Instant mode)
+- **Quality-scored** — multi-dimensional scoring, source-preservation checks, and optional LLM-as-judge (K2.6 Instant mode)
 
 ## What Is Not Disclosed
 

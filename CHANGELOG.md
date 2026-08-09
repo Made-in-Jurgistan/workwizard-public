@@ -32,6 +32,16 @@ versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Documented the verified transformation quality contract: per-exercise source checks,
+  safe fallback for invalid output, direct handling for drill-style exercises, and
+  conservative optional judge scoring
+- Reconciled the pedagogical taxonomy description: 13 active frameworks represented by
+  16 routed guidance labels
+- Frontend type contract alignment: upload response `contentWarning` field correctly
+  nullable in shared types and test fixtures
+- Backend code style: import ordering and unused-import cleanup across test modules
+
 ### Added
 - SECURITY.md — high-level security policy
 - CONTRIBUTING.md — community contribution guidelines
@@ -48,8 +58,7 @@ versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 - README.md updated as self-contained public showcase (no private clone instructions)
 - PRESS_KIT.md — merged duplicate timeline entries, added social media placeholder
-- Corrected backend test count from 1,862 to 1,848 across all public docs
-- Frontend test count updated from 21 to 32 files (625 tests)
+- Corrected backend test count to 1,882 (67 modules); frontend 625 tests across 32 files
 - Frontend vitest coverage thresholds increased from 60% to 80%
 - Prompt architecture v3.0 → v4.0: engagement-first framing, subject-aware hint
   discipline, age-appropriate humor mandates across all grade bands, ~25% token reduction
