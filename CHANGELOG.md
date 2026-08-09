@@ -41,6 +41,8 @@ versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Frontend type contract alignment: upload response `contentWarning` field correctly
   nullable in shared types and test fixtures
 - Backend code style: import ordering and unused-import cleanup across test modules
+- Strategy anchor validation: inline-label format now detected correctly; non-numeric
+  anchor check no longer misfires on pure math equations with no non-numeric tokens
 
 ### Added
 - SECURITY.md — high-level security policy
