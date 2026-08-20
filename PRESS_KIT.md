@@ -186,10 +186,10 @@ preparation; the child does the learning. Screen time subtracted, not stacked.
 | Interests per worksheet | Up to 5 per student |
 | Supported upload formats | PDF, DOCX, TXT, and images (PNG, JPG, WEBP, GIF, BMP, TIFF) |
 | Max upload size | 10 MB |
-| AI model | Kimi K2 (256K context) |
+| AI model | Kimi K2.6 (256K context, Instant+tools; specialist compiler+writer per exercise) |
 | OCR engine | Mistral OCR |
-| Backend tests | 1,848 across 67 modules |
-| Frontend test files | 32 (Vitest + Playwright) |
+| Backend tests | 1,929 across 73 modules |
+| Frontend tests | 33 Vitest files (645 tests) plus 2 Playwright E2E specs |
 | Research sources | 130+ citations in research foundation |
 
 ---
@@ -404,7 +404,7 @@ the Production Effect literature, and EdTech market data — is documented in th
 |-------|-----------|
 | Frontend | React 19, TypeScript 5.x, Vite, Tailwind CSS |
 | Backend | Python 3.12, FastAPI, Pydantic v2, structlog |
-| AI | Kimi K2 (256K context), Mistral OCR |
+| AI | Kimi K2.6 (256K context, Instant+tools), Mistral OCR |
 | Embeddings | paraphrase-multilingual-MiniLM-L12-v2 (384-dim, multilingual) |
 | Data | Supabase Postgres with pgvector |
 | Testing | pytest, Vitest, Playwright |
@@ -419,7 +419,7 @@ the Production Effect literature, and EdTech market data — is documented in th
 | 2025 | Made in Jurgistan founded; WorkWizard concept developed |
 | 2025–2026 | Research foundation compiled (130+ sources) |
 | Early 2026 | Backend architecture built; 13-framework pedagogical taxonomy designed |
-| Q1 2026 | MVP development; 1,848 backend tests across 67 modules |
+| Q1 2026 | MVP development; 1,848 backend-test snapshot before later expansion |
 | Apr 2026 | MVP v0.1.0 released |
 | 2026 | Pre-pilot phase; MVP under active development with continuous output quality optimisation; seeking school partners for evaluation |
 
@@ -443,8 +443,9 @@ education-focused AI tools. WorkWizard is its flagship product.
 
 **Jürgen Van Der Haegen** is the solo founder of Made in Jurgistan. He built
 WorkWizard from concept to MVP — including a 130-source research foundation, a
-13-framework pedagogical taxonomy, a 1,848-test backend across 67 modules, and a
-full React/TypeScript frontend with 32 test files (625 tests).
+13-framework pedagogical taxonomy, a 1,929-test backend across 73 modules, and a
+full React/TypeScript frontend with 33 Vitest files (645 tests) plus 2 Playwright
+E2E specs.
 
 WorkWizard began the same way every project Jürgen has built began: as a real,
 personally lived problem. The kitchen-table worksheet battle with his
@@ -476,7 +477,7 @@ print-first EdTech design, and the German K-12 system. Contact
 ### What sets the company apart
 
 - **Research-first, not hype-first** — 130+ cited sources compiled before a single line of product copy
-- **Test-driven** — 1,848 backend tests and 32 frontend test files (625 tests), built solo
+- **Test-driven** — 1,929 backend tests, 33 Vitest files (645 tests), and 2 Playwright E2E specs, built solo
 - **Print-first thesis** — screen time subtracted, not stacked; aligned with Sweden, Netherlands, and France device-restriction trends
 - **Answer protection as a hard constraint** — not a feature, a non-negotiable design boundary
 - **Bilingual by design** — full DE/EN output, never mixed in a single exercise
@@ -538,9 +539,12 @@ happens on paper.
 
 ### What AI does it use?
 
-Kimi K2 (256K context) for transformation and Mistral OCR for document
-extraction. The system includes semantic caching designed to reduce API calls
-by an estimated 40–60%, to be verified in pilot runs.
+Kimi K2.6 (256K context, Instant+tools per exercise) for transformation and
+Mistral OCR for document extraction. Per-exercise transforms use a two-call
+specialist pipeline: a strategy compiler (answer-safe hints) and an engaging
+writer (interest-world narrative with the exercise embedded). Semantic caching
+is designed to reduce API calls by an estimated 40–60%, to be verified in
+pilot runs.
 
 ### Is it GDPR-compliant?
 
@@ -583,14 +587,14 @@ more useful than pretending the product is finished.
 ### What works today
 
 - **Upload and OCR** — PDF, DOCX, image, and text input; Mistral OCR extraction
-- **Grade and subject detection** — 7 grade bands, 15 domains, 59 subdomains
+- **Grade and subject detection** — 7 grade bands, 8 domains, 38 subdomains
 - **Interest catalogue** — 54 interests across 6 categories, age-gated, bilingual
-- **AI transformation** — Kimi K2 (256K context), up to 12 parallel exercises
-- **Quality scoring** — 18-dimension heuristic scoring with automatic retry
+- **AI transformation** — Kimi K2.6 (256K context), specialist compiler+writer per exercise, up to 20 parallel exercises (configurable to 50)
+- **Quality scoring** — Multi-dimensional heuristic scoring with one quality-loop attempt by default and configurable total attempts
 - **Answer protection** — bilingual regex guard; any leak means rejection
-- **PDF generation** — WeasyPrint with per-grade-band layout, WCAG 2.2 AA contrast
+- **PDF generation** — WeasyPrint with per-grade-band layout, accessibility metadata, and applicable contrast/PDF-UA validation checks; formal conformance requires an independent audit
 - **Bilingual support** — full EN/DE across interface, pipeline, and output
-- **Testing** — 1,848 backend tests across 67 modules, 32 frontend test files (625 tests)
+- **Testing** — 1,929 backend tests across 73 modules, 33 Vitest files (645 tests), and 2 Playwright E2E specs
 
 ### What is still missing
 

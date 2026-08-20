@@ -17,7 +17,7 @@
 <p>
   <img src="https://img.shields.io/badge/backend-FastAPI-009688?logo=fastapi&logoColor=white" alt="FastAPI" />
   <img src="https://img.shields.io/badge/frontend-React%2019-61DAFB?logo=react&logoColor=black" alt="React 19" />
-  <img src="https://img.shields.io/badge/AI-Kimi%20K2.7%20HighSpeed-7C3AED" alt="Kimi K2.7 HighSpeed" />
+  <img src="https://img.shields.io/badge/AI-Kimi%20K2.6-7C3AED" alt="Kimi K2.6" />
   <img src="https://img.shields.io/badge/data-Supabase-3ECF8E?logo=supabase&logoColor=white" alt="Supabase" />
 </p>
 
@@ -64,7 +64,7 @@ or photo     interests         per exercise    scored       PDF
 |------|--------------|
 | **Upload** | OCR extracts structured text from PDF, DOCX, or image |
 | **Personalise** | Student picks up to 5 of 54 curated bilingual interests |
-| **Transform** | LLM rewrites each exercise in the chosen interest context; quality checks can preserve the original when output is unsafe or incomplete |
+| **Transform** | K2.6 rewrites each exercise inside the interest context; bare equations become embedded mini word-problems with compiled strategy hints |
 | **Review** | Original and transformed shown side by side with quality scores |
 | **Download** | Per-grade styled PDF for offline student work |
 
@@ -74,7 +74,7 @@ or photo     interests         per exercise    scored       PDF
 |-------|-----------|
 | Frontend | React 19, TypeScript 5.x, Vite, Tailwind CSS |
 | Backend | Python 3.12, FastAPI, Pydantic v2, structlog |
-| AI | Kimi K2.7-code HighSpeed (transform), K2.6 (judge), Mistral OCR |
+| AI | Kimi K2.6 (transform, Instant+tools, specialist compiler+writer per exercise), Mistral OCR |
 | Embeddings | paraphrase-multilingual-MiniLM-L12-v2 (384-dim, multilingual) |
 | Data | Supabase Postgres with pgvector |
 | Testing | pytest, Vitest, Playwright |
@@ -90,6 +90,7 @@ or photo     interests         per exercise    scored       PDF
 - **Subject-aware** — hint discipline and evaluation criteria adapt to subject domain
 - **Pedagogically grounded** — all 13 frameworks active (16 routed labels)
 - **Quality-scored** — multi-dimensional scoring, source-preservation checks, and optional LLM-as-judge (K2.6 Instant mode)
+- **Specialist pipeline** — per-exercise K2.6 runs an isolated strategy compiler (instant+tools) then an engaging writer (instant); falls back to single-shot on failure
 
 ## What Is Not Disclosed
 

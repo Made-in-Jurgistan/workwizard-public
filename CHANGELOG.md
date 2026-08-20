@@ -32,6 +32,21 @@ versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+- K2.6 per-exercise specialist pipeline: isolated strategy compiler (instant+tools) +
+  engaging writer (instant)
+- Embedded narrative golden for bare-equation drills (`math_missing_factor`):
+  numbers live in a mini word-problem scene, then the original equation
+- Static specialist system prompts (cache-friendly; dynamics in user message only)
+- Cache generation contract includes specialist-pipeline flags
+
+### Changed
+- Production default model: Kimi K2.6 (Instant+tools per exercise); `kimi-k2.7-code` opt-in
+- Prompt architecture v4.4 — embedded narrative for missing-factor drills; specialist prompt layout
+- `math_missing_factor` exercises now use engagement-first mini word-problems (not bare equations)
+- Specialist compiler defaults to Instant mode (~server temp 0.6), not Thinking
+- LLM-as-judge enabled by default (K2.6 Instant mode)
+
 ### Fixed
 - Documented the verified transformation quality contract: per-exercise source checks,
   safe fallback for invalid output, direct handling for drill-style exercises, and

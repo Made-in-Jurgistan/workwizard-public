@@ -104,7 +104,7 @@ or photo     interests         per exercise    scored       PDF
 | --- | --- |
 | **Upload** | Mistral OCR extracts structured text from PDF, DOCX, or image. MinerU is available as a self-hosted GDPR fallback. |
 | **Personalise** | Student picks up to 5 of 54 curated interests across 6 categories, all bilingual. |
-| **Transform** | Kimi K2 rewrites each exercise in the chosen context, calibrated by grade band, subject, and detected content type; quality checks can preserve the source when needed. |
+| **Transform** | Kimi K2.6 rewrites each exercise inside the student's interest context — bare equations become embedded mini word-problems; strategy is compiled separately from narrative engagement. |
 | **Review** | Original and transformed shown side by side with multi-dimensional quality scores and answer-revelation checks. |
 | **Download** | WeasyPrint renders a per-grade styled PDF; accessibility criteria are tested and conformance is not claimed without an audit. |
 
@@ -118,8 +118,8 @@ or photo     interests         per exercise    scored       PDF
 | **Quality scoring** | Heuristic multi-dimensional scorer plus optional structured LLM evaluation, source-preservation checks, and safe fallback for invalid output. Latency and quality are measured in CI and pilot runs. |
 | **Semantic caching** | Estimated 40-60% fewer API calls via embedding deduplication and borderline-match validation (to be verified in pilot) |
 | **RAG enrichment** | pgvector knowledge base with quality scoring and cultural safety checks |
-| **Narrative diversity** | Anti-repetition engine ensuring varied narrative contexts across story-based exercises; direct drills remain concise |
-| **Model routing** | Automatic thinking vs. instant mode selection based on content type and difficulty |
+| **Narrative diversity** | Anti-repetition engine ensuring varied narrative contexts; bare equations embedded in 3–4 sentence mini-scenes (numbers in the story, then the original equation) |
+| **Model routing** | K2.6 Instant mode + verification tools per exercise; optional two-call specialist pipeline (strategy compiler + engaging writer); K2.7-code opt-in |
 | **Accessible output** | WeasyPrint and Jinja2 templates, with applicable [WCAG 2.2](https://www.w3.org/TR/WCAG22/) AA criteria as a test target and per-grade CSS; no conformance claim without an audit |
 | **Print-first design** | Screen time is subtracted rather than stacked; transformation is bounded, and the student works offline |
 
@@ -155,8 +155,8 @@ or photo     interests         per exercise    scored       PDF
 | Language detection | Zero-dependency EN/DE heuristic |
 | Grade detection | Readability, vocabulary, math-complexity signals |
 | RAG enrichment | Interest entities, characters, and settings from pgvector knowledge base |
-| Prompt building | Constraint-first zero-shot prompt with pedagogical blocks |
-| Transformation | Kimi K2 (256K context), parallel per-exercise dispatch |
+| Prompt building | v4.4 prompts; per-exercise specialist compiler+writer split on K2.6 |
+| Transformation | Kimi K2.6 (256K context), parallel per-exercise dispatch, instant+tools |
 | Quality gate | Answer-revelation detection, dimensional scoring, LLM judge, retry loop |
 | Caching | Semantic similarity cache (memory or Redis backend) |
 | PDF generation | WeasyPrint and Jinja2 with per-grade CSS |
@@ -187,7 +187,7 @@ The running backend uses all 13 frameworks in the pedagogical taxonomy through 1
 | Metacognition | Flavell, Schraw & Dennison | Predict-plan-check cues |
 | Cognitive Activation | Burge, Lenkeit & Sizmur (2015) | Reasoning beyond recall |
 
-Seven pedagogical blocks are injected into every system prompt (Feynman self-explanation, difficulty framing, UDL choice, value connector, attribution framing, worksheet structure, and worked example), with a conditional spaced-review block in the user prompt for students with session history.
+Seven pedagogical blocks are injected into every system prompt (Feynman self-explanation, difficulty framing, UDL choice, value connector, attribution framing, worksheet structure, and worked example), with a conditional spaced-review block in the user prompt for students with session history. The v4.4 prompt architecture uses a specialist compiler+writer split on per-exercise K2.6 and embeds bare equations in mini word-problems before presenting the original equation unchanged.
 
 Evidence notes and source links are maintained in the [K-12 frameworks report](k12-pedagogical-frameworks.md). These frameworks guide design; they are not evidence that WorkWizard itself improves outcomes.
 
@@ -199,7 +199,7 @@ Evidence notes and source links are maintained in the [K-12 frameworks report](k
 | --- | --- |
 | Frontend | React 19, TypeScript 5.8, Vite 7.2, i18n DE/EN |
 | Backend | Python 3.12, FastAPI 0.115+, Pydantic v2, structlog |
-| AI | Kimi K2.7-code (Moonshot, 256K context), Mistral OCR |
+| AI | Kimi K2.6 (Moonshot, 256K context, Instant+tools per exercise), Mistral OCR |
 | Embeddings | paraphrase-multilingual-MiniLM-L12-v2 (384-dim, multilingual) |
 | Data | Supabase Postgres with pgvector |
 | Testing | pytest (1,881 tests, 60 modules), Vitest and Playwright (21 files) |
