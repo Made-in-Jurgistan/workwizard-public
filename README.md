@@ -202,7 +202,7 @@ Evidence notes and source links are maintained in the [K-12 frameworks report](k
 | AI | Kimi K2.6 (Moonshot, 256K context, Instant+tools per exercise), Mistral OCR |
 | Embeddings | paraphrase-multilingual-MiniLM-L12-v2 (384-dim, multilingual) |
 | Data | Supabase Postgres with pgvector |
-| Testing | pytest (1,881 tests, 60 modules), Vitest and Playwright (21 files) |
+| Testing | pytest (1,977 tests, 75 modules), Vitest and Playwright (35 files) |
 | Infrastructure | Docker Compose, nginx, GitHub Actions, Vercel, Railway |
 
 ## 🔌 API

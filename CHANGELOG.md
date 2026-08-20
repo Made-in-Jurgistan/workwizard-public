@@ -48,6 +48,14 @@ versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - LLM-as-judge enabled by default (K2.6 Instant mode)
 
 ### Fixed
+- Per-exercise answer-verification tool loop budget raised from 3 to 5 rounds
+  — the 3-round budget could be exhausted by the verification tools alone,
+  triggering an avoidable AI-service error that, under full worksheet
+  concurrency, could trip the shared circuit breaker and fail unrelated
+  exercises in the same document
+- Startup now warns operators if production-mode debug logging is
+  accidentally left enabled, which otherwise floods logs and risks hitting
+  the hosting platform's log-rate ceiling
 - Documented the verified transformation quality contract: per-exercise source checks,
   safe fallback for invalid output, direct handling for drill-style exercises, and
   conservative optional judge scoring
