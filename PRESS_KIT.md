@@ -727,8 +727,11 @@ For the latest press mentions, contact **madeinjurgistan@gmail.com**.
 Visitors can share feedback through the in-app interest and market survey at
 [workwizard-demo.vercel.app/survey](https://workwizard-demo.vercel.app/survey).
 The anonymous survey collects input from parents, teachers, students, and school
-administrators on pain points, interest in the approach, and willingness to
-participate in a pilot.
+administrators on pain points, current homework-completion behaviour, reaction to a
+before/after concept demo, willingness to participate in a pilot, willingness to pay
+(with a confidence check), and whether they would recommend the approach to peers (an
+NPS-style proxy). It is bilingual (German/English), stores no IP addresses or names,
+and includes light anti-gaming safeguards such as a student attention check.
 
 ---
 

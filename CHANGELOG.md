@@ -33,6 +33,15 @@ versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [Unreleased]
 
 ### Added
+- Pre-pilot survey: referral-intent question (an NPS-style "would you recommend this?"
+  proxy) for all four audiences — the clearest organic-growth signal collected so far
+- Pre-pilot survey: school administrators now answer a champion-likelihood question that
+  is kept separate from the formal pilot-approval decision, so the dashboard's "would use"
+  and "pilot intent" rates measure two genuinely different things
+- Pre-pilot survey: parents get a willingness-to-pay confidence check (matching the one
+  administrators already had), reducing hypothetical-pricing bias
+- Pre-pilot survey: a student attention check surfaces a data-quality pass rate on the
+  admin dashboard
 - K2.6 per-exercise specialist pipeline: isolated strategy compiler (instant+tools) +
   engaging writer (instant)
 - Embedded narrative golden for bare-equation drills (`math_missing_factor`):
@@ -41,6 +50,10 @@ versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Cache generation contract includes specialist-pipeline flags
 
 ### Changed
+- Pre-pilot survey: German copy for teachers now uses the formal "Sie", matching the
+  administrator role; the parent root-cause question no longer combines "boring" and
+  "pointless" into one option; questions that don't apply are skipped; and the estimated
+  completion time was recalibrated to roughly 4–5 minutes
 - Production default model: Kimi K2.6 (Instant+tools per exercise); `kimi-k2.7-code` opt-in
 - Prompt architecture v4.4 — embedded narrative for missing-factor drills; specialist prompt layout
 - `math_missing_factor` exercises now use engagement-first mini word-problems (not bare equations)
@@ -48,6 +61,9 @@ versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - LLM-as-judge enabled by default (K2.6 Instant mode)
 
 ### Fixed
+- Pre-pilot survey: the concept-demo engagement metric is now measured from real
+  scroll behaviour instead of being marked complete for everyone who reached the end,
+  so the reported engagement rate reflects what respondents actually did
 - Per-exercise answer-verification tool loop budget raised from 3 to 5 rounds
   — the 3-round budget could be exhausted by the verification tools alone,
   triggering an avoidable AI-service error that, under full worksheet

@@ -1,5 +1,4 @@
-docs: update architecture for HighSpeed K2.7 and K2.6 judge
+docs: align public survey description with shipped traction signals
 
-- Update AI badge to "Kimi K2.7 HighSpeed"
-- Update tech stack: K2.7-code HighSpeed (transform), K2.6 (judge)
-- Update quality scoring: LLM-as-judge with K2.6 Instant mode (no retry loop)
+- Changelog: referral-intent, admin champion likelihood, parent WTP certainty, student attention check
+- Press kit: bilingual anonymous survey now documents baseline, WTP confidence, and NPS-style referral
