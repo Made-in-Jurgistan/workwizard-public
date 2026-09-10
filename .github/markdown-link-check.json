@@ -1,0 +1,11 @@
+{
+  "ignorePatterns": [
+    { "pattern": "^https://github.com/Made-in-Jurgistan/workwizard-public/actions" },
+    { "pattern": "^https://img.shields.io" },
+    { "pattern": "^https://workwizard-demo.vercel.app" }
+  ],
+  "timeout": "10s",
+  "retryOn429": true,
+  "retryCount": 2,
+  "aliveStatusCodes": [200, 202, 203, 301, 302, 308, 400, 401, 402, 403, 429]
+}

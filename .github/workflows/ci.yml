@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  docs-validation:
+    name: Docs validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify required files exist
+        run: |
+          set -eu
+          for f in README.md PRESS_KIT.md ARCHITECTURE.md SECURITY.md CHANGELOG.md CONTRIBUTING.md LICENSE.md docs/research/README.md docs/research/k12-pedagogical-frameworks.md docs/research/workwizard-research-foundation.md; do
+            if [ ! -f "$f" ]; then
+              echo "ERROR: Missing required file: $f"
+              exit 1
+            fi
+          done
+          echo "All required documentation files present."
+
+      - name: Verify asset files exist
+        run: |
+          set -eu
+          for f in assets/logo.png assets/WW.png assets/made-in-jurgistan.svg assets/screen1.png assets/screen2.png assets/screen3.png assets/wordmark-dark.svg assets/wordmark-light.svg; do
+            if [ ! -f "$f" ]; then
+              echo "ERROR: Missing asset: $f"
+              exit 1
+            fi
+          done
+          echo "All brand assets present."
+
+      - name: Check for common secrets patterns
+        run: |
+          set -eu
+          if grep -rlE '(sk-[a-zA-Z0-9]{20}|eyJ[a-zA-Z0-9_-]{10,})' --include='*.md' . ; then
+            echo "ERROR: Potential secret detected in markdown files"
+            exit 1
+          fi
+          echo "No secret patterns detected."
+
+      - name: Verify no source code leaked
+        run: |
+          set -eu
+          if find . -name '*.py' -o -name '*.ts' -o -name '*.tsx' -o -name '*.js' -o -name '*.jsx' | grep -v '.github' | grep -q . ; then
+            echo "ERROR: Source code files detected in public repository"
+            find . -name '*.py' -o -name '*.ts' -o -name '*.tsx' -o -name '*.js' -o -name '*.jsx' | grep -v '.github'
+            exit 1
+          fi
+          echo "No source code files detected."
+
+      - name: Check markdown link integrity
+        uses: gaurav-nelson/github-action-markdown-link-check@1.0.15
+        with:
+          use-quiet-mode: 'yes'
+          use-verbose-mode: 'no'
+          config-file: '.github/markdown-link-check.json'
+
+      - name: Lint markdown
+        uses: DavidAnson/markdownlint-cli2-action@v19
+        with:
+          globs: |
+            *.md
+            docs/**/*.md
+            !LICENSE.md

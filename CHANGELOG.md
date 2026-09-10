@@ -1,0 +1,181 @@
+<div align="center">
+
+<a href="https://github.com/Made-in-Jurgistan/workwizard-public">
+  <img src="assets/logo.png" alt="WorkWizard wizard logo" width="96" />
+</a>
+
+<br />
+
+<img src="assets/WW.png" alt="WorkWizard" width="320" />
+
+<br />
+
+<p align="right">
+  <img src="assets/made-in-jurgistan.svg" alt="Made in Jurgistan" width="120" />
+</p>
+
+<p>
+  <img src="https://img.shields.io/badge/version-0.1.0-2EA44F" alt="Version 0.1.0" />
+  <img src="https://img.shields.io/badge/format-Keep%20a%20Changelog-3776AB" alt="Keep a Changelog" />
+  <img src="https://img.shields.io/badge/semver-2.0.0-FF6F61" alt="Semantic Versioning" />
+</p>
+
+</div>
+
+---
+
+# Changelog — WorkWizard
+
+All notable changes to WorkWizard are documented in this file.
+Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Changed
+- Performance, reliability, and security improvements to the AI transformation pipeline and
+  caching layer: faster cache lookups on larger worksheets, reduced lock contention under
+  concurrent transforms, more accurate concurrency tuning for multi-exercise worksheets, and an
+  updated PDF-rendering dependency to close a known vulnerability
+- Fixed a timeout-handling bug that could cut off progress updates mid-transform on
+  longer worksheets; long-running transforms now reliably run to completion
+- Improved transform reliability for large worksheets: exercises run in bounded
+  parallel waves instead of overwhelming the AI provider; progress streams over SSE
+- Research documents consolidated under `docs/research/` with a README index
+  (pedagogical frameworks report and market validation foundation)
+- Pre-pilot survey instrument aligned to `2026-09-01-wtp-aligned`: retired legacy
+  answer codes on new submissions; admin WTP metrics use the current €/student/year tiers
+
+### Added
+- Pre-pilot survey: referral-intent question (an NPS-style "would you recommend this?"
+  proxy) for all four audiences — the clearest organic-growth signal collected so far
+- Pre-pilot survey: school administrators now answer a champion-likelihood question that
+  is kept separate from the formal pilot-approval decision, so the dashboard's "would use"
+  and "pilot intent" rates measure two genuinely different things
+- Pre-pilot survey: parents get a willingness-to-pay confidence check (matching the one
+  administrators already had), reducing hypothetical-pricing bias
+- Pre-pilot survey: a student attention check surfaces a data-quality pass rate on the
+  admin dashboard
+- K2.6 per-exercise specialist pipeline: isolated strategy compiler (instant+tools) +
+  engaging writer (instant)
+- Embedded narrative golden for bare-equation drills (`math_missing_factor`):
+  numbers live in a mini word-problem scene, then the original equation
+- Static specialist system prompts (cache-friendly; dynamics in user message only)
+- Cache generation contract includes specialist-pipeline flags
+
+### Changed
+- Pre-pilot survey: German copy for teachers now uses the formal "Sie", matching the
+  administrator role; the parent root-cause question no longer combines "boring" and
+  "pointless" into one option; questions that don't apply are skipped; and the estimated
+  completion time was recalibrated to roughly 4–5 minutes
+- Production default model: Kimi K2.6 (Instant+tools per exercise); K2.7 family unsupported and rejected at startup
+- Prompt architecture v4.4 — embedded narrative for missing-factor drills; specialist prompt layout
+- `math_missing_factor` exercises now use engagement-first mini word-problems (not bare equations)
+- Specialist compiler defaults to Instant mode (~server temp 0.6), not Thinking
+- LLM-as-judge enabled by default (K2.6 Instant mode)
+
+### Fixed
+- Worksheet transformation reliability: exercises in larger worksheets no longer time
+  out and silently ship as the original, untransformed text under concurrent load —
+  request-rate admission control plus a reduction in redundant AI verification calls
+  per exercise significantly cut queuing during full-worksheet transformation
+- Personalised strategy hints for repetitive-structure exercises (e.g. fill-in-the-blank
+  equations) are now checked for exercise-specific grounding before being shown,
+  reducing generic, copy-pasteable hint phrasing
+- Growth-mindset encouragement phrasing is now consistently present in generated
+  strategy hints instead of being dropped in a majority of exercises
+- Oversized narrative introductions at the highest grade levels are now automatically
+  corrected rather than shipped over length
+- Internal quality scoring no longer over-penalizes an exercise's overall score for one
+  unrelated formatting nit
+- Pre-pilot survey: the concept-demo engagement metric is now measured from real
+  scroll behaviour instead of being marked complete for everyone who reached the end,
+  so the reported engagement rate reflects what respondents actually did
+- Per-exercise answer-verification tool loop budget raised from 3 to 5 rounds
+  — the 3-round budget could be exhausted by the verification tools alone,
+  triggering an avoidable AI-service error that, under full worksheet
+  concurrency, could trip the shared circuit breaker and fail unrelated
+  exercises in the same document
+- Startup now warns operators if production-mode debug logging is
+  accidentally left enabled, which otherwise floods logs and risks hitting
+  the hosting platform's log-rate ceiling
+- Documented the verified transformation quality contract: per-exercise source checks,
+  safe fallback for invalid output, direct handling for drill-style exercises, and
+  conservative optional judge scoring
+- Reconciled the pedagogical taxonomy description: 13 active frameworks represented by
+  16 routed guidance labels
+- Frontend type contract alignment: upload response `contentWarning` field correctly
+  nullable in shared types and test fixtures
+- Backend code style: import ordering and unused-import cleanup across test modules
+- Strategy anchor validation: inline-label format now detected correctly; non-numeric
+  anchor check no longer misfires on pure math equations with no non-numeric tokens
+
+### Added
+- SECURITY.md — high-level security policy
+- CONTRIBUTING.md — community contribution guidelines
+- ARCHITECTURE.md — public architecture overview
+- .gitignore — repository hygiene
+- CI workflow — docs validation, link checking, secret scanning, source code leak prevention
+- `interest_categories` + `interests` catalog tables in DB migrations (RLS, indexes, FK)
+- `pgvector` extension provisioned in initial schema for future DB-level vector search
+- HTTP 429 rate-limit retry with exponential backoff in Supabase data layer
+- Pagination (limit/offset) for `list_survey_responses()` admin endpoint
+- `GradeDetectionSummary.to_dict()` for API responses and logging
+- Re-exported `subject_narrative_suffix` from `core.grades` package
+
+### Changed
+- README.md updated as self-contained public showcase (no private clone instructions)
+- PRESS_KIT.md — merged duplicate timeline entries, added social media placeholder
+- Corrected backend test count to 1,882 (67 modules); frontend 625 tests across 32 files
+- Frontend vitest coverage thresholds increased from 60% to 80%
+- Prompt architecture v3.0 → v4.0: engagement-first framing, subject-aware hint
+  discipline, age-appropriate humor mandates across all grade bands, ~25% token reduction
+- ARCHITECTURE.md — added engagement-first and subject-aware design principles
+- Corrected embedding model name to paraphrase-multilingual-MiniLM-L12-v2
+- Corrected upload format list to include TXT, GIF, BMP, TIFF
+- Qualified semantic caching 40-60% claim as estimated (pre-pilot, no measured data)
+- Clarified across all public docs that the MVP is under active development with continuous output quality optimisation
+- Grade 13 enrichment key corrected from `g1112` to `g912` (matches DB column `prompt_context_g912`)
+- `K27_MODEL_PREFIX` constant deduplicated — single source in `core/constants.py`
+- `SELECT *` replaced with explicit column lists in survey, quality, and flagged queries
+- Regex patterns moved to module-level compiled constants (ReDoS input size cap added)
+- `DataClient.__repr__` masks `service_key` and `anon_key` to prevent secret leakage
+- `SubjectGradeModifier` simplified — removed unused `silliness_tier_override` and `narrative_complexity_delta` fields
+- Bloom verb instruction tables — removed dead kindergarten (`"K"`) keys (no K grade band in MVP)
+
+### Removed
+- 7 unused `SubjectDomain` values (GEOGRAPHY, ECONOMICS, COMPUTER_SCIENCE, ETHICS_PHILOSOPHY, RELIGIOUS_EDUCATION, LATIN_CLASSICAL, PSYCHOLOGY) and 21 related `SubjectSubdomain` values
+- Dead `OrchestrationError` exception class (never raised in production)
+- Dead `EnrichmentFailed` exception class (never raised — enrichment degrades gracefully)
+- Dead `EnrichmentFailed` handlers in `api/routes/transform.py`
+
+## [0.1.0] — 2026-04-20
+
+### Added
+- Initial MVP release (under active development, with continuous output quality optimisation)
+- Interest-driven worksheet personalisation for K-12 classrooms
+- Upload PDF, DOCX, or photo → AI rewriting → print-ready PDF
+- 54 curated interests across 6 categories (games, sports, TV/film, fantasy, superheroes, creative)
+- Full DE/EN bilingual output
+- 7 grade bands (1-2 through 13) with calibrated pedagogical scaffolding
+- 13-framework pedagogical taxonomy, all 13 active in backend (16 routed labels)
+- Answer-revelation detection (bilingual regex guard)
+- Multi-dimensional quality scoring with retry loop
+- Semantic caching (estimated 40-60% fewer API calls, to be verified in pilot)
+- RAG enrichment via pgvector knowledge base
+- WeasyPrint PDF generation with per-grade CSS
+- Anonymous in-app interest and market survey (parents, teachers, students, admins)
+- K-12 pedagogical frameworks report
+- WorkWizard research foundation document
+
+---
+
+<div align="center">
+
+<sub>Copyright © 2025–2026 Made in Jurgistan. All rights reserved.</sub>
+
+<br />
+
+<img src="assets/made-in-jurgistan.svg" alt="Made in Jurgistan" width="120" />
+
+</div>
