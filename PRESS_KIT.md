@@ -188,8 +188,8 @@ preparation; the child does the learning. Screen time subtracted, not stacked.
 | Max upload size | 10 MB |
 | AI model | Kimi K2.6 (256K context, Instant+tools; specialist compiler+writer for select exercise types) |
 | OCR engine | Mistral OCR |
-| Backend tests | ~2,418 across 102 modules |
-| Frontend tests | 34 Vitest files (~662 tests) plus 5 Playwright E2E specs |
+| Backend tests | ~2,566 across 103 modules |
+| Frontend tests | 35 Vitest files (~715 tests) plus 5 Playwright E2E specs |
 | Research sources | 130+ citations in research foundation |
 
 ---
@@ -443,8 +443,8 @@ education-focused AI tools. WorkWizard is its flagship product.
 
 **Jürgen Van Der Haegen** is the solo founder of Made in Jurgistan. He built
 WorkWizard from concept to MVP — including a 130-source research foundation, a
-13-framework pedagogical taxonomy, a ~2,418-test backend across 102 modules, and a
-full React/TypeScript frontend with 34 Vitest files (~662 tests) plus 5 Playwright
+13-framework pedagogical taxonomy, a ~2,566-test backend across 103 modules, and a
+full React/TypeScript frontend with 35 Vitest files (~715 tests) plus 5 Playwright
 E2E specs.
 
 WorkWizard began the same way every project Jürgen has built began: as a real,
@@ -477,7 +477,7 @@ print-first EdTech design, and the German K-12 system. Contact
 ### What sets the company apart
 
 - **Research-first, not hype-first** — 130+ cited sources compiled before a single line of product copy
-- **Test-driven** — ~2,418 backend tests, 34 Vitest files (~662 tests), and 5 Playwright E2E specs, built solo
+- **Test-driven** — ~2,566 backend tests, 35 Vitest files (~715 tests), and 5 Playwright E2E specs, built solo
 - **Print-first thesis** — screen time subtracted, not stacked; aligned with Sweden, Netherlands, and France device-restriction trends
 - **Answer protection as a hard constraint** — not a feature, a non-negotiable design boundary
 - **Bilingual by design** — full DE/EN output, never mixed in a single exercise
@@ -595,7 +595,7 @@ more useful than pretending the product is finished.
 - **Answer protection** — bilingual regex guard; any leak means rejection
 - **PDF generation** — WeasyPrint with per-grade-band layout, accessibility metadata, and applicable contrast/PDF-UA validation checks; formal conformance requires an independent audit
 - **Bilingual support** — full EN/DE across interface, pipeline, and output
-- **Testing** — ~2,418 backend tests across 102 modules, 34 Vitest files (~662 tests), and 5 Playwright E2E specs
+- **Testing** — ~2,566 backend tests across 103 modules, 35 Vitest files (~715 tests), and 5 Playwright E2E specs
 
 ### What is still missing
 
