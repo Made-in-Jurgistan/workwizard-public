@@ -68,7 +68,7 @@ or photo     interests         per exercise    scored       PDF
 |-------|-----------|
 | Frontend | React 19, TypeScript 5.x, Vite, Tailwind CSS |
 | Backend | Python 3.12, FastAPI, Pydantic v2, structlog |
-| AI | Kimi K2.6 (transform, Instant+tools; a two-step compiler+writer pipeline for select exercise types), Mistral OCR |
+| AI | Kimi K2.6 (transform, Instant+tools), Mistral OCR |
 | Embeddings | paraphrase-multilingual-MiniLM-L12-v2 (384-dim, multilingual) |
 | Data | Supabase Postgres (pgvector provisioned; retrieval is deterministic key lookup) |
 | Testing | pytest, Vitest, Playwright |
@@ -84,7 +84,7 @@ or photo     interests         per exercise    scored       PDF
 - **Subject-aware** — hint discipline and evaluation criteria adapt to subject domain
 - **Pedagogically grounded** — all 13 frameworks active (16 routed labels)
 - **Quality-scored** — multi-dimensional scoring, source-preservation checks, and optional LLM-as-judge (K2.6 Instant mode)
-- **Specialist pipeline** — for exercise types where a leaked answer is highest-risk, K2.6 runs an isolated strategy compiler then an engaging writer; the compiler answers under a JSON schema and is never given the answer, receiving it only as a server-computed list of tokens it must not write; other exercise types use a single-shot pass with the same answer-protection checks
+- **Risk-adjusted verification** — for exercise types where a leaked answer is highest-risk, generation runs through an additional isolated verification step before the answer is ever shown to the writing step; other exercise types use a single pass with the same answer-protection checks
 - **Bounded parallelism** — large worksheets transform in admission-controlled waves so provider limits are respected; production UI streams progress over SSE
 
 ## What Is Not Disclosed

@@ -56,23 +56,18 @@ versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   administrators already had), reducing hypothetical-pricing bias
 - Pre-pilot survey: a student attention check surfaces a data-quality pass rate on the
   admin dashboard
-- K2.6 per-exercise specialist pipeline: isolated strategy compiler (instant+tools) +
-  engaging writer (instant)
-- Embedded narrative golden for bare-equation drills (`math_missing_factor`):
-  numbers live in a mini word-problem scene, then the original equation
-- Static specialist system prompts (cache-friendly; dynamics in user message only)
-- Cache generation contract includes specialist-pipeline flags
+- Added a verification-focused generation path for exercise types where answer accuracy
+  is most critical
+- Bare-equation exercises now embed the numbers in a short narrative scene before
+  presenting the original equation unchanged
 
 ### Changed
 - Pre-pilot survey: German copy for teachers now uses the formal "Sie", matching the
   administrator role; the parent root-cause question no longer combines "boring" and
   "pointless" into one option; questions that don't apply are skipped; and the estimated
   completion time was recalibrated to roughly 4–5 minutes
-- Production default model: Kimi K2.6 (Instant+tools per exercise); K2.7 family unsupported and rejected at startup
-- Prompt architecture v4.4 — embedded narrative for missing-factor drills; specialist prompt layout
-- `math_missing_factor` exercises now use engagement-first mini word-problems (not bare equations)
-- Specialist compiler defaults to Instant mode (~server temp 0.6), not Thinking
-- LLM-as-judge enabled by default (K2.6 Instant mode)
+- Production default model: Kimi K2.6 (Instant+tools per exercise); K2.7 family unsupported
+- LLM-based quality judging enabled by default
 
 ### Fixed
 - Worksheet transformation reliability: exercises in larger worksheets no longer time
@@ -91,24 +86,13 @@ versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Pre-pilot survey: the concept-demo engagement metric is now measured from real
   scroll behaviour instead of being marked complete for everyone who reached the end,
   so the reported engagement rate reflects what respondents actually did
-- Per-exercise answer-verification tool loop budget raised from 3 to 5 rounds
-  — the 3-round budget could be exhausted by the verification tools alone,
-  triggering an avoidable AI-service error that, under full worksheet
-  concurrency, could trip the shared circuit breaker and fail unrelated
-  exercises in the same document
-- Startup now warns operators if production-mode debug logging is
-  accidentally left enabled, which otherwise floods logs and risks hitting
-  the hosting platform's log-rate ceiling
+- Fixed an issue where, under full-worksheet concurrency, an answer-verification failure
+  on one exercise could occasionally affect unrelated exercises in the same document
 - Documented the verified transformation quality contract: per-exercise source checks,
   safe fallback for invalid output, direct handling for drill-style exercises, and
   conservative optional judge scoring
 - Reconciled the pedagogical taxonomy description: 13 active frameworks represented by
   16 routed guidance labels
-- Frontend type contract alignment: upload response `contentWarning` field correctly
-  nullable in shared types and test fixtures
-- Backend code style: import ordering and unused-import cleanup across test modules
-- Strategy anchor validation: inline-label format now detected correctly; non-numeric
-  anchor check no longer misfires on pure math equations with no non-numeric tokens
 
 ### Added
 - SECURITY.md — high-level security policy
@@ -116,38 +100,25 @@ versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - ARCHITECTURE.md — public architecture overview
 - .gitignore — repository hygiene
 - CI workflow — docs validation, link checking, secret scanning, source code leak prevention
-- `interest_categories` + `interests` catalog tables in DB migrations (RLS, indexes, FK)
+- Interest catalog moved into the database, with access controls and indexing
 - `pgvector` extension provisioned in initial schema for future DB-level vector search
-- HTTP 429 rate-limit retry with exponential backoff in Supabase data layer
-- Pagination (limit/offset) for `list_survey_responses()` admin endpoint
-- `GradeDetectionSummary.to_dict()` for API responses and logging
-- Re-exported `subject_narrative_suffix` from `core.grades` package
+- Automatic retry with backoff for transient database rate limits
+- Pagination for the admin survey-responses endpoint
 
 ### Changed
 - README.md updated as self-contained public showcase (no private clone instructions)
 - PRESS_KIT.md — merged duplicate timeline entries, added social media placeholder
 - Corrected backend test count to 1,882 (67 modules); frontend 625 tests across 32 files
 - Frontend vitest coverage thresholds increased from 60% to 80%
-- Prompt architecture v3.0 → v4.0: engagement-first framing, subject-aware hint
-  discipline, age-appropriate humor mandates across all grade bands, ~25% token reduction
+- Prompt design updated with engagement-first framing, subject-aware hint discipline,
+  and age-appropriate humor guidance across all grade bands
 - ARCHITECTURE.md — added engagement-first and subject-aware design principles
 - Corrected embedding model name to paraphrase-multilingual-MiniLM-L12-v2
 - Corrected upload format list to include TXT, GIF, BMP, TIFF
 - Qualified semantic caching 40-60% claim as estimated (pre-pilot, no measured data)
 - Clarified across all public docs that the MVP is under active development with continuous output quality optimisation
-- Grade 13 enrichment key corrected from `g1112` to `g912` (matches DB column `prompt_context_g912`)
-- `K27_MODEL_PREFIX` constant deduplicated — single source in `core/constants.py`
-- `SELECT *` replaced with explicit column lists in survey, quality, and flagged queries
-- Regex patterns moved to module-level compiled constants (ReDoS input size cap added)
-- `DataClient.__repr__` masks `service_key` and `anon_key` to prevent secret leakage
-- `SubjectGradeModifier` simplified — removed unused `silliness_tier_override` and `narrative_complexity_delta` fields
-- Bloom verb instruction tables — removed dead kindergarten (`"K"`) keys (no K grade band in MVP)
-
-### Removed
-- 7 unused `SubjectDomain` values (GEOGRAPHY, ECONOMICS, COMPUTER_SCIENCE, ETHICS_PHILOSOPHY, RELIGIOUS_EDUCATION, LATIN_CLASSICAL, PSYCHOLOGY) and 21 related `SubjectSubdomain` values
-- Dead `OrchestrationError` exception class (never raised in production)
-- Dead `EnrichmentFailed` exception class (never raised — enrichment degrades gracefully)
-- Dead `EnrichmentFailed` handlers in `api/routes/transform.py`
+- Added safeguards against regular-expression denial-of-service (ReDoS) on validation inputs
+- Hardened internal logging so credential values are never included in debug output
 
 ## [0.1.0] — 2026-04-20
 
@@ -162,7 +133,7 @@ versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Answer-revelation detection (bilingual regex guard)
 - Multi-dimensional quality scoring with retry loop
 - Semantic caching (estimated 40-60% fewer API calls, to be verified in pilot)
-- RAG enrichment via pgvector knowledge base
+- RAG enrichment via a curated knowledge base
 - WeasyPrint PDF generation with per-grade CSS
 - Anonymous in-app interest and market survey (parents, teachers, students, admins)
 - K-12 pedagogical frameworks report

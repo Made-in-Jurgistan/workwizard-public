@@ -119,7 +119,7 @@ or photo     interests         per exercise    scored       PDF
 | **Semantic caching** | Estimated 25-40% fewer API calls via embedding deduplication and borderline-match validation (to be verified in pilot) |
 | **RAG enrichment** | Curated knowledge base lookup with quality scoring and cultural safety checks |
 | **Narrative diversity** | Anti-repetition engine ensuring varied narrative contexts; bare equations embedded in 3–4 sentence mini-scenes (numbers in the story, then the original equation) |
-| **Model routing** | K2.6 Instant mode + verification tools per exercise; optional two-call specialist pipeline (strategy compiler + engaging writer). K2.7 family is unsupported and rejected at startup |
+| **Model routing** | Automatic mode selection based on content type and difficulty, with an additional verification pass for the exercise types where accuracy matters most |
 | **Accessible output** | WeasyPrint and Jinja2 templates, with applicable [WCAG 2.2](https://www.w3.org/TR/WCAG22/) AA criteria as a test target and per-grade CSS; no conformance claim without an audit |
 | **Print-first design** | Screen time is subtracted rather than stacked; transformation is bounded, and the student works offline |
 
@@ -149,8 +149,8 @@ or photo     interests         per exercise    scored       PDF
 | Language detection | Zero-dependency EN/DE heuristic |
 | Grade detection | Readability, vocabulary, math-complexity signals |
 | RAG enrichment | Interest entities, characters, and settings from a curated knowledge base |
-| Prompt building | v4.8 prompts; optional specialist compiler+writer split on K2.6 for select exercise types; `narrative_policy` bundle gates |
-| Transformation | Kimi K2.6 (256K context), admission-controlled parallel per-exercise dispatch, instant+tools; SSE progress streaming |
+| Prompt building | Grade-, subject-, and pedagogy-aware prompt construction with narrative-diversity gating |
+| Transformation | Kimi K2.6 (256K context), admission-controlled parallel per-exercise dispatch; SSE progress streaming |
 | Quality gate | Answer-revelation detection, dimensional scoring, LLM judge, retry loop |
 | Caching | Semantic similarity cache (memory or Redis backend) |
 | PDF generation | WeasyPrint and Jinja2 with per-grade CSS |
@@ -181,7 +181,7 @@ The running backend uses all 13 frameworks in the pedagogical taxonomy through 1
 | Metacognition | Flavell, Schraw & Dennison | Predict-plan-check cues |
 | Cognitive Activation | Burge, Lenkeit & Sizmur (2015) | Reasoning beyond recall |
 
-Seven pedagogical blocks are injected into every system prompt (Feynman self-explanation, difficulty framing, UDL choice, value connector, attribution framing, worksheet structure, and worked example), with a conditional spaced-review block in the user prompt for students with session history. The v4.8 prompt architecture front-loads the educator persona, uses an optional specialist compiler+writer split on K2.6 for select exercise types, and embeds bare equations in mini word-problems before presenting the original equation unchanged.
+Eight pedagogical mechanisms are applied during generation, including self-explanation prompting, difficulty framing, UDL choice, value connection, attribution framing, worksheet structure, worked examples, and spaced review for returning students. Prompt construction front-loads the educator persona and embeds bare equations in mini word-problems before presenting the original equation unchanged.
 
 Evidence notes and source links are maintained in the [K-12 frameworks report](docs/research/k12-pedagogical-frameworks.md). These frameworks guide design; they are not evidence that WorkWizard itself improves outcomes.
 

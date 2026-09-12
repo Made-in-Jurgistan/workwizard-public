@@ -186,7 +186,7 @@ preparation; the child does the learning. Screen time subtracted, not stacked.
 | Interests per worksheet | Up to 5 per student |
 | Supported upload formats | PDF, DOCX, TXT, and images (PNG, JPG, WEBP, GIF, BMP, TIFF) |
 | Max upload size | 10 MB |
-| AI model | Kimi K2.6 (256K context, Instant+tools; specialist compiler+writer for select exercise types) |
+| AI model | Kimi K2.6 (256K context, Instant+tools) |
 | OCR engine | Mistral OCR |
 | Backend tests | ~2,566 across 103 modules |
 | Frontend tests | 35 Vitest files (~715 tests) plus 5 Playwright E2E specs |
@@ -541,9 +541,8 @@ happens on paper.
 
 Kimi K2.6 (256K context, Instant+tools per exercise) for transformation and
 Mistral OCR for document extraction. For exercise types where a leaked answer
-is highest-risk, transforms use a two-call specialist pipeline: a strategy
-compiler (answer-safe hints) and an engaging writer (interest-world narrative
-with the exercise embedded); other exercise types use a single-shot pass with
+is highest-risk, transformation runs an additional isolated verification step
+before the exercise is written; other exercise types use a single pass with
 the same answer-protection checks. Semantic caching is designed to reduce API
 calls by an estimated 25–40%, to be verified in pilot runs.
 
@@ -590,7 +589,7 @@ more useful than pretending the product is finished.
 - **Upload and OCR** — PDF, DOCX, image, and text input; Mistral OCR extraction
 - **Grade and subject detection** — 7 grade bands, 8 domains, 38 subdomains
 - **Interest catalogue** — 54 interests across 6 categories, age-gated, bilingual
-- **AI transformation** — Kimi K2.6 (256K context), specialist compiler+writer for select exercise types, up to 20 parallel exercises (configurable to 50)
+- **AI transformation** — Kimi K2.6 (256K context), with bounded parallel processing of exercises within a worksheet
 - **Quality scoring** — Multi-dimensional heuristic scoring with one quality-loop attempt by default and configurable total attempts
 - **Answer protection** — bilingual regex guard; any leak means rejection
 - **PDF generation** — WeasyPrint with per-grade-band layout, accessibility metadata, and applicable contrast/PDF-UA validation checks; formal conformance requires an independent audit
