@@ -76,7 +76,8 @@ That is the entire product, in one idea.
 
 A teacher uploads an existing worksheet — PDF, DOCX, a photo, or plain text.
 The student picks up to five interests from a bilingual catalogue of 54:
-Minecraft, football, anime, Marvel, dinosaurs, coding, horses, and dozens more.
+Minecraft, football, Pokémon, Harry Potter, Spider-Man, cooking and baking, and
+dozens more.
 WorkWizard rewrites each exercise inside that interest context, generates a
 print-ready PDF, and the student solves it with a pen on paper. The teacher's
 learning goal never changes. The answers are never shown. Only the *setting*
@@ -98,15 +99,15 @@ accelerating:
 
 - **PISA 2022** recorded Germany's lowest-ever scores in maths, reading, and
   science. 28% of boys and 31% of girls did not reach the minimum maths
-  proficiency level — nearly a third of an entire generation.
-- Only **37.6%** of German 15-year-olds say they "love learning new things" at
-  school — rank **72 of 75** PISA education systems.
-- In a 2026 survey of 1,547 teachers, **46%** named student behaviour and
-  motivation as their single biggest professional challenge — up from 35% in
-  2024.
-- The OECD reviewed 230 policies across 35 education systems and concluded
-  that **learner agency and content relevance** are the single most effective
-  systemic levers for engagement.
+  proficiency level (Level 2). **PISA 2025** (published September 2026) is
+  lower again: the lowest results ever measured by PISA in Germany in all three
+  subjects.
+- In the 2026 German School Barometer (1,547 teachers and school leaders),
+  **46%** named dealing with student behaviour, including lack of motivation,
+  as their biggest professional burden — up from 35% in 2024.
+- The OECD's *Education Policy Outlook 2025* reviewed 230 policies across 35
+  education systems and treats **learner agency** as a central lever for
+  keeping people engaged in learning.
 
 This is not a character failure. It is a system failure — and the lever exists.
 It has simply not been pulled at scale.
@@ -128,7 +129,7 @@ the product is designed to be measured, not assumed.
 | Generic chatbot | Writes the worksheet *for* the child | Rewrites the problem, keeps the answer hidden |
 | Parallel curriculum platform | Another system teachers must learn | Uses the teacher's own worksheet, unchanged |
 
-No other product combines all four at once: curriculum-native uploads,
+We are not aware of another product that combines all four: curriculum-native uploads,
 interest-based intrinsic design with zero extrinsic game mechanics, subtractive
 screen time (generate → print → go offline), and hard-guarded answer protection.
 
@@ -186,10 +187,10 @@ preparation; the child does the learning. Screen time subtracted, not stacked.
 | Interests per worksheet | Up to 5 per student |
 | Supported upload formats | PDF, DOCX, TXT, and images (PNG, JPG, WEBP, GIF, BMP, TIFF) |
 | Max upload size | 10 MB |
-| AI model | Kimi K2.6 (256K context, Instant+tools) |
+| AI model | Kimi K2.6 (256K context, instant mode) |
 | OCR engine | Mistral OCR |
-| Backend tests | ~2,566 across 103 modules |
-| Frontend tests | 35 Vitest files (~715 tests) plus 5 Playwright E2E specs |
+| Backend tests | ~3,400 across 109 modules |
+| Frontend tests | 41 Vitest files (~710 tests) plus 4 Playwright E2E specs |
 | Research sources | 130+ citations in research foundation |
 
 ---
@@ -220,8 +221,7 @@ WorkWizard is an AI-powered educational tool built by Made in Jurgistan that
 personalises K-12 worksheets around each student's interests. The product
 addresses a specific problem: practice is where learning consolidates, and it
 is exactly where students disengage. PISA 2022 recorded Germany's lowest-ever
-scores in maths, reading, and science. Only 37.6% of 15-year-olds said they
-love learning at school — 72nd of 75 education systems. A teacher cannot
+scores in maths, reading, and science, and PISA 2025 fell further. A teacher cannot
 hand-write a Minecraft version of a geometry sheet for one student and a Marvel
 version for another, so every student receives the same generic exercises.
 
@@ -336,11 +336,10 @@ press coverage of WorkWizard.
 | **Interest personalisation** | 54 interests across 6 categories (games, sports, TV and film, fantasy, superheroes, creative), bilingual EN/DE |
 | **Grade-aware pedagogy** | 7 grade bands (1–2 through 13) with calibrated scaffolding, Bloom's levels, and motivation emphasis |
 | **Answer protection** | Bilingual regex guard rejects any output that leaks a solution — enforced as a hard constraint, not a suggestion |
-| **Quality scoring** | Multi-dimensional scoring with retry loop; quality and latency measured in CI and pilot runs |
-| **Semantic caching** | Estimated 25–40% fewer API calls via embedding deduplication and borderline-match validation (to be verified in pilot) |
-| **RAG enrichment** | Curated knowledge base lookup with quality scoring and cultural safety checks |
+| **Quality scoring** | Deterministic per-exercise gate, one LLM-judge call, at most one repair, and fallback to the source exercise; an offline evaluation harness scores recorded runs |
+| **RAG enrichment** | Curated knowledge base lookup with quality scoring and age-appropriateness (forbidden-topic) checks |
 | **Narrative diversity** | Anti-repetition engine ensuring varied narrative contexts across exercises |
-| **Model routing** | Automatic thinking vs. instant mode selection based on content type and difficulty |
+| **Model routing** | Instant mode per exercise; a two-step compile-then-write path for answer-critical numeric exercise types, one call for everything else |
 | **Accessible output** | Per-grade CSS templates with WCAG 2.2 AA criteria as a test target; no conformance claim without an audit |
 | **Print-first design** | Screen time is subtracted rather than stacked; the model runs once, the student works offline |
 
@@ -404,9 +403,8 @@ the Production Effect literature, and EdTech market data — is documented in th
 |-------|-----------|
 | Frontend | React 19, TypeScript 5.x, Vite, Tailwind CSS |
 | Backend | Python 3.12, FastAPI, Pydantic v2, structlog |
-| AI | Kimi K2.6 (256K context, Instant+tools), Mistral OCR |
-| Embeddings | paraphrase-multilingual-MiniLM-L12-v2 (384-dim, multilingual) |
-| Data | Supabase Postgres with pgvector |
+| AI | Kimi K2.6 (256K context, instant mode), Mistral OCR, OpenAI GPT Image 1.5 Mini (PDF illustrations) |
+| Data | Supabase Postgres (pgvector provisioned; retrieval is deterministic key lookup) |
 | Testing | pytest, Vitest, Playwright |
 | Infrastructure | Docker Compose, nginx, GitHub Actions, Vercel, Railway |
 
@@ -419,7 +417,7 @@ the Production Effect literature, and EdTech market data — is documented in th
 | 2025 | Made in Jurgistan founded; WorkWizard concept developed |
 | 2025–2026 | Research foundation compiled (130+ sources) |
 | Early 2026 | Backend architecture built; 13-framework pedagogical taxonomy designed |
-| Q1 2026 | MVP development; 1,848 backend-test snapshot before later expansion (~2,094 collected as of 2026-08) |
+| Q1 2026 | MVP development |
 | Apr 2026 | MVP v0.1.0 released |
 | 2026 | Pre-pilot phase; MVP under active development with continuous output quality optimisation; seeking school partners for evaluation |
 
@@ -443,8 +441,8 @@ education-focused AI tools. WorkWizard is its flagship product.
 
 **Jürgen Van Der Haegen** is the solo founder of Made in Jurgistan. He built
 WorkWizard from concept to MVP — including a 130-source research foundation, a
-13-framework pedagogical taxonomy, a ~2,566-test backend across 103 modules, and a
-full React/TypeScript frontend with 35 Vitest files (~715 tests) plus 5 Playwright
+13-framework pedagogical taxonomy, a ~3,400-test backend across 109 modules, and a
+full React/TypeScript frontend with 41 Vitest files (~710 tests) plus 4 Playwright
 E2E specs.
 
 WorkWizard began the same way every project Jürgen has built began: as a real,
@@ -464,8 +462,8 @@ demotivation. More screens do not fix screen-induced disengagement. Gamification
 does not fix an absence of intrinsic motivation. The gap is not a technology
 gap. It is a **relevance gap.** What has changed since is that the evidence has
 caught up: PISA 2022, the EU Education and Training Monitor 2025, UNESCO GEM
-reports, and a phone-restriction movement now covering ~60% of the world's
-education systems.
+reports, and a phone-restriction movement that UNESCO counts in 58% of the
+world's education systems.
 
 The product is grounded in peer-reviewed research rather than hype, and is
 designed to be measured in pilot evaluation before claims are made.
@@ -477,8 +475,8 @@ print-first EdTech design, and the German K-12 system. Contact
 ### What sets the company apart
 
 - **Research-first, not hype-first** — 130+ cited sources compiled before a single line of product copy
-- **Test-driven** — ~2,566 backend tests, 35 Vitest files (~715 tests), and 5 Playwright E2E specs, built solo
-- **Print-first thesis** — screen time subtracted, not stacked; aligned with Sweden, Netherlands, and France device-restriction trends
+- **Test-driven** — ~3,400 backend tests, 41 Vitest files (~710 tests), and 4 Playwright E2E specs, built solo
+- **Print-first thesis** — screen time subtracted, not stacked; aligned with device-restriction and print-textbook policies in Sweden, the Netherlands, and France
 - **Answer protection as a hard constraint** — not a feature, a non-negotiable design boundary
 - **Bilingual by design** — full DE/EN output, never mixed in a single exercise
 - **Root-cause focus** — every existing competitor addresses a symptom (device access, teacher tooling, generic chat). WorkWizard is built around the diagnosed root cause: relevance
@@ -509,42 +507,46 @@ doesn't have time for — nothing more.
 ### Does it give students answers?
 
 No. Answer protection is a hard constraint, not a feature. A bilingual regex
-guard rejects any output that leaks a solution. Source answers are stripped
-before processing, and the quality gate includes answer-revelation detection
-as a separate dimension. Any pattern match means the output is rejected
-outright.
+guard rejects any output that leaks a solution. Answer keys are stripped from
+the source before processing, the computed answer is never shown to the model,
+and answer-revelation detection is a hard check in the quality gate. An
+exercise that still leaks after one repair attempt is replaced by the original
+exercise.
 
 ### Is it another screen-time product?
 
 No. WorkWizard is print-first by design. The model runs once to generate the
 personalised worksheet; the student works offline on paper. Screen time is
-subtracted, not stacked. The EU Education and Training Monitor 2025 names
-digital device distraction as the main driver of the worldwide PISA decline
-since 2009. UNESCO reports ~60% of education systems now restrict phones in
-schools. WorkWizard is built for that reality.
+subtracted, not stacked. The EU Education and Training Monitor 2025 cites
+OECD research suggesting that non-educational use of digital devices in school
+could be the main driver of the worldwide PISA decline since 2009. UNESCO
+counts national school phone bans in 114 education systems (58%) as of March
+2026. WorkWizard is built for that reality.
 
 ### Why paper, not screens?
 
-Because the evidence says screens are the problem, not the solution. The EU
-Education and Training Monitor 2025 names digital device distraction as the
-main driver of the worldwide PISA decline since 2009. UNESCO reports that
-~60% of the world's education systems now restrict phones in schools. Sweden,
-the Netherlands, and France are all promoting "analog competencies."
+Because the evidence points to screens as part of the problem. The EU
+Education and Training Monitor 2025 cites OECD research suggesting that
+non-educational use of digital devices in school could be the main driver of
+the worldwide PISA decline since 2009. UNESCO counts national school phone
+bans in 114 education systems (58%) as of March 2026. Sweden has returned to
+printed textbooks, and the Netherlands and France restrict phones in schools.
 
 WorkWizard uses the screen once — to generate the personalised worksheet —
 then the student works offline on paper. Screen time is subtracted, not
-stacked. The Production Effect literature confirms that handwriting engages
-deeper cognitive processing than typing. The model runs once; the learning
-happens on paper.
+stacked. Research on the production effect finds that actively producing
+material, for example saying or writing it, tends to improve memory compared
+with reading it silently. The model runs once; the learning happens on paper.
 
 ### What AI does it use?
 
-Kimi K2.6 (256K context, Instant+tools per exercise) for transformation and
-Mistral OCR for document extraction. For exercise types where a leaked answer
-is highest-risk, transformation runs an additional isolated verification step
-before the exercise is written; other exercise types use a single pass with
-the same answer-protection checks. Semantic caching is designed to reduce API
-calls by an estimated 25–40%, to be verified in pilot runs.
+Kimi K2.6 (256K context, instant mode per exercise) for transformation and
+quality judging, Mistral OCR for document extraction, and OpenAI GPT Image 1.5
+Mini for optional worksheet illustrations. For answer-critical numeric exercise
+types, the solution strategy is compiled in a separate step before the exercise
+is written; other exercise types use a single call with the same
+answer-protection checks. The computed answer is never included in any model
+input.
 
 ### Is it GDPR-compliant?
 
@@ -590,11 +592,11 @@ more useful than pretending the product is finished.
 - **Grade and subject detection** — 7 grade bands, 8 domains, 38 subdomains
 - **Interest catalogue** — 54 interests across 6 categories, age-gated, bilingual
 - **AI transformation** — Kimi K2.6 (256K context), with bounded parallel processing of exercises within a worksheet
-- **Quality scoring** — Multi-dimensional heuristic scoring with one quality-loop attempt by default and configurable total attempts
+- **Quality scoring** — Deterministic per-exercise gate, one LLM-judge call, and at most one repair per exercise
 - **Answer protection** — bilingual regex guard; any leak means rejection
 - **PDF generation** — WeasyPrint with per-grade-band layout, accessibility metadata, and applicable contrast/PDF-UA validation checks; formal conformance requires an independent audit
 - **Bilingual support** — full EN/DE across interface, pipeline, and output
-- **Testing** — ~2,566 backend tests across 103 modules, 35 Vitest files (~715 tests), and 5 Playwright E2E specs
+- **Testing** — ~3,400 backend tests across 109 modules, 41 Vitest files (~710 tests), and 4 Playwright E2E specs
 
 ### What is still missing
 
@@ -614,17 +616,18 @@ more useful than pretending the product is finished.
 
 Three forces are converging to make this the right product at the right time:
 
-1. **AI inference costs collapsed.** Personalised content generation now costs
-   a fraction of a cent per student per assignment — an economics shift that
-   did not exist two years ago.
+1. **AI inference costs fell sharply.** Current large language models are priced
+   at around one US dollar per million input tokens (Kimi K2.6: $0.95 input,
+   $4.00 output), which makes per-student worksheet generation affordable.
 2. **Governments are reversing screen-first policy.** Sweden, the Netherlands,
-   and France are restricting devices or promoting analog competencies — a
-   structural tailwind for a print-first product. Germany's DigitalPakt 2.0
-   earmarks €5B for school software and AI through 2030.
+   and France are restricting devices or returning to print — a structural
+   tailwind for a print-first product. Germany's DigitalPakt 2.0 provides €5B
+   (federal and state funds) for school digital infrastructure and its
+   pedagogical use from 2026 to 2030.
 3. **The engagement crisis is now publicly documented.** PISA, OECD, teacher
    surveys, and parent sentiment all point to the same diagnosis. The OECD's
-   2025 Education Policy Outlook explicitly names learner agency as the top
-   systemic lever for engagement.
+   2025 Education Policy Outlook treats learner agency as a central policy
+   lever for engagement in learning.
 
 The expansion path is Germany K-12 → DACH (Austria, Switzerland) → the wider
 EU. The architecture is parametric: adding a language, interest, grade level,
@@ -730,8 +733,10 @@ The anonymous survey collects input from parents, teachers, students, and school
 administrators on pain points, current homework-completion behaviour, reaction to a
 before/after concept demo, willingness to participate in a pilot, willingness to pay
 (with a confidence check), and whether they would recommend the approach to peers (an
-NPS-style proxy). It is bilingual (German/English), stores no IP addresses or names,
-and includes light anti-gaming safeguards such as a student attention check.
+NPS-style proxy, on the Full path). It is bilingual (German/English), stores no IP
+addresses, does not link answers to names, stores contact details only when a
+respondent chooses to leave them, and includes light anti-gaming safeguards such as a
+student attention check.
 
 ---
 

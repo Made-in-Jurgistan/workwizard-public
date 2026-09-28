@@ -41,8 +41,8 @@ being continuously optimised.
                                            │
                           ┌────────────────┼────────────────┐
                     ┌─────▼─────┐    ┌─────▼─────┐    ┌─────▼─────┐
-                    │  Mistral  │    │  Kimi K2  │    │ Semantic  │
-                    │    OCR    │    │ Transform │    │   Cache   │
+                    │  Mistral  │    │  Kimi K2  │    │  OpenAI   │
+                    │    OCR    │    │ Transform │    │ GPT Image │
                     └───────────┘    └───────────┘    └───────────┘
 ```
 
@@ -58,7 +58,7 @@ or photo     interests         per exercise    scored       PDF
 |------|--------------|
 | **Upload** | OCR extracts structured text from PDF, DOCX, or image |
 | **Personalise** | Student picks up to 5 of 54 curated bilingual interests |
-| **Transform** | K2.6 rewrites each exercise inside the interest context; bare equations become embedded mini word-problems with compiled strategy hints |
+| **Transform** | K2.6 rewrites each exercise inside the interest context; bare equations become embedded mini word-problems with strategy hints |
 | **Review** | Original and transformed shown side by side with quality scores |
 | **Download** | Per-grade styled PDF for offline student work |
 
@@ -68,23 +68,22 @@ or photo     interests         per exercise    scored       PDF
 |-------|-----------|
 | Frontend | React 19, TypeScript 5.x, Vite, Tailwind CSS |
 | Backend | Python 3.12, FastAPI, Pydantic v2, structlog |
-| AI | Kimi K2.6 (transform, Instant+tools), Mistral OCR |
-| Embeddings | paraphrase-multilingual-MiniLM-L12-v2 (384-dim, multilingual) |
+| AI | Kimi K2.6 (transform and judge, instant mode), Mistral OCR, OpenAI GPT Image 1.5 Mini (PDF illustrations) |
 | Data | Supabase Postgres (pgvector provisioned; retrieval is deterministic key lookup) |
 | Testing | pytest, Vitest, Playwright |
 | Infrastructure | Docker Compose, nginx, GitHub Actions, Vercel, Railway |
 
 ## Key Design Principles
 
-- **Engagement-first** — making homework fun is the core product goal; pedagogy is the responsible frame
+- **Engagement-first** — engagement is the core product goal and comes from relevance to the interest, not decoration; pedagogy is the responsible frame
 - **Print-first** — the model runs once; the student works offline on paper
 - **Answer protection** — a hard constraint; answers are never revealed in output
 - **Bilingual by design** — DE/EN throughout, never mixed in output
-- **Grade-aware** — 7 grade bands with calibrated scaffolding and age-appropriate humor
+- **Grade-aware** — 7 grade bands with calibrated scaffolding and a grade-scaled word budget
 - **Subject-aware** — hint discipline and evaluation criteria adapt to subject domain
 - **Pedagogically grounded** — all 13 frameworks active (16 routed labels)
-- **Quality-scored** — multi-dimensional scoring, source-preservation checks, and optional LLM-as-judge (K2.6 Instant mode)
-- **Risk-adjusted verification** — for exercise types where a leaked answer is highest-risk, generation runs through an additional isolated verification step before the answer is ever shown to the writing step; other exercise types use a single pass with the same answer-protection checks
+- **Quality-scored** — a deterministic per-exercise gate (source preservation, answer leaks), one LLM-as-judge call (K2.6 instant mode), at most one repair, and fallback to the source exercise
+- **Risk-adjusted generation** — for answer-critical numeric exercise types, the solution strategy is compiled in a separate step before the narrative is written; other exercise types use a single call with the same answer-protection checks. The computed answer is never included in any model input
 - **Bounded parallelism** — large worksheets transform in admission-controlled waves so provider limits are respected; production UI streams progress over SSE
 
 ## What Is Not Disclosed

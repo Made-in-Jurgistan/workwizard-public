@@ -7,4 +7,4 @@ Public research documents that support WorkWizard's product narrative, pedagogy,
 | [k12-pedagogical-frameworks.md](k12-pedagogical-frameworks.md) | Educators, product | Learning-science → worksheet design taxonomy |
 | [workwizard-research-foundation.md](workwizard-research-foundation.md) | Investors, GTM | Market problem validation (130+ sources) |
 
-**Survey instrument:** Current version is `2026-09-01-wtp-aligned` (Core path by default). Legacy answer codes from earlier instruments are no longer accepted on new submissions as of **2026-09-01**; see [CHANGELOG.md](../../CHANGELOG.md).
+**Survey instrument:** Current version is `2026-09-26-owned-list` (Core path by default; `?deep=1` for the Full diagnostic). Submissions from an earlier instrument version are rejected, and the respondent is asked to reload the survey; see [CHANGELOG.md](../../CHANGELOG.md).

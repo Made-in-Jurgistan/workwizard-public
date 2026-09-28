@@ -1,6 +1,10 @@
 {
   "config": {
     "default": true,
+    // Prose documents with wide tables and long citations.
+    "MD013": false,
+    // Bold lead-in lines and subtitles are intentional, not headings.
+    "MD036": false,
     "MD022": false,
     "MD024": false,
     "MD028": false,
