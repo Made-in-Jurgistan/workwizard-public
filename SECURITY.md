@@ -44,9 +44,10 @@ Implementation details are not disclosed.
 ## Answer Protection (Hard Constraint)
 
 - Bilingual regex guard rejects any output that leaks a solution
-- Source answers stripped from transformed output before processing
-- Quality gate includes answer-revelation detection as a separate dimension
-- Failed outputs enter retry loop; persistent failures return a safe fallback
+- Answer-key sections are stripped from the source worksheet before processing
+- The computed answer is never included in any model input
+- Answer-revelation detection is a hard check in the per-exercise quality gate
+- A failing exercise gets at most one repair attempt; if it still fails, the source exercise is used
 
 ## Rate Limiting
 
@@ -64,13 +65,13 @@ Implementation details are not disclosed.
 
 ## CI/CD Security
 
-- SAST (bandit) on every CI run
+- SAST (bandit) and dependency audits (pip-audit, npm audit) on every CI run
 - No secrets in build logs
 
 ## Known Limitations (v0.1.0)
 
 - No end-user authentication — pilot will run under teacher-supervised access once the MVP is test-ready
-- No audit log (planned for future release)
+- No audit log
 - MVP under active development — output quality is being continuously optimised
 
 ## Vulnerability Reporting

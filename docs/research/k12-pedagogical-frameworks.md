@@ -26,7 +26,7 @@
 
 **Audience:** Teachers, instructional designers, education-technology teams, and anyone who creates K–12 learning materials.
 
-**Prepared:** June 2026 · Links reviewed August 2026
+**Prepared:** June 2026
 
 **Source review:** Peer-reviewed reviews, research summaries, official guidance, and classroom resources. Every claim is qualified by the learners and settings it was studied in.
 
@@ -283,7 +283,7 @@ A meta-analysis of 20 studies found a moderate positive effect of UDL-based inst
 
 Self-regulated learners plan, monitor, and evaluate their own learning. Metacognition, awareness and control of one's own thinking, is teachable, with a solid evidence base behind it.
 
-A meta-analysis of self-regulated learning interventions found a positive, moderate effect on academic achievement (ES = 0.69) across K–12, higher education, and adult learners. Metacognitive strategy instruction shows post-test effects of g = 0.50, rising to g = 0.63 at follow-up, with students from lower-income backgrounds often benefiting most.
+A meta-analysis of self-regulated learning interventions in online and blended environments found a positive, moderate effect on academic achievement (ES = 0.69) across elementary, secondary, higher, and informal adult education. Metacognitive strategy instruction shows post-test effects of g = 0.50, rising to g = 0.63 at follow-up, with low-SES students benefiting most in the long term.
 
 **Worksheet techniques to build self-regulation:**
 
@@ -497,12 +497,12 @@ ________________________________
 
 ### 6.3 Digital and AI-enhanced adaptations
 
-For an EdTech product like WorkWizard, these principles can be embedded automatically instead of being left to manual design each time:
+In an interactive digital product, these principles can be embedded automatically instead of being left to manual design each time. WorkWizard produces print-ready worksheets, so of the list below it applies strategy hints (one or two per exercise, never revealing the answer), a first-step cue for above-grade exercises, and, where the pipeline enables them, self-explanation prompts, a response-choice block, and a spiral-review item; the interactive features are not part of it:
 
 - **Adaptive spaced repetition:** schedule review based on forgetting-curve models.
 - **Retrieval-first interface:** show the question before the explanation, and hide notes until the learner has attempted an answer.
 - **Worked-example fading:** show full worked examples to novices, and fade the steps as mastery increases.
-- **Hint banks:** offer tiered hints, moving from concrete to conceptual to a full explanation.
+- **Hint banks:** offer tiered hints, moving from concrete to conceptual, with the full explanation only after an attempt.
 - **Teach-back mode:** a voice or text input where the learner explains a concept, and the system checks for jargon and gaps.
 - **Mastery progress bars:** track competence by topic, not only completion.
 - **Formative feedback loops:** immediate, specific, actionable feedback, not a bare correct-or-incorrect signal.
@@ -763,7 +763,7 @@ The evidence-based principles in this guide apply across K–12, but how they're
 | **6–8 (middle school)** | Emerging abstract reasoning; social identity and peer validation matter; metacognition is teachable. | Increase metacognitive prompts, goal-setting, and error logs. Use peer collaboration. Connect tasks to real-world identity and interests. Explain *why* strategies work, not just that they do. |
 | **9–12 (high school)** | Formal operational thinking; can handle hypotheticals, complex projects, and self-directed study. | Emphasise autonomy, elaborative interrogation, interleaving, and self-regulated learning. Offer complex, authentic projects and let students choose formats and contexts. Scaffolding should be minimal and optional. |
 
-A large K–6 intervention review found that peer-assisted and small-group instruction had clear positive effects, with effects tending to run somewhat lower in higher grades. That doesn't mean older students can't benefit. It means instruction for them needs to be more autonomy-supporting and less dependent on adult direction.
+A large K–6 review of targeted interventions for students with or at risk of academic difficulties found that peer-assisted and small-group instruction had clear positive effects, with effects tending to run somewhat lower in higher grades. That doesn't mean older students can't benefit. It means instruction for them needs to be more autonomy-supporting and less dependent on adult direction.
 
 ### 11.2 Subject-specific applications
 
@@ -839,37 +839,37 @@ Use the references below as a decision aid, not a promise of universal effect:
 
 [51] [Interleaving Retrieval Practice Promotes Science Learning](https://doi.org/10.1177/09567976211057507) — Sana & Yan, 2022, *Psychological Science*
 
-[1] [Towards Active Evidence-Based Learning in Engineering Education: A Systematic Literature Review of PBL, PjBL, and CBL](https://doi.org/10.3390/su14031702) — Sukacke et al., 2022, *Sustainability*
+[1] [Towards Active Evidence-Based Learning in Engineering Education: A Systematic Literature Review of PBL, PjBL, and CBL](https://doi.org/10.3390/su142113955) — Sukackė et al., 2022, *Sustainability*
 
 [2] [Study methods in medical education: a literature review](https://doi.org/10.34119/bjhrv8n1-401) — de Sousa Lima et al., 2025, *Brazilian Journal of Health Review*
 
 [3] [Spacing and Interleaving Effects Require Distinct Theoretical Bases](https://doi.org/10.1007/s10648-021-09613-w) — Chen et al., 2021, *Educational Psychology Review*
 
-[4] [The Effectiveness of Spaced Learning, Interleaving, and Retrieval Practice in Radiology Education](https://doi.org/10.1016/j.jacr.2023.08.028) — Thompson et al., 2023, *Journal of the American College of Radiology*
+[4] [The Effectiveness of Spaced Learning, Interleaving, and Retrieval Practice in Radiology Education](https://doi.org/10.1016/j.jacr.2023.08.028) — Thompson & Hughes, 2023, *Journal of the American College of Radiology*
 
-[5] [Developing Cognitive Skills Through Active Learning: A Systematic Review of Health Care Professions](https://doi.org/10.4085/1402135) — Harris et al., 2019, *Athletic Training Education Journal*
+[5] [Developing Cognitive Skills Through Active Learning: A Systematic Review of Health Care Professions](https://doi.org/10.4085/1402135) — Harris & Bacon, 2019, *Athletic Training Education Journal*
 
 [6] [Modern techniques of teaching and learning in medical education: a descriptive literature review](https://doi.org/10.15694/mep.2021.000018.1) — Challa et al., 2021, *MedEdPublish*
 
-[7] [Revolutionizing learning in the digital age: a systematic literature review of microlearning strategies](https://doi.org/10.1080/10494820.2024.2331638) — Alias et al., 2024, *Interactive Learning Environments*
+[7] [Revolutionizing learning in the digital age: a systematic literature review of microlearning strategies](https://doi.org/10.1080/10494820.2024.2331638) — Alias & Razak, 2024, *Interactive Learning Environments*
 
 [8] [Active Learning Strategies in Computer Science Education: A Systematic Review](https://doi.org/10.3390/mti8060050) — Córdova Esparza et al., 2024, *Multimodal Technologies and Interaction*
 
 [9] [A review on modern teaching and learning techniques in medical education](https://doi.org/10.59652/jetm.v2i1.128) — Karkera et al., 2024, *EIKI Journal of Effective Teaching Methods*
 
-[10] [Single-paper meta-analyses of spaced retrieval practice in nine introductory STEM courses](https://doi.org/10.1186/s40594-024-00468-5) — Bego et al., 2024, *International Journal of STEM Education*
+[10] [Single-paper meta-analyses of the effects of spaced retrieval practice in nine introductory STEM courses](https://doi.org/10.1186/s40594-024-00468-5) — Bego et al., 2024, *International Journal of STEM Education*
 
-[11] [Do growth mindset interventions impact students' academic achievement?](https://doi.org/10.1037/bul0000352) — Macnamara et al., 2022, *Psychological Bulletin*
+[11] [Do growth mindset interventions impact students' academic achievement?](https://doi.org/10.1037/bul0000352) — Macnamara & Burgoyne, 2023, *Psychological Bulletin*
 
 [12] [To What Extent and Under Which Circumstances Are Growth Mind-Sets Important to Academic Achievement?](https://doi.org/10.1177/0956797617739704) — Sisk et al., 2018, *Psychological Science*
 
-[13] [A systematic review and meta-analysis of growth mindset interventions](https://doi.org/10.1037/bul0000368) — Burnette et al., 2022, *Psychological Bulletin*
+[13] [A systematic review and meta-analysis of growth mindset interventions](https://doi.org/10.1037/bul0000368) — Burnette et al., 2023, *Psychological Bulletin*
 
 [14] [A national experiment reveals where a growth mindset improves achievement](https://doi.org/10.1038/s41586-019-1466-y) — Yeager et al., 2019, *Nature*
 
 [26] [Inducing Self-Explanation: a Meta-Analysis](https://doi.org/10.1007/s10648-018-9434-x) — Bisra et al., 2018, *Educational Psychology Review* — overall effect g = 0.55 for self-explanation prompts
 
-[27] [Interactive Learning Effects of Preparing to Teach and Teaching: a Meta-Analytic Approach](https://doi.org/10.1007/s10648-024-09871-4) — Kobayashi, 2024, *Educational Psychology Review* — teaching expectancy g = 0.27 overall, g = 0.48 when paired with study
+[27] [Interactive Learning Effects of Preparing to Teach and Teaching: a Meta-Analytic Approach](https://doi.org/10.1007/s10648-024-09871-4) — Kobayashi, 2024, *Educational Psychology Review* — teaching after studying g = 0.27 overall, g = 0.48 when learners studied expecting to teach
 
 [28] [A meta-analysis of the efficacy of self-regulated learning interventions on academic achievement in online and blended environments](https://doi.org/10.1080/0144929x.2022.2151935) — Xu et al., 2022, *Behaviour & Information Technology* — SRL interventions ES = 0.69
 
@@ -877,13 +877,13 @@ Use the references below as a decision aid, not a promise of universal effect:
 
 [30] [Achievement of learners receiving UDL instruction: A meta-analysis](https://doi.org/10.1016/j.tate.2022.103956) — King-Sears et al., 2023, *Teaching and Teacher Education* — UDL instruction g = 0.43
 
-[31] [Active learning improves academic achievement and learning retention in K-12 settings](https://doi.org/10.26634/jsch.18.3.19288) — Özgür, 2023, *i-manager's Journal on School Educational Technology* — g = 1.005 achievement, g = 1.204 retention
+[31] [Active learning improves academic achievement and learning retention in K-12 settings](https://doi.org/10.26634/jsch.18.3.19288) — Tutal, 2023, *i-manager's Journal on School Educational Technology* — g = 1.005 achievement, g = 1.204 retention
 
 [32] [A Meta-Analytic Review of the Benefit of Spacing out Retrieval Practice Episodes on Retention](https://doi.org/10.1007/s10648-020-09572-8) — Latimier et al., 2020, *Educational Psychology Review*
 
 [33] [A Meta-Analysis of the Worked Examples Effect on Mathematics Performance](https://doi.org/10.1007/s10648-023-09745-1) — Barbieri et al., 2023, *Educational Psychology Review* — g = 0.48
 
-[34] [The Gamification of Learning: a Meta-analysis](https://doi.org/10.1007/s10648-019-09498-w) — Sailer et al., 2019, *Educational Psychology Review* — cognitive g = 0.49, motivational g = 0.36, behavioural g = 0.25
+[34] [The Gamification of Learning: a Meta-analysis](https://doi.org/10.1007/s10648-019-09498-w) — Sailer & Homner, 2020, *Educational Psychology Review* — cognitive g = 0.49, motivational g = 0.36, behavioural g = 0.25
 
 [35] [The Effects of Writing on Learning in Science, Social Studies, and Mathematics: A Meta-Analysis](https://doi.org/10.3102/0034654320914744) — Graham et al., 2020, *Review of Educational Research* — effect size = 0.30
 
@@ -893,15 +893,15 @@ Use the references below as a decision aid, not a promise of universal effect:
 
 [38] [Effects of game-based learning on students' mathematics achievement: A meta-analysis](https://doi.org/10.1111/jcal.12347) — Tokac et al., 2019, *Journal of Computer Assisted Learning*
 
-[39] [Effect of blended learning on student performance in K-12 settings: A meta-analysis](https://doi.org/10.1111/jcal.12696) — Li et al., 2022, *Journal of Computer Assisted Learning* — g = 0.65 overall
+[39] [Effect of blended learning on student performance in K-12 settings: A meta-analysis](https://doi.org/10.1111/jcal.12696) — Li & Wang, 2022, *Journal of Computer Assisted Learning* — g = 0.65 overall
 
 [40] [Scheduling math practice: Students' underappreciation of spacing and interleaving](https://doi.org/10.1037/xap0000391) — Hartwig et al., 2022, *Journal of Experimental Psychology: Applied*
 
-[41] [Students' Perceptions of Effective Math Learning Strategies](https://doi.org/10.3390/bs15081047) — Hartwig et al., 2025, *Behavioral Sciences*
+[41] [Students' Perceptions of Effective Math Learning Strategies](https://doi.org/10.3390/bs15081047) — Hartwig & Rohrer, 2025, *Behavioral Sciences*
 
 [42] [Why Desirable Difficulties 'Work'](https://doi.org/10.1111/jep.70349) — Binks, 2026, *Journal of Evaluation in Clinical Practice*
 
-[43] [Cognitive Load in Solving Mathematics Problems](https://doi.org/10.20897/ejsteme/9252) — Zheng et al., 2020, *European Journal of STEM Education*
+[43] [Cognitive Load in Solving Mathematics Problems](https://doi.org/10.20897/ejsteme/9252) — Zheng & Gupta, 2020, *European Journal of STEM Education*
 
 [44] [Gamification is not Working: Why?](https://doi.org/10.1177/15554120241228125) — Dah et al., 2024, *Games and Culture*
 
@@ -915,7 +915,7 @@ Use the references below as a decision aid, not a promise of universal effect:
 
 [17] [25+ Student Engagement Strategies: A Research-Backed Guide for Modern K-12 Classrooms](https://flipeducation.ai/blog/25-student-engagement-strategies-a-research-backed-guide-for-modern-k-12-classrooms) — Flip Education
 
-[18] [Seven Ways to Increase Student Engagement in K-12 Classrooms](https://www.gwaea.org/2021/11/29/increase-student-engagement-k12-classrooms/) — Grant Wood AEA
+[18] [Seven Ways to Increase Student Engagement in K-12 Classrooms](https://web.archive.org/web/20250122065755/https://www.gwaea.org/2021/11/29/increase-student-engagement-k12-classrooms/) — Wylie, 2021, Grant Wood AEA (archived copy; removed from gwaea.org)
 
 [19] [The Feynman Technique Simplified: How to Help Kids Learn Better](https://www.thethinkacademy.com/blog/edubriefs-feynman-technique-simplified-parents/) — Think Academy
 
@@ -939,4 +939,4 @@ Use the references below as a decision aid, not a promise of universal effect:
 
 ---
 
-<p align="center"><sub>WorkWizard · Berlin · Prepared June 2026 · Links reviewed August 2026</sub></p>
+<p align="center"><sub>WorkWizard · Berlin · Prepared June 2026</sub></p>

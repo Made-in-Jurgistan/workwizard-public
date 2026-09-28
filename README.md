@@ -104,8 +104,8 @@ or photo     interests         per exercise    scored       PDF
 | --- | --- |
 | **Upload** | Mistral OCR extracts structured text from PDF, DOCX, or image. MinerU is available as a self-hosted GDPR fallback. |
 | **Personalise** | Student picks up to 5 of 54 curated interests across 6 categories, all bilingual. |
-| **Transform** | Kimi K2.6 rewrites each exercise inside the student's interest context — bare equations become embedded mini word-problems; strategy is compiled separately from narrative engagement. |
-| **Review** | Original and transformed shown side by side with multi-dimensional quality scores and answer-revelation checks. |
+| **Transform** | Kimi K2.6 rewrites each exercise inside the student's interest context — bare equations become embedded mini word-problems; for answer-critical numeric exercises, strategy is compiled separately from the narrative. |
+| **Review** | Original and transformed shown side by side with quality scores and answer-revelation checks. |
 | **Download** | WeasyPrint renders a per-grade styled PDF; accessibility criteria are tested and conformance is not claimed without an audit. |
 
 ## 🧩 Features
@@ -115,11 +115,10 @@ or photo     interests         per exercise    scored       PDF
 | **Interest personalisation** | 54 interests across 6 categories (games, sports, TV and film, fantasy, superheroes, creative), bilingual EN/DE |
 | **Grade-aware pedagogy** | 7 grade bands (1-2 through 13) with calibrated scaffolding, Bloom's levels, and motivation emphasis |
 | **Answer protection** | Bilingual regex guard rejects any output that leaks a solution; enforced as a hard constraint |
-| **Quality scoring** | Heuristic multi-dimensional scorer plus optional structured LLM evaluation, source-preservation checks, and safe fallback for invalid output. Latency and quality are measured in CI and pilot runs. |
-| **Semantic caching** | Estimated 25-40% fewer API calls via embedding deduplication and borderline-match validation (to be verified in pilot) |
-| **RAG enrichment** | Curated knowledge base lookup with quality scoring and cultural safety checks |
-| **Narrative diversity** | Anti-repetition engine ensuring varied narrative contexts; bare equations embedded in 3–4 sentence mini-scenes (numbers in the story, then the original equation) |
-| **Model routing** | Automatic mode selection based on content type and difficulty, with an additional verification pass for the exercise types where accuracy matters most |
+| **Quality scoring** | Deterministic per-exercise gate (source preservation, answer leaks), one structured LLM-judge call, at most one targeted repair, and fallback to the source exercise for invalid output. An offline evaluation harness scores recorded worksheet runs. |
+| **RAG enrichment** | Curated knowledge base lookup with quality scoring and age-appropriateness (forbidden-topic) checks |
+| **Narrative diversity** | Anti-repetition engine ensuring varied narrative contexts; bare equations embedded in short mini-scenes within a grade-calibrated sentence limit (numbers in the story, then the original equation) |
+| **Model routing** | K2.6 instant mode per exercise; a two-step compile-then-write path for answer-critical numeric exercise types, one call for everything else |
 | **Accessible output** | WeasyPrint and Jinja2 templates, with applicable [WCAG 2.2](https://www.w3.org/TR/WCAG22/) AA criteria as a test target and per-grade CSS; no conformance claim without an audit |
 | **Print-first design** | Screen time is subtracted rather than stacked; transformation is bounded, and the student works offline |
 
@@ -134,8 +133,8 @@ or photo     interests         per exercise    scored       PDF
                                            │
                           ┌────────────────┼────────────────┐
                     ┌─────▼─────┐    ┌─────▼─────┐    ┌─────▼─────┐
-                    │  Mistral  │    │  Kimi K2  │    │ Semantic  │
-                    │    OCR    │    │ Transform │    │   Cache   │
+                    │  Mistral  │    │  Kimi K2  │    │  OpenAI   │
+                    │    OCR    │    │ Transform │    │ GPT Image │
                     └───────────┘    └───────────┘    └───────────┘
 ```
 
@@ -151,9 +150,8 @@ or photo     interests         per exercise    scored       PDF
 | RAG enrichment | Interest entities, characters, and settings from a curated knowledge base |
 | Prompt building | Grade-, subject-, and pedagogy-aware prompt construction with narrative-diversity gating |
 | Transformation | Kimi K2.6 (256K context), admission-controlled parallel per-exercise dispatch; SSE progress streaming |
-| Quality gate | Answer-revelation detection, dimensional scoring, LLM judge, retry loop |
-| Caching | Semantic similarity cache (memory or Redis backend) |
-| PDF generation | WeasyPrint and Jinja2 with per-grade CSS |
+| Quality gate | Answer-revelation detection, source-correspondence checks, LLM judge, at most one repair per exercise |
+| PDF generation | WeasyPrint and Jinja2 with per-grade CSS; optional illustrations via OpenAI GPT Image |
 
 </details>
 
@@ -163,7 +161,7 @@ or photo     interests         per exercise    scored       PDF
 <summary><strong>Expand: 13 active frameworks within a 13-framework taxonomy</strong></summary>
 <br />
 
-The running backend uses all 13 frameworks in the pedagogical taxonomy through 16 routed guidance labels. Three labels are Self-Determination Theory sub-labels, while the remaining labels map directly to the 13 framework concepts. Additional conditional pedagogical blocks operationalize mechanisms such as self-explanation, desirable difficulties, interleaving, worked examples, UDL, spaced review, attribution framing, and value connection. These frameworks guide design; they are not evidence that WorkWizard itself improves outcomes.
+The running backend uses all 13 frameworks in the pedagogical taxonomy through 16 routed guidance labels. Three labels are Self-Determination Theory sub-labels and one (instructional scaffolding) is a Zone of Proximal Development sub-concept; the remaining labels map directly to the other framework concepts. Additional conditional pedagogical blocks operationalize mechanisms such as self-explanation, desirable difficulties, interleaving, worked examples, UDL, spaced review, attribution framing, and value connection. These frameworks guide design; they are not evidence that WorkWizard itself improves outcomes.
 
 | Framework | Citation | Role |
 | --- | --- | --- |
@@ -181,7 +179,7 @@ The running backend uses all 13 frameworks in the pedagogical taxonomy through 1
 | Metacognition | Flavell, Schraw & Dennison | Predict-plan-check cues |
 | Cognitive Activation | Burge, Lenkeit & Sizmur (2015) | Reasoning beyond recall |
 
-Eight pedagogical mechanisms are applied during generation, including self-explanation prompting, difficulty framing, UDL choice, value connection, attribution framing, worksheet structure, worked examples, and spaced review for returning students. Prompt construction front-loads the educator persona and embeds bare equations in mini word-problems before presenting the original equation unchanged.
+Eight pedagogical mechanisms are applied during generation, including self-explanation prompting, difficulty framing, UDL choice, value connection, attribution framing, worksheet structure, worked examples, and spaced review for returning students. Bare equations are embedded in mini word-problems before the original equation is presented unchanged.
 
 Evidence notes and source links are maintained in the [K-12 frameworks report](docs/research/k12-pedagogical-frameworks.md). These frameworks guide design; they are not evidence that WorkWizard itself improves outcomes.
 
@@ -191,12 +189,11 @@ Evidence notes and source links are maintained in the [K-12 frameworks report](d
 
 | Layer | Technology |
 | --- | --- |
-| Frontend | React 19, TypeScript 5.8, Vite 7.2, i18n DE/EN |
+| Frontend | React 19, TypeScript 5.9, Vite 7.3, i18n DE/EN |
 | Backend | Python 3.12, FastAPI 0.115+, Pydantic v2, structlog |
-| AI | Kimi K2.6 (Moonshot, 256K context, Instant+tools per exercise), Mistral OCR |
-| Embeddings | paraphrase-multilingual-MiniLM-L12-v2 (384-dim, multilingual) |
+| AI | Kimi K2.6 (Moonshot, 256K context, instant mode per exercise), Mistral OCR, OpenAI GPT Image 1.5 Mini (PDF illustrations) |
 | Data | Supabase Postgres (pgvector provisioned; retrieval is deterministic key lookup) |
-| Testing | pytest (~2,566 tests, 103 modules), Vitest (~715 tests / 35 files) and Playwright |
+| Testing | pytest (~3,400 tests, 109 modules), Vitest (~710 tests / 41 files) and Playwright (4 specs) |
 | Infrastructure | Docker Compose, nginx, GitHub Actions, Vercel, Railway |
 
 ## 🔌 API
@@ -216,7 +213,7 @@ Routes are mounted under `/api/v1/...`. Probes: `GET /healthz` (liveness), `GET 
 | `GET` | `/api/v1/pdf/download/{cache_key}` | Download a generated PDF |
 | `POST` | `/api/v1/survey/submit` | Submit an anonymous survey response |
 
-Admin-token gated routes cover survey administration and cache invalidation. Optional shared API key may protect cost-bearing routes in some deployments. Full interactive reference at `/docs` when enabled.
+Admin-token gated routes cover survey administration, quality review, and cache invalidation. Optional shared API key may protect cost-bearing routes in some deployments. Full interactive reference at `/docs` when enabled.
 
 ## 🔒 Security
 
