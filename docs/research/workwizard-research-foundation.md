@@ -20,7 +20,7 @@
 
 # WorkWizard Research Foundation
 
-### The evidence base for re-engaging a generation. EdTech's next chapter, grounded in interest-based learning.
+**The evidence base for re-engaging a generation. EdTech's next chapter, grounded in interest-based learning**
 
 *134 sources, including the PISA 2025 results, EdTech market data, and classroom AI adoption studies through September 2026.*
 

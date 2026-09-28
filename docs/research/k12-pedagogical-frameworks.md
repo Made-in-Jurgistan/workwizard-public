@@ -20,7 +20,7 @@
 
 # K–12 Pedagogical, Psychological, and Engagement Frameworks
 
-### Turning learning science into better worksheets
+**Turning learning science into better worksheets**
 
 **Purpose:** Translate learning science, motivation psychology, and classroom practice into worksheets that work better for real students.
 
@@ -460,7 +460,7 @@ The clearest way to see how these techniques fit together is a concrete before-a
 
 Use this as a starting point for any topic.
 
-```
+```text
 # [Topic] Practice Set
 
 ## 1. Learning Goal
