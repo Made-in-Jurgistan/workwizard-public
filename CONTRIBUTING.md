@@ -65,7 +65,7 @@ with the `enhancement` label and:
 
 Teachers, parents, students, and school administrators can share feedback directly through the in-app interest and market survey at
 [workwizard-demo.vercel.app/survey](https://workwizard-demo.vercel.app/survey).
-The current instrument version is `2026-09-26-owned-list` (Core path by default; append `?deep=1` for the Full diagnostic).
+The current instrument version is `2026-10-04-neutral-intro` (Core path by default; append `?deep=1` for the Full diagnostic).
 This is the preferred channel for feedback about exercise quality, engagement,
 and classroom fit.
 

@@ -47,7 +47,19 @@ Implementation details are not disclosed.
 - Answer-key sections are stripped from the source worksheet before processing
 - The computed answer is never included in any model input
 - Answer-revelation detection is a hard check in the per-exercise quality gate
-- A failing exercise gets at most one repair attempt; if it still fails, the source exercise is used
+- A failing exercise gets at most one repair attempt on the per-exercise pipeline; if it still fails, the source exercise is used
+- On the agent engine, every task is checked in code and a task that never passes is printed as in the source; the model receives a verdict on whether the answer is unchanged, never the computed value
+- Both engines pass their output through the same answer guard
+
+## Survey Data
+
+- Anonymous: no IP address or user-agent is stored, and no third-party fonts or trackers are loaded
+- Server-side validation of every answer against the current instrument version
+- Contact details are stored only after the respondent ticks a separate consent box for each purpose; students cannot leave contact details
+- Erasure of one respondent's data on request, covering answers, lead status, and contact messages
+- 18-month retention window, enforced by a scheduled job
+- Administration routes require an admin token; destructive operations (full reset, respondent erasure) require a separate token
+- Static survey pages are served with a Content-Security-Policy that disallows inline scripts
 
 ## Rate Limiting
 

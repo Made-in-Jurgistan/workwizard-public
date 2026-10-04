@@ -249,7 +249,7 @@ In the US, chronic absenteeism remains almost double its pre-pandemic level, wit
 
 Engagement compounds in the other direction too. The most engaged quarter of students is four times more likely to strongly agree they have a great future ahead (61% versus 15%) and twice as likely to describe themselves as thriving overall (76% versus 32%). (*[Gallup / Walton Family Foundation, 2024](https://nextgeninsights.waltonfamilyfoundation.org/resources/2024-voices-of-gen-z-study/)*)
 
-The OECD identifies early-to-mid adolescence as a stage with a high risk of disengagement from school, the age range WorkWizard targets. (*[OECD, Education Policy Outlook 2025](https://www.oecd.org/en/publications/education-policy-outlook-2025_c3f402ba-en.html)*)
+The OECD identifies early-to-mid adolescence as a stage with a high risk of disengagement from school; WorkWizard's seven grade groups (1-2 through 13) include that age range. (*[OECD, Education Policy Outlook 2025](https://www.oecd.org/en/publications/education-policy-outlook-2025_c3f402ba-en.html)*)
 
 ---
 
@@ -474,7 +474,7 @@ Producing a printed, handwritten-response worksheet rather than an interactive a
 
 ### 4.3 Pedagogical framework taxonomy
 
-WorkWizard's pedagogical routing layer routes all 13 frameworks (16 labels) through the system's `FRAMEWORK_PROFILES` module, with guidance text from `core/frameworks.py` as the single source of truth. The 16 labels represent 13 distinct frameworks — Self-Determination Theory has three sub-labels (`sdt`, `sdt_autonomy`, `competence_feedback`) and scaffolding is a sub-concept of ZPD. Each content type maps to a primary and secondary framework pair, and the selected labels populate `included_frameworks` metadata for observability. The table below distinguishes the actively routed concepts from the broader research base that informs the product's design.
+WorkWizard's pedagogical routing layer assigns all 13 frameworks (16 labels) to its content types, with a single source of guidance text per label. The 16 labels represent 13 distinct frameworks — Self-Determination Theory has three sub-labels (`sdt`, `sdt_autonomy`, `competence_feedback`) and scaffolding is a sub-concept of ZPD. Each content type maps to two primary and two or three secondary labels, and the selected labels are reported with each response as the frameworks applied. A second, subject-based selection names three frameworks per subject domain in the educator persona and sets the frameworks the LLM judge checks. The agent engine reports a fixed set of labels per task instead: autonomy support, Narrative Transportation, Prior Knowledge Activation, and Cognitive Load Theory for a personalised task, and scaffolding, ZPD, Worked Examples, and Metacognition when its hints pass the checks. The table below distinguishes the actively routed concepts from the broader research base that informs the product's design.
 
 **Actively routed in the backend**
 
@@ -501,7 +501,7 @@ WorkWizard's pedagogical routing layer routes all 13 frameworks (16 labels) thro
 |---|---|
 | Spaced Practice | [Ebbinghaus (1885)](https://archive.org/details/memorycontributi00ebbiuoft); Cepeda et al. (2006) |
 
-Spaced review is operationalized as a conditional prompt block (session-history-driven spiral review) rather than as a `FRAMEWORK_PROFILES` label.
+Spaced review is a conditional block (a spiral-review item driven by session history) rather than a routed framework label. The block is disabled in the current pipeline, so worksheets contain no spiral-review item.
 
 ---
 

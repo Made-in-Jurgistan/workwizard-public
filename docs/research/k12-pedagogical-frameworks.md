@@ -497,7 +497,7 @@ ________________________________
 
 ### 6.3 Digital and AI-enhanced adaptations
 
-In an interactive digital product, these principles can be embedded automatically instead of being left to manual design each time. WorkWizard produces print-ready worksheets, so of the list below it applies strategy hints (one or two per exercise, never revealing the answer), a first-step cue for above-grade exercises, and, where the pipeline enables them, self-explanation prompts, a response-choice block, and a spiral-review item; the interactive features are not part of it:
+In an interactive digital product, these principles can be embedded automatically instead of being left to manual design each time. WorkWizard produces print-ready worksheets, so none of the interactive features below is part of it. Of the list, it applies strategy hints (one or two per exercise, never revealing the answer) and, on the per-exercise pipeline, a first-step cue for above-grade exercises (also for at-grade exercises whose content type carries the worked-examples label). Optional blocks for self-explanation prompts, a response-choice block, and a spiral-review item exist and are disabled in the current pipeline:
 
 - **Adaptive spaced repetition:** schedule review based on forgetting-curve models.
 - **Retrieval-first interface:** show the question before the explanation, and hide notes until the learner has attempted an answer.

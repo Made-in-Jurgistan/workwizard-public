@@ -33,9 +33,18 @@ versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [Unreleased]
 
 ### Added
+- Agent personalisation engine, selected by deployment configuration: the worksheet is
+  split into tasks without editing source text, tool-assisted model sessions rewrite
+  groups of tasks, and code checks accept each task on its own; a task that never passes
+  is printed as in the source. Both engines end in the same answer guard
+- Length feedback for a rewrite that is too long reports the measured count and the limit
+- Story material for all 54 interests: roles, missions, settings, details, and quantities
+  in German and English
 - Offline evaluation harness: recorded DE/EN worksheets are run through the production
   pipeline and scored deterministically (exercise count, source preservation, answer
-  leaks, word budget, success rate, latency), with regression checks against a baseline
+  leaks, word budget, success rate, latency), with regression checks against a baseline;
+  repeated runs report consistency (pass^k) and per-session rounds, wall time, and
+  length problems
 - Per-exercise word budget scaled by grade band, enforced by the quality gate
 - Worksheet theme: one companion character per interest for the whole worksheet, with
   settings rotating per exercise
@@ -52,6 +61,19 @@ versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Pre-pilot survey: willingness-to-pay confidence check for every adult role
 - Pre-pilot survey: a student attention check surfaces a data-quality pass rate on the
   admin dashboard
+- Pre-pilot survey: demo matched to a grade band (primary, secondary, or mixed); each
+  shows a realistic original worksheet and two personalised versions with identical
+  expected answers, and every role passes the demo screen before submitting
+- Pre-pilot survey: parent printer-access and teacher class-size questions
+- Pre-pilot survey: the order in which randomised options were shown is stored with the
+  response and persists across reloads; funnel events record a device split; a hidden
+  honeypot field drops automated submissions
+- Pre-pilot survey admin dashboard: filters by channel, language, and path; price curves,
+  printer-access, student-tier, and action-ladder views; an investor report export (HTML,
+  English or German); CSV export that marks each row as kept, attention, speeder, or
+  duplicate
+- Erasure of one survey respondent's data on request, covering answers, lead status, and
+  contact messages
 - Interest catalog stored in the database, with access controls and indexing
 - `pgvector` extension provisioned in the initial schema for future DB-level vector search
 - Automatic retry with backoff for transient database rate limits
@@ -64,17 +86,25 @@ versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Per-exercise quality pipeline: one deterministic gate, one structured judge call with
   yes/no verdicts per dimension, and at most one repair; output that fails the gate is
   replaced by the source exercise
-- No model request carries tools or the computed answer; repair feedback is redacted
-  of the answer before it reaches the model
+- No model request carries the computed answer; repair feedback is redacted of the
+  answer before it reaches the model. Per-exercise requests carry no tools; agent-engine
+  sessions carry verification tools
 - Engagement comes from relevance to the interest (native objects, roles, and units)
   rather than jokes, twists, or extra characters
 - Worksheet preprocessing keeps lettered items, repeated instructions, tables, and
   header lines intact; answer-key sections are removed before transformation
-- Production default model: Kimi K2.6 (instant mode per exercise); K2.7 family unsupported
+- Production default model: Kimi K2.6 without reasoning mode; K2.7 family unsupported
 - LLM-based quality judging enabled by default
 - Large worksheets transform in bounded parallel waves; progress streams over SSE
-- Pre-pilot survey instrument `2026-09-26-owned-list`; submissions from earlier
+- Pre-pilot survey instrument `2026-10-04-neutral-intro`; submissions from earlier
   instrument versions are rejected
+- Pre-pilot survey: the intro states the research topic only, and the product is first
+  explained after the priorities question; question stems carry no price cue; German text
+  shown before a role is chosen is impersonal
+- Pre-pilot survey: speeder cutoffs are computed per role and path, and answer sets that
+  repeat an earlier response are flagged as duplicates
+- Pre-pilot survey: static pages are served with a Content-Security-Policy that
+  disallows inline scripts
 - Pre-pilot survey: German copy for teachers uses the formal "Sie", matching the
   administrator role; the parent root-cause question separates "boring" and
   "pointless"; questions that don't apply are skipped; estimated completion time is

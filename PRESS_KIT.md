@@ -189,8 +189,8 @@ preparation; the child does the learning. Screen time subtracted, not stacked.
 | Max upload size | 10 MB |
 | AI model | Kimi K2.6 (256K context, instant mode) |
 | OCR engine | Mistral OCR |
-| Backend tests | ~3,400 across 109 modules |
-| Frontend tests | 41 Vitest files (~710 tests) plus 4 Playwright E2E specs |
+| Backend tests | ~5,800 across 145 modules |
+| Frontend tests | 41 Vitest files (~740 tests) plus 6 Playwright E2E specs |
 | Research sources | 130+ citations in research foundation |
 
 ---
@@ -336,10 +336,11 @@ press coverage of WorkWizard.
 | **Interest personalisation** | 54 interests across 6 categories (games, sports, TV and film, fantasy, superheroes, creative), bilingual EN/DE |
 | **Grade-aware pedagogy** | 7 grade bands (1–2 through 13) with calibrated scaffolding, Bloom's levels, and motivation emphasis |
 | **Answer protection** | Bilingual regex guard rejects any output that leaks a solution — enforced as a hard constraint, not a suggestion |
-| **Quality scoring** | Deterministic per-exercise gate, one LLM-judge call, at most one repair, and fallback to the source exercise; an offline evaluation harness scores recorded runs |
+| **Quality scoring** | Per-exercise acceptance in code (source preservation, answer leaks, length), plus one LLM-judge call and at most one repair on the per-exercise pipeline; output that never passes falls back to the source exercise; an offline evaluation harness scores recorded runs |
 | **RAG enrichment** | Curated knowledge base lookup with quality scoring and age-appropriateness (forbidden-topic) checks |
 | **Narrative diversity** | Anti-repetition engine ensuring varied narrative contexts across exercises |
-| **Model routing** | Instant mode per exercise; a two-step compile-then-write path for answer-critical numeric exercise types, one call for everything else |
+| **Model routing** | Per-exercise pipeline: instant mode, a two-step compile-then-write path for answer-critical numeric exercise types, one call for everything else |
+| **Engine selection** | Two transformation engines, chosen by deployment configuration: the per-exercise pipeline, or tool-assisted agent sessions over groups of tasks with every task checked in code |
 | **Accessible output** | Per-grade CSS templates with WCAG 2.2 AA criteria as a test target; no conformance claim without an audit |
 | **Print-first design** | Screen time is subtracted rather than stacked; the model runs once, the student works offline |
 
@@ -441,8 +442,8 @@ education-focused AI tools. WorkWizard is its flagship product.
 
 **Jürgen Van Der Haegen** is the solo founder of Made in Jurgistan. He built
 WorkWizard from concept to MVP — including a 130-source research foundation, a
-13-framework pedagogical taxonomy, a ~3,400-test backend across 109 modules, and a
-full React/TypeScript frontend with 41 Vitest files (~710 tests) plus 4 Playwright
+13-framework pedagogical taxonomy, a ~5,800-test backend across 145 modules, and a
+full React/TypeScript frontend with 41 Vitest files (~740 tests) plus 6 Playwright
 E2E specs.
 
 WorkWizard began the same way every project Jürgen has built began: as a real,
@@ -475,7 +476,7 @@ print-first EdTech design, and the German K-12 system. Contact
 ### What sets the company apart
 
 - **Research-first, not hype-first** — 130+ cited sources compiled before a single line of product copy
-- **Test-driven** — ~3,400 backend tests, 41 Vitest files (~710 tests), and 4 Playwright E2E specs, built solo
+- **Test-driven** — ~5,800 backend tests, 41 Vitest files (~740 tests), and 6 Playwright E2E specs, built solo
 - **Print-first thesis** — screen time subtracted, not stacked; aligned with device-restriction and print-textbook policies in Sweden, the Netherlands, and France
 - **Answer protection as a hard constraint** — not a feature, a non-negotiable design boundary
 - **Bilingual by design** — full DE/EN output, never mixed in a single exercise
@@ -510,8 +511,8 @@ No. Answer protection is a hard constraint, not a feature. A bilingual regex
 guard rejects any output that leaks a solution. Answer keys are stripped from
 the source before processing, the computed answer is never shown to the model,
 and answer-revelation detection is a hard check in the quality gate. An
-exercise that still leaks after one repair attempt is replaced by the original
-exercise.
+exercise that never passes its checks, after at most one repair attempt on the
+per-exercise pipeline, is replaced by the original exercise.
 
 ### Is it another screen-time product?
 
@@ -540,13 +541,14 @@ with reading it silently. The model runs once; the learning happens on paper.
 
 ### What AI does it use?
 
-Kimi K2.6 (256K context, instant mode per exercise) for transformation and
-quality judging, Mistral OCR for document extraction, and OpenAI GPT Image 1.5
-Mini for optional worksheet illustrations. For answer-critical numeric exercise
-types, the solution strategy is compiled in a separate step before the exercise
-is written; other exercise types use a single call with the same
-answer-protection checks. The computed answer is never included in any model
-input.
+Kimi K2.6 (256K context, instant mode) for transformation and quality judging,
+Mistral OCR for document extraction, and OpenAI GPT Image 1.5 Mini for optional
+worksheet illustrations. On the per-exercise pipeline, the solution strategy of
+answer-critical numeric exercise types is compiled in a separate step before the
+exercise is written; other exercise types use a single call with the same
+answer-protection checks. The agent engine runs tool-assisted sessions over
+groups of tasks and accepts each task on code checks. On both engines the
+computed answer is never included in any model input.
 
 ### Is it GDPR-compliant?
 
@@ -591,12 +593,12 @@ more useful than pretending the product is finished.
 - **Upload and OCR** — PDF, DOCX, image, and text input; Mistral OCR extraction
 - **Grade and subject detection** — 7 grade bands, 8 domains, 38 subdomains
 - **Interest catalogue** — 54 interests across 6 categories, age-gated, bilingual
-- **AI transformation** — Kimi K2.6 (256K context), with bounded parallel processing of exercises within a worksheet
-- **Quality scoring** — Deterministic per-exercise gate, one LLM-judge call, and at most one repair per exercise
+- **AI transformation** — Kimi K2.6 (256K context), with bounded parallel processing of exercises within a worksheet and an agent engine selectable by configuration
+- **Quality scoring** — Per-exercise acceptance in code; the per-exercise pipeline adds one LLM-judge call and at most one repair per exercise
 - **Answer protection** — bilingual regex guard; any leak means rejection
 - **PDF generation** — WeasyPrint with per-grade-band layout, accessibility metadata, and applicable contrast/PDF-UA validation checks; formal conformance requires an independent audit
 - **Bilingual support** — full EN/DE across interface, pipeline, and output
-- **Testing** — ~3,400 backend tests across 109 modules, 41 Vitest files (~710 tests), and 4 Playwright E2E specs
+- **Testing** — ~5,800 backend tests across 145 modules, 41 Vitest files (~740 tests), and 6 Playwright E2E specs
 
 ### What is still missing
 
@@ -730,13 +732,17 @@ For the latest press mentions, contact **madeinjurgistan@gmail.com**.
 Visitors can share feedback through the in-app interest and market survey at
 [workwizard-demo.vercel.app/survey](https://workwizard-demo.vercel.app/survey).
 The anonymous survey collects input from parents, teachers, students, and school
-administrators on pain points, current homework-completion behaviour, reaction to a
-before/after concept demo, willingness to participate in a pilot, willingness to pay
-(with a confidence check), and whether they would recommend the approach to peers (an
-NPS-style proxy, on the Full path). It is bilingual (German/English), stores no IP
-addresses, does not link answers to names, stores contact details only when a
-respondent chooses to leave them, and includes light anti-gaming safeguards such as a
-student attention check.
+administrators on pain points, current homework-completion behaviour, priorities among
+product claims and real alternatives (asked before the product is described), reaction
+to a concept demo, willingness to participate in a pilot, willingness to pay (with a
+confidence check), and whether they would recommend the approach to peers (an
+NPS-style proxy, on the Full path). The intro states the research topic only. The demo
+matches the respondent's grade band and shows a realistic original worksheet next to
+two personalised versions with identical answers. The survey is bilingual
+(German/English), stores no IP addresses, does not link answers to names, stores
+contact details only when a respondent chooses to leave them, erases one respondent's
+data on request, and includes data-quality safeguards such as a student attention
+check, per-path speeder cutoffs, and duplicate detection.
 
 ---
 

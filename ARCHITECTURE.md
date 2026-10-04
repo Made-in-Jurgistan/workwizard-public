@@ -58,7 +58,7 @@ or photo     interests         per exercise    scored       PDF
 |------|--------------|
 | **Upload** | OCR extracts structured text from PDF, DOCX, or image |
 | **Personalise** | Student picks up to 5 of 54 curated bilingual interests |
-| **Transform** | K2.6 rewrites each exercise inside the interest context; bare equations become embedded mini word-problems with strategy hints |
+| **Transform** | K2.6 rewrites each exercise inside the interest context; bare equations become embedded mini word-problems with strategy hints; every rewrite is checked in code before it is accepted |
 | **Review** | Original and transformed shown side by side with quality scores |
 | **Download** | Per-grade styled PDF for offline student work |
 
@@ -82,8 +82,9 @@ or photo     interests         per exercise    scored       PDF
 - **Grade-aware** — 7 grade bands with calibrated scaffolding and a grade-scaled word budget
 - **Subject-aware** — hint discipline and evaluation criteria adapt to subject domain
 - **Pedagogically grounded** — all 13 frameworks active (16 routed labels)
-- **Quality-scored** — a deterministic per-exercise gate (source preservation, answer leaks), one LLM-as-judge call (K2.6 instant mode), at most one repair, and fallback to the source exercise
-- **Risk-adjusted generation** — for answer-critical numeric exercise types, the solution strategy is compiled in a separate step before the narrative is written; other exercise types use a single call with the same answer-protection checks. The computed answer is never included in any model input
+- **Two transformation engines** — selected by deployment configuration. The per-exercise pipeline rewrites one exercise per unit of work; the agent engine splits the worksheet without editing source text, then runs tool-assisted model sessions over groups of tasks. Both engines end in the same answer guard
+- **Quality-scored** — per-exercise acceptance in code (source preservation, answer leaks, length). The per-exercise pipeline adds one LLM-as-judge call (K2.6 instant mode) and at most one repair; the agent engine accepts each task on its own checks. Output that never passes is replaced by the source exercise
+- **Risk-adjusted generation** — on the per-exercise pipeline, the solution strategy of answer-critical numeric exercise types is compiled in a separate step before the narrative is written; other exercise types use a single call with the same answer-protection checks. On both engines the computed answer is never included in any model input
 - **Bounded parallelism** — large worksheets transform in admission-controlled waves so provider limits are respected; production UI streams progress over SSE
 
 ## What Is Not Disclosed

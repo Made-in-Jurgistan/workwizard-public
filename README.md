@@ -104,7 +104,7 @@ or photo     interests         per exercise    scored       PDF
 | --- | --- |
 | **Upload** | Mistral OCR extracts structured text from PDF, DOCX, or image. MinerU is available as a self-hosted GDPR fallback. |
 | **Personalise** | Student picks up to 5 of 54 curated interests across 6 categories, all bilingual. |
-| **Transform** | Kimi K2.6 rewrites each exercise inside the student's interest context — bare equations become embedded mini word-problems; for answer-critical numeric exercises, strategy is compiled separately from the narrative. |
+| **Transform** | Kimi K2.6 rewrites each exercise inside the student's interest context — bare equations become embedded mini word-problems. Every rewrite passes automated checks for source preservation, answer leakage, and length; an exercise with no passing version keeps its source text. |
 | **Review** | Original and transformed shown side by side with quality scores and answer-revelation checks. |
 | **Download** | WeasyPrint renders a per-grade styled PDF; accessibility criteria are tested and conformance is not claimed without an audit. |
 
@@ -112,13 +112,14 @@ or photo     interests         per exercise    scored       PDF
 
 | Capability | Detail |
 | --- | --- |
-| **Interest personalisation** | 54 interests across 6 categories (games, sports, TV and film, fantasy, superheroes, creative), bilingual EN/DE |
+| **Interest personalisation** | 54 interests across 6 categories (games, sports, TV and film, fantasy, superheroes, creative), bilingual EN/DE, each with its own roles, missions, settings, and details |
 | **Grade-aware pedagogy** | 7 grade bands (1-2 through 13) with calibrated scaffolding, Bloom's levels, and motivation emphasis |
 | **Answer protection** | Bilingual regex guard rejects any output that leaks a solution; enforced as a hard constraint |
-| **Quality scoring** | Deterministic per-exercise gate (source preservation, answer leaks), one structured LLM-judge call, at most one targeted repair, and fallback to the source exercise for invalid output. An offline evaluation harness scores recorded worksheet runs. |
+| **Quality scoring** | Per-exercise acceptance in code (source preservation, answer leaks, length), plus one structured LLM-judge call and at most one targeted repair on the per-exercise pipeline. Output that never passes is replaced by the source exercise. An offline evaluation harness scores recorded worksheet runs, including consistency across repeated runs. |
 | **RAG enrichment** | Curated knowledge base lookup with quality scoring and age-appropriateness (forbidden-topic) checks |
 | **Narrative diversity** | Anti-repetition engine ensuring varied narrative contexts; bare equations embedded in short mini-scenes within a grade-calibrated sentence limit (numbers in the story, then the original equation) |
-| **Model routing** | K2.6 instant mode per exercise; a two-step compile-then-write path for answer-critical numeric exercise types, one call for everything else |
+| **Model routing** | Per-exercise pipeline: K2.6 instant mode, a two-step compile-then-write path for answer-critical numeric exercise types, one call for everything else |
+| **Engine selection** | Two transformation engines, chosen by deployment configuration: the per-exercise pipeline, or tool-assisted agent sessions over groups of tasks. The agent engine splits the worksheet without editing source text and checks every task in code. Both engines end in the same answer guard. |
 | **Accessible output** | WeasyPrint and Jinja2 templates, with applicable [WCAG 2.2](https://www.w3.org/TR/WCAG22/) AA criteria as a test target and per-grade CSS; no conformance claim without an audit |
 | **Print-first design** | Screen time is subtracted rather than stacked; transformation is bounded, and the student works offline |
 
@@ -149,8 +150,8 @@ or photo     interests         per exercise    scored       PDF
 | Grade detection | Readability, vocabulary, math-complexity signals |
 | RAG enrichment | Interest entities, characters, and settings from a curated knowledge base |
 | Prompt building | Grade-, subject-, and pedagogy-aware prompt construction with narrative-diversity gating |
-| Transformation | Kimi K2.6 (256K context), admission-controlled parallel per-exercise dispatch; SSE progress streaming |
-| Quality gate | Answer-revelation detection, source-correspondence checks, LLM judge, at most one repair per exercise |
+| Transformation | Kimi K2.6 (256K context): admission-controlled parallel per-exercise dispatch, or tool-assisted agent sessions over groups of tasks; SSE progress streaming |
+| Quality gate | Answer-revelation detection and source-correspondence checks on every output; LLM judge and at most one repair on the per-exercise pipeline; code-checked acceptance per task on the agent engine |
 | PDF generation | WeasyPrint and Jinja2 with per-grade CSS; optional illustrations via OpenAI GPT Image |
 
 </details>
@@ -161,7 +162,7 @@ or photo     interests         per exercise    scored       PDF
 <summary><strong>Expand: 13 active frameworks within a 13-framework taxonomy</strong></summary>
 <br />
 
-The running backend uses all 13 frameworks in the pedagogical taxonomy through 16 routed guidance labels. Three labels are Self-Determination Theory sub-labels and one (instructional scaffolding) is a Zone of Proximal Development sub-concept; the remaining labels map directly to the other framework concepts. Additional conditional pedagogical blocks operationalize mechanisms such as self-explanation, desirable difficulties, interleaving, worked examples, UDL, spaced review, attribution framing, and value connection. These frameworks guide design; they are not evidence that WorkWizard itself improves outcomes.
+The running backend uses all 13 frameworks in the pedagogical taxonomy through 16 routed guidance labels. Three labels are Self-Determination Theory sub-labels and one (instructional scaffolding) is a Zone of Proximal Development sub-concept; the remaining labels map directly to the other framework concepts. The agent engine reports a fixed set of labels per task instead of routing by content type. On the per-exercise pipeline, conditional pedagogical blocks operationalize difficulty framing, interleaved versus blocked practice, worked examples, attribution framing, and value connection. These frameworks guide design; they are not evidence that WorkWizard itself improves outcomes.
 
 | Framework | Citation | Role |
 | --- | --- | --- |
@@ -179,7 +180,7 @@ The running backend uses all 13 frameworks in the pedagogical taxonomy through 1
 | Metacognition | Flavell, Schraw & Dennison | Predict-plan-check cues |
 | Cognitive Activation | Burge, Lenkeit & Sizmur (2015) | Reasoning beyond recall |
 
-Eight pedagogical mechanisms are applied during generation, including self-explanation prompting, difficulty framing, UDL choice, value connection, attribution framing, worksheet structure, worked examples, and spaced review for returning students. Bare equations are embedded in mini word-problems before the original equation is presented unchanged.
+Five mechanisms apply on the per-exercise pipeline where grade band and content type call for them: difficulty framing, value connection, attribution framing, worksheet structure (blocked or interleaved), and worked examples. Self-explanation prompting, response choice (UDL), and spaced review for returning students exist as optional blocks and are disabled. Bare equations are embedded in mini word-problems before the original equation is presented unchanged.
 
 Evidence notes and source links are maintained in the [K-12 frameworks report](docs/research/k12-pedagogical-frameworks.md). These frameworks guide design; they are not evidence that WorkWizard itself improves outcomes.
 
@@ -191,9 +192,9 @@ Evidence notes and source links are maintained in the [K-12 frameworks report](d
 | --- | --- |
 | Frontend | React 19, TypeScript 5.9, Vite 7.3, i18n DE/EN |
 | Backend | Python 3.12, FastAPI 0.115+, Pydantic v2, structlog |
-| AI | Kimi K2.6 (Moonshot, 256K context, instant mode per exercise), Mistral OCR, OpenAI GPT Image 1.5 Mini (PDF illustrations) |
+| AI | Kimi K2.6 (Moonshot, 256K context, instant mode), Mistral OCR, OpenAI GPT Image 1.5 Mini (PDF illustrations) |
 | Data | Supabase Postgres (pgvector provisioned; retrieval is deterministic key lookup) |
-| Testing | pytest (~3,400 tests, 109 modules), Vitest (~710 tests / 41 files) and Playwright (4 specs) |
+| Testing | pytest (~5,800 tests, 145 modules), Vitest (~740 tests / 41 files) and Playwright (6 specs) |
 | Infrastructure | Docker Compose, nginx, GitHub Actions, Vercel, Railway |
 
 ## 🔌 API
@@ -212,8 +213,10 @@ Routes are mounted under `/api/v1/...`. Probes: `GET /healthz` (liveness), `GET 
 | `POST` | `/api/v1/pdf/generate` | Generate PDF (returns cache key / URL) |
 | `GET` | `/api/v1/pdf/download/{cache_key}` | Download a generated PDF |
 | `POST` | `/api/v1/survey/submit` | Submit an anonymous survey response |
+| `POST` | `/api/v1/survey/event` | Record an anonymous survey funnel event |
+| `POST` | `/api/v1/survey/contact` | Submit a survey contact message |
 
-Admin-token gated routes cover survey administration, quality review, and cache invalidation. Optional shared API key may protect cost-bearing routes in some deployments. Full interactive reference at `/docs` when enabled.
+Admin-token gated routes cover survey administration (including erasure of one respondent's data), quality review, and cache invalidation. Optional shared API key may protect cost-bearing routes in some deployments. Full interactive reference at `/docs` when enabled.
 
 ## 🔒 Security
 
@@ -224,6 +227,7 @@ Admin-token gated routes cover survey administration, quality review, and cache 
 - Pydantic v2 validation at every request boundary
 - SAST (bandit) on every CI run
 - Request ceilings to prevent worker exhaustion (~280 s non-streaming; longer SSE budget for large worksheets)
+- Survey: no IP address or user-agent stored, contact details only with recorded consent, erasure of one respondent's data on request, 18-month retention
 - No end-user authentication in v0.1.0 — pilot will run under teacher-supervised access once the MVP is test-ready
 
 See [SECURITY.md](SECURITY.md) for the full security policy.
