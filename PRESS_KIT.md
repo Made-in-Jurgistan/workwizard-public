@@ -17,7 +17,7 @@
 <h1>Press Kit</h1>
 
 <p>
-  <strong>Interest-driven worksheet personalisation for K-12 classrooms</strong>
+  <strong>Worksheets rewritten around what each student cares about</strong>
 </p>
 
 <p>
@@ -31,456 +31,416 @@
 
 ---
 
-## Table of Contents
+## Contents
 
-| Section | |
-|---------|---|
-| [About WorkWizard](#about-workwizard) | What it is, who it's for, what problem it solves |
-| [Mission & Vision](#mission--vision) | Purpose and direction |
-| [Elevator Pitch](#elevator-pitch) | One-sentence summary for quick reference |
-| [Fact Sheet](#fact-sheet) | Key numbers, dates, and specs at a glance |
-| [Product Boilerplate](#product-boilerplate) | Short, medium, and long versions for press copy |
-| [How It Works](#how-it-works) | The five-step pipeline |
-| [Screenshots](#screenshots) | Product visuals for press use |
-| [Logo & Brand Assets](#logo--brand-assets) | Logos, wordmarks, colour palette, usage guidelines |
-| [Key Features](#key-features) | What makes WorkWizard different |
-| [Areas of Expertise](#areas-of-expertise) | Topics WorkWizard can speak to with authority |
-| [Pedagogical Foundation](#pedagogical-foundation) | The research behind the product |
-| [Tech Stack](#tech-stack) | Technologies powering WorkWizard |
-| [Timeline & Milestones](#timeline--milestones) | From concept to MVP |
-| [Founder & Company](#founder--company) | About Made in Jurgistan |
-| [Press FAQ](#press-faq) | Common questions from journalists |
-| [What Works Today, What Is Missing](#what-works-today-what-is-missing) | Honest status of the MVP |
-| [Market Context](#market-context) | Why this product, why now |
-| [Quote Bank](#quote-bank) | Approved quotes for attribution |
-| [Sample Press Release](#sample-press-release) | Ready-to-adapt template for announcements |
-| [Press Coverage](#press-coverage) | Earned media featuring WorkWizard |
-| [Spelling & Pronunciation](#spelling--pronunciation) | Name usage guide for accurate attribution |
-| [Survey](#survey) | Interest and market survey link |
-| [Contact](#contact) | Press inquiries and response time |
+- [About WorkWizard](#about-workwizard)
+- [Mission](#mission)
+- [In one sentence](#in-one-sentence)
+- [Fact sheet](#fact-sheet)
+- [Boilerplate text](#boilerplate-text)
+- [How it works](#how-it-works)
+- [Screenshots](#screenshots)
+- [Logo and brand assets](#logo-and-brand-assets)
+- [Features](#features)
+- [The research behind it](#the-research-behind-it)
+- [Technology](#technology)
+- [Timeline](#timeline)
+- [Founder and company](#founder-and-company)
+- [Press FAQ](#press-faq)
+- [What works today and what is missing](#what-works-today-and-what-is-missing)
+- [Why now](#why-now)
+- [Quotes](#quotes)
+- [Press release template](#press-release-template)
+- [Press coverage](#press-coverage)
+- [Spelling](#spelling)
+- [Survey](#survey)
+- [Contact](#contact)
 
 ---
 
 ## About WorkWizard
 
-WorkWizard turns a generic school worksheet into *your* worksheet.
+WorkWizard takes the worksheet a teacher already uses and rewrites it around something
+the student likes.
 
-A teacher hands out the same maths page as always: *"A rectangle has a length
-of 8 cm and a width of 5 cm. What is the area?"* The student does not care.
-Now imagine the same problem wrapped around something they love: *"A Minecraft
-chest room is 8 blocks long and 5 blocks wide. How many blocks do you need to
-build the floor?"* The maths is identical. The answer is identical. But the
-problem suddenly feels like it is about *you*.
+Take a typical maths question: *"A rectangle is 8 cm long and 5 cm wide. What is its
+area?"* Plenty of children will do it, but few will care. Here is the same question for
+a child who plays Minecraft: *"Your chest room is 8 blocks long and 5 blocks wide. How
+many blocks do you need for the floor?"* The maths and the answer haven't changed. The
+setting has, and the setting is the part a child notices first.
 
-That is the entire product, in one idea.
+The teacher uploads a worksheet as a PDF, a Word file, a photo or plain text. The
+student picks up to five interests from a list of 54, which includes Minecraft,
+football, Pokémon, Harry Potter, Spider-Man and baking. WorkWizard rewrites each
+exercise around those interests and produces a PDF ready to print. The student then
+works on paper with a pen. The learning goal stays the one the teacher set, and the
+answers are never printed or hinted at.
 
-A teacher uploads an existing worksheet — PDF, DOCX, a photo, or plain text.
-The student picks up to five interests from a bilingual catalogue of 54:
-Minecraft, football, Pokémon, Harry Potter, Spider-Man, cooking and baking, and
-dozens more.
-WorkWizard rewrites each exercise inside that interest context, generates a
-print-ready PDF, and the student solves it with a pen on paper. The teacher's
-learning goal never changes. The answers are never shown. Only the *setting*
-of the problem becomes personal.
+WorkWizard is built for German schools (grades 1 to 13) and works in German and
+English. It adjusts language and support to seven age groups, from grades 1–2 up to
+grade 13. It is an early version (0.1.0) that we are still improving, and it has not
+yet been tried in a school.
 
-The product is built for the German K-12 system (grades 1–13) with full
-German/English bilingual output, grade-aware adaptation across seven grade
-bands, and a 13-framework pedagogical taxonomy driving every transformation.
-The MVP is under active development, with output quality being continuously
-optimised.
+### The problem
 
-### The Problem
+Children learn a lot of what sticks while they practise, and practice is often where
+they switch off. A teacher with 25 pupils can't write a Minecraft version of a geometry
+sheet for one child and a Marvel version for another, so everyone gets the same page.
 
-Practice is where learning consolidates — and it is exactly where students
-disengage. A teacher cannot hand-write a Minecraft version of a geometry sheet
-for one student and a Marvel version for another, so every student receives the
-same generic exercises. The problem is measurable, structural, and
-accelerating:
+There are signs that motivation in German classrooms is a real and growing concern:
 
-- **PISA 2022** recorded Germany's lowest-ever scores in maths, reading, and
-  science. 28% of boys and 31% of girls did not reach the minimum maths
-  proficiency level (Level 2). **PISA 2025** (published September 2026) is
-  lower again: the lowest results ever measured by PISA in Germany in all three
-  subjects.
-- In the 2026 German School Barometer (1,547 teachers and school leaders),
-  **46%** named dealing with student behaviour, including lack of motivation,
-  as their biggest professional burden — up from 35% in 2024.
-- The OECD's *Education Policy Outlook 2025* reviewed 230 policies across 35
-  education systems and treats **learner agency** as a central lever for
-  keeping people engaged in learning.
+- In **PISA 2025**, published in September 2026, German 15-year-olds recorded their
+  lowest results so far in maths, reading and science. Maths and reading fell further
+  from 2022, and science stayed about the same. A third of German students (33%) said
+  school had been a waste of time, against an OECD average of 24%.
+- In the **German School Barometer 2026**, a survey of 1,547 teachers and school
+  leaders, 46% named pupils' behaviour as their biggest challenge at work. In 2024 the
+  figure was 35%.
+- The OECD's *Education Policy Outlook 2025* looked at more than 230 policies across 35
+  education systems. It describes ages 10 to 16 as a time when many students are at
+  risk of disengaging, and finds that learning which feels relevant and purposeful can
+  keep them motivated.
 
-This is not a character failure. It is a system failure — and the lever exists.
-It has simply not been pulled at scale.
+None of this proves that personalised worksheets are the answer. It does show why we
+think the question is worth testing.
 
-### The Approach
+### Our approach
 
-WorkWizard removes the personalisation constraint. AI does the preparation work
-the teacher doesn't have time for; the child's main task stays on paper. The
-screen does the rewriting, the student does the learning. Whether the approach
-improves engagement or attainment is a question for pilot evaluation to answer —
-the product is designed to be measured, not assumed.
+WorkWizard does the rewriting a teacher has no time for. The computer is used once, to
+prepare the worksheet, and the child then works on paper. We don't yet know whether
+this makes students more engaged or helps them learn more. A school pilot will measure
+that, and we will report what it finds.
 
-### What Makes It Different
+### How it differs from other tools
 
-| Typical worksheet tool | What it actually does | WorkWizard does this instead |
+| Kind of tool | What it usually does | What WorkWizard does |
 |---|---|---|
-| Screen-first worksheet app | Adds another evening screen session | Uses the screen once, then prints |
-| Gamified learning | Badges and points that fade within weeks | Lets the topic itself be the reward |
-| Generic chatbot | Writes the worksheet *for* the child | Rewrites the problem, keeps the answer hidden |
-| Parallel curriculum platform | Another system teachers must learn | Uses the teacher's own worksheet, unchanged |
+| Worksheet apps | Add more time on a screen | Uses the screen once, then the child works on paper |
+| Gamified learning | Rewards with points and badges, which can lose their pull once the novelty fades | Makes the topic itself the thing the child enjoys |
+| General AI chatbots | Can do the work for the child | Rewrites the question and keeps the answer hidden |
+| New learning platforms | Bring their own content that teachers have to learn | Works with the teacher's own worksheet |
 
-We are not aware of another product that combines all four: curriculum-native uploads,
-interest-based intrinsic design with zero extrinsic game mechanics, subtractive
-screen time (generate → print → go offline), and hard-guarded answer protection.
-
----
-
-## Mission & Vision
-
-### Mission
-
-To re-engage a generation of students by making practice worksheets feel
-personally relevant — while keeping the teacher in control, the answers locked,
-and the output on paper.
-
-### Vision
-
-A classroom where every student picks up the worksheet willingly — not because
-the content is easier, but because it speaks their language. A class of 25
-students getting 25 personalised worksheets from one upload. AI does the
-preparation; the child does the learning. Screen time subtracted, not stacked.
+We don't know of another product that combines all four: it starts from the teacher's
+own material, uses the student's interests instead of points and badges, keeps the
+learning on paper, and protects the answers.
 
 ---
 
-## Elevator Pitch
+## Mission
 
-> WorkWizard is an AI-powered tool that rewrites K-12 worksheets around each
-> student's interests — answers locked, objectives intact, output on paper.
+We want practice to feel personal to every student, while the teacher stays in charge,
+the answers stay hidden, and the work happens on paper.
+
+Picture a class of 25 where one upload gives each child a worksheet built around their
+own interests. The content is just as demanding. It's simply about something they care
+about.
 
 ---
 
-## Fact Sheet
+## In one sentence
+
+> WorkWizard rewrites school worksheets around each student's interests, keeps the
+> teacher's learning goals and hides the answers, and produces a page to print.
+
+---
+
+## Fact sheet
 
 | | |
 |---|---|
-| **Product name** | WorkWizard |
-| **Tagline** | Interest-driven worksheet personalisation for K-12 classrooms |
-| **Developer** | Made in Jurgistan |
+| **Product** | WorkWizard |
+| **Tagline** | Worksheets rewritten around what each student cares about |
+| **Made by** | Made in Jurgistan |
 | **Founded** | 2025 |
-| **Status** | MVP v0.1.0, pre-pilot — under active development with continuous output quality optimisation |
-| **Target market** | German K-12 schools (grades 1–13) |
-| **Languages** | German, English (full bilingual output) |
-| **Platform** | Web app (no installation required) |
-| **Pricing** | TBA (pilot phase) |
+| **Status** | Version 0.1.0, early product, not yet piloted in schools |
+| **For** | Schools in Germany, grades 1 to 13 |
+| **Languages** | German and English |
+| **Runs on** | Web browser, nothing to install |
+| **Price** | Not set yet |
 | **Survey** | [workwizard-demo.vercel.app/survey](https://workwizard-demo.vercel.app/survey) |
-| **Public repo** | [github.com/Made-in-Jurgistan/workwizard-public](https://github.com/Made-in-Jurgistan/workwizard-public) |
-| **License** | Proprietary |
+| **Public repository** | [github.com/Made-in-Jurgistan/workwizard-public](https://github.com/Made-in-Jurgistan/workwizard-public) |
+| **Licence** | Proprietary |
 | **Contact** | madeinjurgistan@gmail.com |
 
-### Key Numbers
+### Numbers
 
-| Metric | Value |
+| | |
 |---|---|
-| Curated interests | 54 across 6 categories |
-| Grade bands | 7 (grades 1–2 through 13) |
-| Pedagogical frameworks | 13-framework taxonomy, all 13 active in backend (16 routed labels) |
-| Interests per worksheet | Up to 5 per student |
-| Supported upload formats | PDF, DOCX, TXT, and images (PNG, JPG, WEBP, GIF, BMP, TIFF) |
-| Max upload size | 10 MB |
-| AI model | Kimi K2.6 (256K context, instant mode) |
-| OCR engine | Mistral OCR |
-| Backend tests | ~5,800 across 145 modules |
-| Frontend tests | 41 Vitest files (~740 tests) plus 6 Playwright E2E specs |
-| Research sources | 130+ citations in research foundation |
+| Interests to choose from | 54, in 6 groups of 9 |
+| Interests per student | Up to 5 |
+| Age groups | 7 (grades 1–2, 3–4, 5–6, 7–8, 9–10, 11–12 and 13) |
+| File types accepted | PDF, Word (DOCX), plain text and images (PNG, JPG, WEBP, GIF, BMP, TIFF) |
+| Largest file | 10 MB |
+| Teaching research it draws on | 13 frameworks from learning science and motivation research |
+| Sources in the research foundation | 129 |
+| Automated tests | About 5,800 for the server and about 740 for the app |
 
 ---
 
-## Product Boilerplate
+## Boilerplate text
 
-### Short version (≤ 50 words)
+### Short (under 50 words)
 
-WorkWizard turns a teacher's existing worksheet into a personalised one. Upload
-a PDF or photo, pick interests — Minecraft, football, anime — and the AI
-rewrites each exercise in that context. Answers locked, objectives intact,
-output on paper.
+WorkWizard turns a teacher's worksheet into a personal one. The teacher uploads a PDF
+or a photo, the student picks interests such as Minecraft or football, and each
+exercise is rewritten around them. The learning goal stays the same, the answers stay
+hidden, and the result is printed.
 
-### Medium version (≤ 100 words)
+### Medium (under 100 words)
 
-WorkWizard is an AI-powered tool that personalises K-12 worksheets around each
-student's interests. A teacher uploads an existing worksheet; the system
-rewrites every exercise inside a context the student chooses — from Minecraft
-to football to Marvel. Learning objectives stay intact, answers are never
-revealed, and the output is a print-ready PDF for offline student work. Built
-for the German K-12 system with full bilingual output, grade-aware pedagogy
-across seven grade bands, and a 13-framework research foundation. The model
-runs once; the student works on paper.
+WorkWizard rewrites school worksheets around each student's interests. A teacher
+uploads a worksheet they already use, and the student picks up to five interests,
+from Minecraft to football to Marvel. Each exercise is rewritten around those
+interests. The learning goal stays the same, the answers are never revealed, and the
+result is a PDF that the student completes on paper. WorkWizard is built for German
+schools, works in German and English, and adjusts to seven age groups from grade 1 to
+grade 13.
 
-### Long version (≤ 200 words)
+### Long (under 200 words)
 
-WorkWizard is an AI-powered educational tool built by Made in Jurgistan that
-personalises K-12 worksheets around each student's interests. The product
-addresses a specific problem: practice is where learning consolidates, and it
-is exactly where students disengage. PISA 2022 recorded Germany's lowest-ever
-scores in maths, reading, and science, and PISA 2025 fell further. A teacher cannot
-hand-write a Minecraft version of a geometry sheet for one student and a Marvel
-version for another, so every student receives the same generic exercises.
+WorkWizard is a tool from Made in Jurgistan that rewrites school worksheets around each
+student's interests. It is aimed at a familiar problem: practice is where much of
+learning happens, and it is also where many students lose interest. In PISA 2025,
+German 15-year-olds scored lower than ever before in maths, reading and science. No
+teacher has time to write a Minecraft version of a
+geometry sheet for one child and a Marvel version for another.
 
-WorkWizard removes that constraint. A teacher uploads an existing worksheet;
-the system extracts the text, detects the grade level, and rewrites each
-exercise inside a context the student chooses from 54 curated interests.
-Learning objectives stay intact, answer leakage is checked at every stage, and
-the output is a print-ready PDF styled for the student's grade band.
+WorkWizard does that rewriting. A teacher uploads a worksheet they already use. The
+software reads the text, works out the grade level, and rewrites each exercise around
+interests the student chooses from a list of 54. The learning goal stays the same, the
+answers are checked so they never appear, and the result is a PDF laid out for the
+student's age.
 
-Built for the German K-12 system with full bilingual output, grade-aware
-adaptation across seven grade bands, and a 13-framework pedagogical taxonomy.
-Grounded in 130+ research sources. The model runs once; the student works
-offline on paper. Whether the approach improves engagement is a question for
-pilot evaluation — the product is designed to be measured, not assumed.
+The product works in German and English, covers grades 1 to 13, and draws on
+129 research sources. Students use a screen only while the worksheet is being made and
+then work on paper. Whether this improves engagement will be measured in a school
+pilot.
 
 ---
 
-## How It Works
+## How it works
 
 ```text
-Upload  ──▶  Personalise  ──▶  Transform  ──▶  Review  ──▶  Download
-PDF, DOCX,   up to 5           AI rewriting    quality      accessible
-photo, or    interests         per exercise    scored       PDF
-text file
+Upload  ──▶  Choose interests  ──▶  Rewrite  ──▶  Check  ──▶  Print
 ```
 
 | Step | What happens |
 |------|--------------|
-| **Upload** | Teacher uploads a worksheet — PDF, DOCX, photo, or plain text. OCR extracts structured text. |
-| **Personalise** | Student picks up to 5 of 54 curated bilingual interests |
-| **Transform** | LLM rewrites each exercise in the chosen interest context, calibrated by grade band |
-| **Review** | Original and transformed shown side by side with quality scores |
-| **Download** | Per-grade styled PDF for offline student work |
+| **Upload** | The teacher uploads a worksheet: PDF, Word file, photo or plain text. WorkWizard reads the text from it. |
+| **Choose interests** | The student picks up to five of 54 interests. |
+| **Rewrite** | AI rewrites each exercise around those interests, matching the language to the student's age group. |
+| **Check** | Every rewritten exercise is checked automatically. If an exercise fails, the original is used instead. The teacher sees the original and the new version side by side. |
+| **Print** | WorkWizard produces a PDF laid out for the student's age group. |
 
 ---
 
 ## Screenshots
 
-The following screenshots are available for press use. High-resolution versions
-are in the [`assets/`](assets/) directory of this repository.
+These screenshots may be used in press coverage. Full-size files are in the
+[`assets/`](assets/) folder.
 
 <div align="center">
 
 | | | |
 |:---:|:---:|:---:|
-| **Upload** | **Select interests** | **Personalised output** |
+| **Upload** | **Choose interests** | **Personalised exercise** |
 | <img src="assets/screen1.png" alt="Upload a worksheet as text, file, or photo" width="280" /> | <img src="assets/screen2.png" alt="Choose up to five interests from a bilingual catalog" width="280" /> | <img src="assets/screen3.png" alt="Transformed exercise with narrative, problem, and strategy" width="280" /> |
-| PDF, DOCX, or photo | 54 options, no account needed | Answers locked, goals intact |
+| PDF, Word file or photo | 54 interests, no account needed | Same goal, answers hidden |
 
 </div>
 
-### Screenshot descriptions (for alt text and captions)
+### Captions
 
-- **`assets/screen1.png`** — The upload screen showing three input methods: text paste, file upload, or photo. Clean, minimal interface with bilingual labels.
-- **`assets/screen2.png`** — The interest selection screen displaying the bilingual catalog of 54 interests across 6 categories (games, sports, TV and film, fantasy, superheroes, creative). Students can pick up to 5.
-- **`assets/screen3.png`** — The transformed output showing a personalised exercise with narrative context, the problem statement, and a strategy hint. Original and transformed versions are displayed side by side.
+- **`assets/screen1.png`**: The upload screen. A teacher can paste text, upload a file
+  or take a photo. Labels are available in German and English.
+- **`assets/screen2.png`**: Choosing interests. 54 interests in six groups (games,
+  sports, TV and film, fantasy and adventure, superheroes, making things). Students
+  can pick up to five.
+- **`assets/screen3.png`**: A rewritten exercise with a short story setting, the task
+  itself and a hint on how to approach it, shown next to the original.
 
 ---
 
-## Logo & Brand Assets
+## Logo and brand assets
 
-### Available assets
+### Files
 
-All brand assets are in the [`assets/`](assets/) directory and may be used in
-press coverage of WorkWizard.
+Everything is in the [`assets/`](assets/) folder and may be used when reporting on
+WorkWizard.
 
-| Asset | File | Format | Use case |
-|-------|------|--------|----------|
-| Wizard logo | `assets/logo.png` | PNG | App icon, favicon, social media avatar |
-| Wordmark | `assets/WW.png` | PNG | Headers, title cards, presentation slides |
-| Wordmark (dark) | `assets/wordmark-dark.svg` | SVG | Light backgrounds, print |
-| Wordmark (light) | `assets/wordmark-light.svg` | SVG | Dark backgrounds, presentations |
-| Made in Jurgistan mark | `assets/made-in-jurgistan.svg` | SVG | Company attribution, footer |
-| Screenshot 1 | `assets/screen1.png` | PNG | Upload interface |
-| Screenshot 2 | `assets/screen2.png` | PNG | Interest selection |
-| Screenshot 3 | `assets/screen3.png` | PNG | Transformed output |
+| Asset | File | Format | Use |
+|-------|------|--------|-----|
+| Wizard logo | `assets/logo.png` | PNG | App icon, social media profile picture |
+| Wordmark | `assets/WW.png` | PNG | Headers, title slides |
+| Wordmark, dark | `assets/wordmark-dark.svg` | SVG | Light backgrounds and print |
+| Wordmark, light | `assets/wordmark-light.svg` | SVG | Dark backgrounds |
+| Made in Jurgistan mark | `assets/made-in-jurgistan.svg` | SVG | Company credit, footers |
+| Screenshot 1 | `assets/screen1.png` | PNG | Upload screen |
+| Screenshot 2 | `assets/screen2.png` | PNG | Choosing interests |
+| Screenshot 3 | `assets/screen3.png` | PNG | Rewritten exercise |
 
-### File formats & download guidance
+PNG files suit web and social media. SVG files scale to any size and suit print.
+Screenshots can be cropped, but please don't enlarge them beyond twice their size.
 
-- **Logos and wordmarks** — PNG for raster use (web, social), SVG for vector use (print, scalable)
-- **Screenshots** — PNG at native resolution; crop as needed but do not upscale beyond 2x
-- **Made in Jurgistan mark** — SVG only; scales cleanly at any size
-- All assets in [`assets/`](assets/) are royalty-free for editorial and press use
-- For commercial use beyond press coverage, contact **madeinjurgistan@gmail.com**
+You may use all files in [`assets/`](assets/) free of charge for editorial and press
+purposes. For any other commercial use, email **madeinjurgistan@gmail.com**.
 
-### Logo usage guidelines
+### Using the logo
 
-- **Do** maintain aspect ratio when resizing
-- **Do** use the dark wordmark on light backgrounds and the light wordmark on dark backgrounds
-- **Do** include the Made in Jurgistan mark when attributing the company
-- **Do** leave clear space around the logo equal to at least 25% of its height
-- **Don't** alter the logo colours, apply filters, or add drop shadows
-- **Don't** stretch, skew, or rotate the logos
-- **Don't** place logos on busy or low-contrast backgrounds
-- **Don't** use the logo in ways that imply endorsement without written permission
+Please:
+
+- keep the proportions when resizing;
+- use the dark wordmark on light backgrounds and the light one on dark backgrounds;
+- add the Made in Jurgistan mark when you name the company;
+- leave free space around the logo of at least a quarter of its height.
+
+Please don't recolour, filter, stretch, skew or rotate the logos, add shadows, place
+them on busy or low-contrast backgrounds, or use them in a way that suggests we endorse
+something without our written permission.
 
 ### Brand colours
 
-| Colour | Hex | Use |
-|--------|-----|-----|
-| Wizard purple | `#7C3AED` | Primary brand, AI/transform accents |
-| Forest green | `#2EA44F` | Success states |
-| Crimson | `#B91C1C` | Proprietary license, answer protection |
+| Colour | Hex | Used for |
+|--------|-----|----------|
+| Wizard purple | `#7C3AED` | Main brand colour |
+| Forest green | `#2EA44F` | Success messages |
+| Crimson | `#B91C1C` | Licence badge, answer protection |
 | Amber | `#D97706` | Warnings |
 
 ---
 
-## Key Features
+## Features
 
-| Capability | What it means |
-|------------|---------------|
-| **Interest personalisation** | 54 interests across 6 categories (games, sports, TV and film, fantasy, superheroes, creative), bilingual EN/DE |
-| **Grade-aware pedagogy** | 7 grade bands (1–2 through 13) with calibrated scaffolding, Bloom's levels, and motivation emphasis |
-| **Answer protection** | Bilingual regex guard rejects any output that leaks a solution — enforced as a hard constraint, not a suggestion |
-| **Quality scoring** | Per-exercise acceptance in code (source preservation, answer leaks, length), plus one LLM-judge call and at most one repair on the per-exercise pipeline; output that never passes falls back to the source exercise; an offline evaluation harness scores recorded runs |
-| **RAG enrichment** | Curated knowledge base lookup with quality scoring and age-appropriateness (forbidden-topic) checks |
-| **Narrative diversity** | Anti-repetition engine ensuring varied narrative contexts across exercises |
-| **Model routing** | Per-exercise pipeline: instant mode, a two-step compile-then-write path for answer-critical numeric exercise types, one call for everything else |
-| **Engine selection** | Two transformation engines, chosen by deployment configuration: the per-exercise pipeline, or tool-assisted agent sessions over groups of tasks with every task checked in code |
-| **Accessible output** | Per-grade CSS templates with WCAG 2.2 AA criteria as a test target; no conformance claim without an audit |
-| **Print-first design** | Screen time is subtracted rather than stacked; the model runs once, the student works offline |
+| Feature | What it means |
+|---------|---------------|
+| **Interests** | 54 interests in six groups, each with its own characters, settings and details in German and English |
+| **Age-appropriate** | Seven age groups from grades 1–2 to grade 13, each with its own sentence length, level of support and type of thinking asked for |
+| **Answers stay hidden** | WorkWizard never gives the AI the answer, and every rewritten exercise is checked so that no solution is given away. If a check fails, the original exercise is used. |
+| **Quality checks** | Each exercise is checked for whether the original task is still intact, whether an answer has leaked and whether it is too long. We also measure the system on a fixed set of real worksheets. |
+| **Content suitable for the age group** | Story details come from a curated collection, with topics that aren't suitable for younger children filtered out |
+| **Variety** | Stories change from exercise to exercise so a worksheet doesn't repeat itself |
+| **Readable PDFs** | Layouts are designed for each age group and tested against international accessibility guidelines (WCAG 2.2, level AA). An independent audit has not yet been done, so we don't claim full compliance. |
+| **Made for paper** | The computer is used to make the worksheet; the student works on paper |
 
 ---
 
-## Areas of Expertise
+## The research behind it
 
-Made in Jurgistan is available for expert commentary on the following topics:
-
-| Topic | What we can speak to |
-|-------|---------------------|
-| **Interest-based learning** | How personalisation affects intrinsic motivation, engagement, and persistence |
-| **AI in K-12 education** | Responsible use of LLMs in classroom tools, answer protection, quality gates |
-| **Print-first EdTech** | Why screen-time reduction matters, the Production Effect, handwriting research |
-| **German education system** | PISA 2022 results, K-12 grade bands, bilingual DE/EN pedagogy |
-| **Pedagogical frameworks** | Cognitive Load Theory, Self-Determination Theory, Flow, Bloom's, ZPD, and more |
-| **EdTech product design** | Building AI products with teacher supervision, not teacher replacement |
-| **Solo technical founding** | Building a research-driven EdTech product solo, from concept to live MVP |
-
-For interview requests, contact **madeinjurgistan@gmail.com**.
-
----
-
-## Pedagogical Foundation
-
-WorkWizard's design is informed by a 13-framework pedagogical taxonomy, with
-all 13 frameworks active in the backend (16 routed labels). The full taxonomy, with citations, is
-documented in the
+WorkWizard's design draws on 13 frameworks from learning science and motivation
+research. They shape things like how much text a young reader can handle at once, how
+much help a hint should give, and why a choice of topic can matter to a child. The
+version running today uses up to eight of them on each exercise. The research on
+these ideas, with sources and limits, is summarised in the
 [K-12 pedagogical frameworks report](docs/research/k12-pedagogical-frameworks.md).
 
-| Framework | Citation | Role |
-|-----------|----------|------|
-| Cognitive Load Theory | Sweller (1988, 2024) | Working-memory chunk limits per age |
-| Zone of Proximal Development | Vygotsky (1978) | Scaffolding calibration |
-| Bloom's Taxonomy | Anderson & Krathwohl (2001) | Cognitive level targeting |
-| Self-Determination Theory | Ryan & Deci (2000, 2017) | Intrinsic motivation via interest alignment |
-| Flow Theory | Csikszentmihalyi (1990) | Challenge-skill balance |
-| Growth Mindset | Dweck (2006) | Process praise over outcome praise |
-| Discovery Learning | Bruner | Guided inquiry, Socratic prompts |
-| Dual Coding Theory | Paivio (1971), Mayer (2009) | Visual hierarchy fading with age |
-| Narrative Transportation | Green & Brock (2000) | Interest-driven immersion |
-| Worked Examples Effect | Sweller (2011) | Full to faded to minimal |
-| Prior Knowledge Activation | Ausubel | Everyday-to-academic bridging |
-| Metacognition | Flavell, Schraw & Dennison | Predict-plan-check cues |
-| Cognitive Activation | Burge, Lenkeit & Sizmur (2015) | Reasoning beyond recall |
+| Framework | Main source | What it shapes in WorkWizard |
+|-----------|-------------|------------------------------|
+| Cognitive load theory | Sweller (1988) | How much information each step asks a student to hold in mind |
+| Zone of proximal development | Vygotsky (1978) | How much help a hint gives |
+| Bloom's taxonomy | Anderson & Krathwohl (2001) | What kind of thinking a task asks for |
+| Self-determination theory | Ryan & Deci (2000, 2017) | Choice and interest as sources of motivation |
+| Flow | Csikszentmihalyi (1990) | Keeping a task hard enough to engage without frustrating |
+| Growth mindset | Dweck (2006) | Praising effort and method, not just results |
+| Discovery learning | Bruner (1961) | Guiding students with questions |
+| Dual coding | Paivio (1971); Mayer (2009) | Pairing words with pictures, more for younger children |
+| Narrative transportation | Green & Brock (2000) | How a story can draw a reader in |
+| Worked examples | Sweller (2011) | Starting with fully worked steps and removing them over time |
+| Prior knowledge | Ausubel (1968) | Linking new ideas to things the student already knows |
+| Metacognition | Flavell (1979); Schraw & Dennison (1994) | Prompts to plan and check one's own work |
+| Cognitive activation | Burge, Lenkeit & Sizmur (2015) | Asking students to reason, not only to recall |
 
-> These frameworks guide design; they are not evidence that WorkWizard itself
-> improves outcomes. The pilot quantifies the realised effect.
+> These frameworks inform the design. They are not evidence that WorkWizard itself
+> improves results. That is what the pilot is for.
 
-### Research foundation
-
-The full evidence base — 130+ sources including PISA 2022, SDT meta-analyses,
-the Production Effect literature, and EdTech market data — is documented in the
-[WorkWizard Research Foundation](docs/research/workwizard-research-foundation.md).
+The wider evidence, including PISA, research on motivation and on learning by writing
+things down, and EdTech market data, is collected in the
+[WorkWizard Research Foundation](docs/research/workwizard-research-foundation.md),
+which cites 129 sources.
 
 ---
 
-## Tech Stack
+## Technology
 
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React 19, TypeScript 5.x, Vite, Tailwind CSS |
-| Backend | Python 3.12, FastAPI, Pydantic v2, structlog |
-| AI | Kimi K2.6 (256K context, instant mode), Mistral OCR, OpenAI GPT Image 1.5 Mini (PDF illustrations) |
-| Data | Supabase Postgres (pgvector provisioned; retrieval is deterministic key lookup) |
+| Part | What we use |
+|------|-------------|
+| Website | React 19, TypeScript, Vite, Tailwind CSS |
+| Server | Python 3.12, FastAPI |
+| AI | Kimi K2.6 by Moonshot AI (rewriting and checking), Mistral OCR (reading uploaded files), OpenAI GPT Image 1.5 Mini (optional illustrations) |
+| Database | Supabase (Postgres) |
 | Testing | pytest, Vitest, Playwright |
-| Infrastructure | Docker Compose, nginx, GitHub Actions, Vercel, Railway |
+| Hosting | Vercel and Railway |
 
 ---
 
-## Timeline & Milestones
+## Timeline
 
-| Date | Milestone |
-|------|-----------|
-| 2025 | Made in Jurgistan founded; WorkWizard concept developed |
-| 2025–2026 | Research foundation compiled (130+ sources) |
-| Early 2026 | Backend architecture built; 13-framework pedagogical taxonomy designed |
-| Q1 2026 | MVP development |
-| Apr 2026 | MVP v0.1.0 released |
-| 2026 | Pre-pilot phase; MVP under active development with continuous output quality optimisation; seeking school partners for evaluation |
+| When | What |
+|------|------|
+| 2025 | Made in Jurgistan founded; first WorkWizard concept |
+| 2025–2026 | Research foundation compiled |
+| Early 2026 | Server built; teaching framework taxonomy designed |
+| April 2026 | Version 0.1.0 released |
+| 2026 | Improving output quality and looking for partner schools for a pilot |
 
 ---
 
-## Founder & Company
+## Founder and company
 
-### About Made in Jurgistan
+### Made in Jurgistan
 
-**Made in Jurgistan** is an independent software studio building
-education-focused AI tools. WorkWizard is its flagship product.
+**Made in Jurgistan** is a small independent software studio in Germany that builds
+tools for education. WorkWizard is its main product.
 
 - **Founded:** 2025
 - **Founder:** Jürgen Van Der Haegen
-- **Location:** Germany
-- **Focus:** K-12 education, AI-powered personalisation, print-first design
-- **Team:** Solo founder with a strong technical foundation
+- **Based in:** Germany
+- **Team:** One founder, who designs and builds the product
 - **Contact:** madeinjurgistan@gmail.com
 
-### Founder bio
+### About the founder
 
-**Jürgen Van Der Haegen** is the solo founder of Made in Jurgistan. He built
-WorkWizard from concept to MVP — including a 130-source research foundation, a
-13-framework pedagogical taxonomy, a ~5,800-test backend across 145 modules, and a
-full React/TypeScript frontend with 41 Vitest files (~740 tests) plus 6 Playwright
-E2E specs.
+**Jürgen Van Der Haegen** founded Made in Jurgistan and built WorkWizard on his own,
+from the first idea to a working product, including the research behind it.
 
-WorkWizard began the same way every project Jürgen has built began: as a real,
-personally lived problem. The kitchen-table worksheet battle with his
-10-year-old son. No business plan, no investor pitch — just a parent trying to
-make homework less of a fight. As the build deepened, the research did too, and
-the picture changed. The combination that emerged — interest-based
-personalisation, print-first architecture, zero extrinsic gamification, and a
-13-framework pedagogy taxonomy — was not just one more personal tool. It was a
-direct answer to a systemic, well-documented crisis that no existing product
-was addressing.
+WorkWizard started at his kitchen table. Homework with his 10-year-old son kept turning
+into an argument, and he wanted to make worksheets that his son would actually want to
+do. There was no business plan at that point.
 
-Two years ago, plain logic made the core thesis obvious to Jürgen well before
-the data existed to prove it: most EdTech is counterproductive because it
-addresses everything except the actual problem — disengagement and
-demotivation. More screens do not fix screen-induced disengagement. Gamification
-does not fix an absence of intrinsic motivation. The gap is not a technology
-gap. It is a **relevance gap.** What has changed since is that the evidence has
-caught up: PISA 2022, the EU Education and Training Monitor 2025, UNESCO GEM
-reports, and a phone-restriction movement that UNESCO counts in 58% of the
-world's education systems.
+The more he read, the more he found that his family's problem was a common one. His
+view is that a lot of education technology adds screens, points or badges without
+dealing with the reason many students switch off, which is that the work doesn't feel
+relevant to them. That idea led to WorkWizard's main choices: use interests instead of
+game rewards, keep the work on paper, and never give the answers away.
 
-The product is grounded in peer-reviewed research rather than hype, and is
-designed to be measured in pilot evaluation before claims are made.
+He wants the product to be tested in schools before any claims are made about what it
+achieves.
 
-Jürgen is available for interviews on AI in education, interest-based learning,
-print-first EdTech design, and the German K-12 system. Contact
-**madeinjurgistan@gmail.com** to schedule.
+Jürgen is available for interviews on AI in education, learning built around
+students' interests, keeping schoolwork on paper, and the German school system.
+Email **madeinjurgistan@gmail.com** to arrange one.
 
-### What sets the company apart
+### What we care about
 
-- **Research-first, not hype-first** — 130+ cited sources compiled before a single line of product copy
-- **Test-driven** — ~5,800 backend tests, 41 Vitest files (~740 tests), and 6 Playwright E2E specs, built solo
-- **Print-first thesis** — screen time subtracted, not stacked; aligned with device-restriction and print-textbook policies in Sweden, the Netherlands, and France
-- **Answer protection as a hard constraint** — not a feature, a non-negotiable design boundary
-- **Bilingual by design** — full DE/EN output, never mixed in a single exercise
-- **Root-cause focus** — every existing competitor addresses a symptom (device access, teacher tooling, generic chat). WorkWizard is built around the diagnosed root cause: relevance
+- **Evidence before claims.** The research came first, and the product will be tested
+  in schools before we say what it does for learning.
+- **Paper over screens.** The screen is used to prepare the worksheet, not to replace
+  pen and paper.
+- **Answers stay hidden.** This is a fixed rule in how the software is built, not a
+  setting someone can switch off.
+- **Two languages, kept apart.** Every worksheet is entirely in German or entirely in
+  English, never a mix.
+- **Relevance.** Many tools focus on devices, teacher admin or general chat. We focus
+  on making the work itself feel relevant to the student.
+
+### Topics we can speak about
+
+- How students' interests affect motivation and persistence
+- Using AI responsibly in school tools, including keeping answers protected
+- The case for keeping schoolwork on paper, and what the research on handwriting and
+  memory says
+- The German school system and the PISA results
+- The learning-science ideas behind WorkWizard
+- Building an education product alone, from first idea to a working version
 
 ---
 
@@ -488,270 +448,244 @@ print-first EdTech design, and the German K-12 system. Contact
 
 ### What is WorkWizard?
 
-WorkWizard is an AI-powered tool that personalises K-12 worksheets around
-student interests. Teachers upload existing worksheets; the system rewrites
-each exercise in a chosen interest context while protecting answers and
-preserving learning objectives. Output is print-ready PDF.
+A tool that rewrites school worksheets around students' interests. Teachers upload
+worksheets they already use, each exercise is rewritten around an interest the student
+chose, and the result is a PDF to print. The learning goal stays the same and the
+answers stay hidden.
 
 ### Who is it for?
 
-German K-12 teachers and students, grades 1–13. The system supports full
-German/English bilingual output.
+Teachers and students in German schools, from grade 1 to grade 13. It works in German
+and in English.
 
 ### Does it replace teachers?
 
-No. WorkWizard is a preparation tool, not a teaching tool. The teacher uploads
-their own worksheet, reviews the transformed output, and decides what to print.
-The student works offline on paper. The AI does the rewriting the teacher
-doesn't have time for — nothing more.
+No. It helps with preparation. The teacher chooses the worksheet, looks over the
+rewritten version and decides what to print. The student works on paper. The AI does
+the rewriting a teacher has no time for, and that is all it does.
 
-### Does it give students answers?
+### Does it give students the answers?
 
-No. Answer protection is a hard constraint, not a feature. A bilingual regex
-guard rejects any output that leaks a solution. Answer keys are stripped from
-the source before processing, the computed answer is never shown to the model,
-and answer-revelation detection is a hard check in the quality gate. An
-exercise that never passes its checks, after at most one repair attempt on the
-per-exercise pipeline, is replaced by the original exercise.
+No. The software works out the answer to each exercise only so it can check the
+rewritten version against it. That answer is never given to the AI that does the
+rewriting and is never shown to the student. Every rewritten exercise is checked
+automatically, in German and English, to make sure it doesn't give a solution away. If
+an exercise can't pass those checks, the student gets the original exercise instead.
 
-### Is it another screen-time product?
+### Is this more screen time?
 
-No. WorkWizard is print-first by design. The model runs once to generate the
-personalised worksheet; the student works offline on paper. Screen time is
-subtracted, not stacked. The EU Education and Training Monitor 2025 cites
-OECD research suggesting that non-educational use of digital devices in school
-could be the main driver of the worldwide PISA decline since 2009. UNESCO
-counts national school phone bans in 114 education systems (58%) as of March
-2026. WorkWizard is built for that reality.
+No. The computer is used once, to make the worksheet. After that the student works on
+paper.
 
-### Why paper, not screens?
+### Why paper?
 
-Because the evidence points to screens as part of the problem. The EU
-Education and Training Monitor 2025 cites OECD research suggesting that
-non-educational use of digital devices in school could be the main driver of
-the worldwide PISA decline since 2009. UNESCO counts national school phone
-bans in 114 education systems (58%) as of March 2026. Sweden has returned to
-printed textbooks, and the Netherlands and France restrict phones in schools.
+Many countries have become more cautious about screens in school. UNESCO counts
+national school phone bans in 114 education systems, 58% of those it tracks, up from
+24% in 2023. Sweden has moved back to printed books and paper since 2023, the
+Netherlands has banned phones, tablets and smartwatches in classrooms since 2024, and
+France has banned phones in primary and lower secondary schools since 2018. In PISA
+2025, a third of German students (33%) said classmates are distracted by devices in
+most or all science lessons.
 
-WorkWizard uses the screen once — to generate the personalised worksheet —
-then the student works offline on paper. Screen time is subtracted, not
-stacked. Research on the production effect finds that actively producing
-material, for example saying or writing it, tends to improve memory compared
-with reading it silently. The model runs once; the learning happens on paper.
+There is also research on what psychologists call the production effect: people tend
+to remember material better when they say it aloud or write it down than when they
+read it silently. WorkWizard uses the computer to prepare the page, and the student
+does the learning on paper.
 
-### What AI does it use?
+### Which AI does it use?
 
-Kimi K2.6 (256K context, instant mode) for transformation and quality judging,
-Mistral OCR for document extraction, and OpenAI GPT Image 1.5 Mini for optional
-worksheet illustrations. On the per-exercise pipeline, the solution strategy of
-answer-critical numeric exercise types is compiled in a separate step before the
-exercise is written; other exercise types use a single call with the same
-answer-protection checks. The agent engine runs tool-assisted sessions over
-groups of tasks and accepts each task on code checks. On both engines the
-computed answer is never included in any model input.
+Kimi K2.6 from Moonshot AI rewrites the exercises and helps check them. Mistral OCR
+reads the text from uploaded files and photos. OpenAI GPT Image 1.5 Mini can add
+illustrations to the PDF. None of these AI models is ever given the answer to an
+exercise.
 
 ### Is it GDPR-compliant?
 
-The system is designed with EU data protection in mind. A self-hosted OCR
-fallback (MinerU) is available for GDPR-sensitive deployments. v0.1.0 does not
-implement end-user authentication; the pilot will run under teacher-supervised
-access once the MVP is test-ready.
+We designed it with EU data protection law in mind. For schools that need it, the text
+reading can be switched to a self-hosted tool instead of an outside service. Version
+0.1.0 has no
+user accounts yet. The pilot will run with teachers supervising access.
 
-### Has it been tested in classrooms?
+### Has it been tried in classrooms?
 
-Not yet. WorkWizard is in pre-pilot phase, with the MVP under active development
-and output quality being continuously optimised. The product is designed to be
-measured: the pilot will quantify engagement gains, preserved learning
-objectives, absence of answer leakage, accessibility, manageable teacher
-workload, and no adverse effects for any subgroup.
+Not yet. We are still improving the quality of the rewritten worksheets. When the
+pilot runs, it will look at whether students are more engaged, whether learning goals
+stay intact, whether any answers leak, whether the worksheets are accessible, how much
+work it creates for teachers, and whether any group of students is worse off.
 
 ### Is the code open source?
 
-No. WorkWizard is proprietary software. This public repository contains
-documentation, brand assets, and research papers — not source code.
+No. WorkWizard is proprietary. This public repository holds documentation, brand
+assets and research papers, but no source code.
 
-### How can schools get involved?
+### How can a school take part?
 
-Contact **madeinjurgistan@gmail.com** to discuss pilot participation.
+Email **madeinjurgistan@gmail.com** to talk about joining the pilot.
 
-### What's next after the pilot?
+### What comes after the pilot?
 
-The MVP is under active development with continuous output quality optimisation.
-The pilot will quantify engagement gains, preserved learning objectives,
-absence of answer leakage, accessibility, manageable teacher workload, and
-no adverse effects for any subgroup. Results will inform v0.2.0 development.
+The pilot results will decide what we work on in the next version.
 
 ---
 
-## What Works Today, What Is Missing
+## What works today and what is missing
 
-The MVP is under active development. Naming what works and what does not is
-more useful than pretending the product is finished.
+WorkWizard is an early product. Here is what it can and can't do yet.
 
 ### What works today
 
-- **Upload and OCR** — PDF, DOCX, image, and text input; Mistral OCR extraction
-- **Grade and subject detection** — 7 grade bands, 8 domains, 38 subdomains
-- **Interest catalogue** — 54 interests across 6 categories, age-gated, bilingual
-- **AI transformation** — Kimi K2.6 (256K context), with bounded parallel processing of exercises within a worksheet and an agent engine selectable by configuration
-- **Quality scoring** — Per-exercise acceptance in code; the per-exercise pipeline adds one LLM-judge call and at most one repair per exercise
-- **Answer protection** — bilingual regex guard; any leak means rejection
-- **PDF generation** — WeasyPrint with per-grade-band layout, accessibility metadata, and applicable contrast/PDF-UA validation checks; formal conformance requires an independent audit
-- **Bilingual support** — full EN/DE across interface, pipeline, and output
-- **Testing** — ~5,800 backend tests across 145 modules, 41 Vitest files (~740 tests), and 6 Playwright E2E specs
+- Uploading PDFs, Word files, images and text, and reading the text out of them
+- Recognising the grade level and the subject (8 subject areas, 38 topics)
+- Choosing from 54 interests, filtered by age, in German and English
+- Rewriting every exercise of a worksheet with AI, several exercises at once
+- Automatic checks on every exercise, with the original used if a check fails
+- Checks in German and English that stop answers from leaking
+- PDFs laid out for each age group, with accessibility features built in and tested
+  (a formal accessibility audit is still to come)
+- German and English throughout: the website, the processing and the worksheets
+- About 5,800 automated tests for the server and about 740 for the app
 
-### What is still missing
+### What is missing
 
-| Gap | Status | When it's addressed |
-|-----|--------|---------------------|
-| End-user authentication | No login or accounts yet | Phase 1 |
-| Payments | No subscription or billing | After authentication |
-| School organisation | No classes, assignments, or sharing | Phase 1 |
-| Telemetry | No usage or engagement analytics | Phase 1 |
-| Full GDPR minor-consent flows | Survey is GDPR-aware; product needs parental consent | Phase 1 |
-| Pilot data | No school has used the product yet | Phase 2 |
-| Languages beyond EN/DE | Architecture supports it; none implemented | Later phases |
-
----
-
-## Market Context
-
-Three forces are converging to make this the right product at the right time:
-
-1. **AI inference costs fell sharply.** Current large language models are priced
-   at around one US dollar per million input tokens (Kimi K2.6: $0.95 input,
-   $4.00 output), which makes per-student worksheet generation affordable.
-2. **Governments are reversing screen-first policy.** Sweden, the Netherlands,
-   and France are restricting devices or returning to print — a structural
-   tailwind for a print-first product. Germany's DigitalPakt 2.0 provides €5B
-   (federal and state funds) for school digital infrastructure and its
-   pedagogical use from 2026 to 2030.
-3. **The engagement crisis is now publicly documented.** PISA, OECD, teacher
-   surveys, and parent sentiment all point to the same diagnosis. The OECD's
-   2025 Education Policy Outlook treats learner agency as a central policy
-   lever for engagement in learning.
-
-The expansion path is Germany K-12 → DACH (Austria, Switzerland) → the wider
-EU. The architecture is parametric: adding a language, interest, grade level,
-or subject is data and localisation work, not a pipeline rebuild.
+| Missing | Current state | Planned for |
+|---------|---------------|-------------|
+| User accounts | No logins yet | Phase 1 |
+| Payments | No subscriptions or billing | After user accounts |
+| Classes | No classes, assignments or sharing | Phase 1 |
+| Usage data | No analytics on use or engagement | Phase 1 |
+| Parental consent | The survey follows GDPR; the product still needs consent flows for children | Phase 1 |
+| Pilot results | No school has used it yet | Phase 2 |
+| More languages | Only German and English so far | Later |
 
 ---
 
-## Quote Bank
+## Why now
 
-The following quotes may be attributed to **Jürgen Van Der Haegen, founder of
-Made in Jurgistan** in press coverage of WorkWizard.
+We think three things make this a good moment.
 
-> "Practice is where learning consolidates, and it is exactly where students
-> disengage. WorkWizard removes the personalisation constraint — not by adding
-> more screen time, but by doing the preparation work the teacher doesn't have
-> time for, so the student can work on paper."
+1. **AI has become cheap enough.** Kimi K2.6 costs $0.95 per million tokens of input
+   and $4.00 per million tokens of output (a token is a word or part of a word), so
+   making a personal worksheet for every student is affordable.
+2. **Governments are rethinking screens in school.** Sweden, the Netherlands and France
+   have limited devices or gone back to printed books. In Germany, the DigitalPakt 2.0
+   provides €5 billion, half from the federal government and half from the states, for
+   digital infrastructure in schools and for using it in teaching. It covers projects
+   started from 2026 and runs until the end of 2030.
+3. **Concern about motivation is widely shared.** PISA, the OECD and teacher surveys
+   all point to it. The OECD's *Education Policy Outlook 2025* treats learner agency as
+   an important lever for keeping students engaged.
 
-> "The model runs once. The student works offline. Whether that improves
-> engagement is a question for pilot evaluation to answer — the product is
-> designed to be measured, not assumed."
+We plan to start in Germany, then move to Austria and Switzerland, and then to the
+wider EU. Adding a language, an interest, a grade level or a subject means adding data
+and translations. The core of the software stays the same.
 
-> "Answer protection is not a feature. It is a hard constraint. Answers are
-> never revealed in output, and the quality gate checks for leakage at every
-> stage."
+---
 
-> "Most EdTech is counterproductive because it addresses everything except the
-> actual problem — disengagement. More screens do not fix screen-induced
-> disengagement. Gamification does not fix an absence of intrinsic motivation.
-> The gap is not a technology gap. It is a relevance gap."
+## Quotes
 
-> "We didn't start with a model and look for a use case. We started with PISA
-> 2022, with 130 research sources, with the question of why students disengage
-> at the exact moment learning consolidates. The product came after the evidence,
-> not before it."
+These quotes may be attributed to **Jürgen Van Der Haegen, founder of Made in
+Jurgistan**, in coverage of WorkWizard.
 
-> "WorkWizard began as a personal tool to end the kitchen-table worksheet battle
-> with my 10-year-old son. No business plan, no investor pitch — just a parent
-> trying to make homework less of a fight. The research is what turned it into a
+> "Children learn a lot of what sticks while they practise, and that's exactly where
+> many of them switch off. Teachers don't have time to write a different worksheet for
+> every child. WorkWizard does that part, and the child still works on paper."
+
+> "We use the computer once, to make the worksheet. Whether that makes children more
+> engaged is something a pilot has to show. We'll measure it before we claim it."
+
+> "The answers never leave the system. The AI that writes the exercise never sees them,
+> and every exercise is checked before it reaches a child."
+
+> "A lot of education technology adds more screens or more points and badges. I don't
+> think either fixes the real issue, which is that the work often doesn't feel relevant
+> to the student."
+
+> "We didn't start with an AI model and look for something to do with it. We started
+> with a question: why do so many students switch off just when they're supposed to be
+> practising? I read the research first and built the product after."
+
+> "It started at my kitchen table, with homework fights with my 10-year-old son. I just
+> wanted worksheets he'd want to do. Reading the research is what turned that into a
 > company."
 
 ---
 
-## Sample Press Release
+## Press release template
 
-The following template may be adapted for announcements. Replace bracketed
-placeholders with specific details.
+Adapt this template for announcements. Replace the parts in square brackets.
 
 ```text
 FOR IMMEDIATE RELEASE
 
-WorkWizard launches [announcement] for German K-12 classrooms
+WorkWizard [announcement] for schools in Germany
 
-[Location], [Date] — Made in Jurgistan today announced [what was launched or
-achieved]. [One-sentence description of the announcement and why it matters to
-K-12 education in Germany.]
+[Place], [date]. Made in Jurgistan today announced [what was launched or achieved].
+[One sentence on what this means for schools in Germany.]
 
-[Body paragraph: What the announcement includes, who it serves, and how it
-works in plain language.]
+[Main paragraph: what it is, who it is for and how it works, in plain language.]
 
 [Quote from Jürgen Van Der Haegen, founder:]
-"[Approved quote from the Quote Bank or a new approved statement.]"
+"[An approved quote from this press kit, or a new approved statement.]"
 
-[Context paragraph: How this fits into WorkWizard's broader mission of
-interest-driven personalisation and print-first design.]
+[Background: how this fits WorkWizard's aim of worksheets built around students'
+interests and completed on paper.]
 
-[Call to action: Where to learn more — public repo, survey, or pilot
-information.]
+[Where to find out more: public repository, survey or pilot information.]
 
 About WorkWizard
-WorkWizard is an AI-powered educational tool that personalises K-12
-worksheets around each student's interests. Teachers upload existing
-worksheets; the system rewrites each exercise in a chosen interest context
-while protecting answers and preserving learning objectives. Output is
-print-ready PDF for offline student work. Built by Made in Jurgistan.
-Learn more at github.com/Made-in-Jurgistan/workwizard-public.
+WorkWizard rewrites school worksheets around each student's interests. Teachers
+upload worksheets they already use; each exercise is rewritten around an interest the
+student chose, the learning goal stays the same and the answers stay hidden. The
+result is a PDF that students complete on paper. WorkWizard is made by Made in
+Jurgistan. More at github.com/Made-in-Jurgistan/workwizard-public.
 
-Media contact: madeinjurgistan@gmail.com
+Press contact: madeinjurgistan@gmail.com
 ```
 
 ---
 
-## Press Coverage
+## Press coverage
 
-No press coverage yet. Earned media will be listed here as it is published.
-For the latest press mentions, contact **madeinjurgistan@gmail.com**.
+There has been no press coverage yet. Articles will be listed here once they appear.
 
 ---
 
-## Spelling & Pronunciation
+## Spelling
 
-| Term | Correct usage | Notes |
-|------|---------------|-------|
-| **WorkWizard** | One word, two capitals | Not "Work Wizard", "Workwizard", or "Work-Wizard" |
-| **Made in Jurgistan** | Three words, initial capitals | Not "MadeInJurgistan" or "Made-in-Jurgistan" in running text |
+| Name | Write it as | Not as |
+|------|-------------|--------|
+| **WorkWizard** | One word, capital W twice | "Work Wizard", "Workwizard", "Work-Wizard" |
+| **Made in Jurgistan** | Three words, capital M and J | "MadeInJurgistan", "Made-in-Jurgistan" |
 
 ---
 
 ## Survey
 
-Visitors can share feedback through the in-app interest and market survey at
-[workwizard-demo.vercel.app/survey](https://workwizard-demo.vercel.app/survey).
-The anonymous survey collects input from parents, teachers, students, and school
-administrators on pain points, current homework-completion behaviour, priorities among
-product claims and real alternatives (asked before the product is described), reaction
-to a concept demo, willingness to participate in a pilot, willingness to pay (with a
-confidence check), and whether they would recommend the approach to peers (an
-NPS-style proxy, on the Full path). The intro states the research topic only. The demo
-matches the respondent's grade band and shows a realistic original worksheet next to
-two personalised versions with identical answers. The survey is bilingual
-(German/English), stores no IP addresses, does not link answers to names, stores
-contact details only when a respondent chooses to leave them, erases one respondent's
-data on request, and includes data-quality safeguards such as a student attention
-check, per-path speeder cutoffs, and duplicate detection.
+Anyone can give us feedback through our survey at
+[workwizard-demo.vercel.app/survey](https://workwizard-demo.vercel.app/survey). It is
+anonymous and available in German and English, and it is aimed at parents, teachers,
+students and school leaders.
+
+It asks about the problems people have with homework and worksheets today, what they
+value and what they currently use, before it shows anything about WorkWizard. It then
+shows a short demo for the respondent's age group: an ordinary worksheet next to two
+personalised versions with the same answers. After that it asks what people think,
+whether they'd join a pilot, what they'd pay, and (in the longer version) whether
+they'd recommend it.
+
+The survey doesn't store IP addresses or link answers to names. Contact details are
+kept only if someone chooses to leave them, and anyone can ask for their answers to be
+deleted. A few simple checks filter out rushed or duplicate answers.
 
 ---
 
 ## Contact
 
-For all inquiries — press, interviews, licensing, pilot partnerships, and security — contact **[madeinjurgistan@gmail.com](mailto:madeinjurgistan@gmail.com)**.
+For press, interviews, licensing, pilot partnerships and security matters, email
+**[madeinjurgistan@gmail.com](mailto:madeinjurgistan@gmail.com)**.
 
-Media inquiries are typically answered within 24 hours. For urgent requests
-or embargoed stories, include "URGENT" or "EMBARGO" in the subject line.
+We usually reply to press requests within a day. If your request is urgent or under
+embargo, put "URGENT" or "EMBARGO" in the subject line.
 
 ---
 
