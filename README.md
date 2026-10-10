@@ -15,12 +15,12 @@
 </p>
 
 <p>
-  <strong>Interest-driven worksheet personalisation for K-12 classrooms</strong>
+  <strong>Worksheets rewritten around what each student cares about</strong>
 </p>
 
 <p>
-  Any worksheet, rewritten inside a context the student chooses. Learning objectives stay intact,<br />
-  answer leakage is checked, and the output is print-ready for teacher review.
+  A teacher uploads a worksheet, each student picks the topics they love, and every exercise is rewritten<br />
+  around them. The learning goal stays the same, the answers stay hidden, and the result is printed.
 </p>
 
 <p>
@@ -41,89 +41,100 @@
 
 <div align="center">
 
-| Upload | Select interests | Personalised output |
+| Upload | Choose interests | Personalised exercise |
 | :---: | :---: | :---: |
 | <img src="assets/screen1.png" alt="Upload a worksheet as text, file, or photo" width="270" /> | <img src="assets/screen2.png" alt="Choose up to five interests from a bilingual catalog" width="270" /> | <img src="assets/screen3.png" alt="Transformed exercise with narrative, problem, and strategy" width="270" /> |
-| PDF, DOCX, or photo | 54 options, no account needed | Answers locked, goals intact |
+| PDF, Word file or photo | 54 interests, no account needed | Same goal, answers hidden |
 
 </div>
 
 <br />
 
-## 📖 Contents
+## Contents
 
-<table>
-<tr>
-<td valign="top">
+- [Why WorkWizard](#why-workwizard)
+- [How it works](#how-it-works)
+- [Features](#features)
+- [The research behind it](#the-research-behind-it)
+- [Architecture](#architecture)
+- [API](#api)
+- [Security](#security)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [Changelog](#changelog)
+- [License](#license)
 
-- [✨ Why WorkWizard](#-why-workwizard)
-- [⚙️ How it works](#️-how-it-works)
-- [🧩 Features](#-features)
-- [🏗️ Architecture](#️-architecture)
+> **About this repository:** This is WorkWizard's public repository. It holds documentation, brand assets and research papers. The source code, architecture decision records and operational data live in a separate private repository.
 
-</td>
-<td valign="top">
+## Why WorkWizard
 
-- [🎓 Pedagogical foundation](#-pedagogical-foundation)
-- [🔌 API](#-api)
-- [🔒 Security](#-security)
-- [📚 Documentation](#-documentation)
+Children learn a lot of what sticks while they practise, and practice is often where they switch off. A teacher can't write a Minecraft version of a geometry sheet for one child and a Marvel version for another, so the whole class gets the same page.
 
-</td>
-<td valign="top">
+WorkWizard does that rewriting. It takes the teacher's own worksheet and rewrites each exercise around an interest the student picked. Software checks that each rewritten exercise still asks for the same thing and doesn't give the answer away. The result is a PDF that the teacher can look over and print, and the student works on paper. We don't yet know whether this makes students more engaged or helps them learn more; a school pilot will measure that.
 
-- [🤝 Contributing](#-contributing)
-- [🔄 Changelog](#-changelog)
-- [⚖️ License](#️-license)
+WorkWizard is built for German schools, works in German and English, and adjusts to seven age groups from grade 1 to grade 13.
 
-</td>
-</tr>
-</table>
+> **Status:** Version `0.1.0`. An early product that we are still improving and that has not yet been piloted in a school. The website runs on Vercel and the server on Railway.
 
-> **About this repository:** This is the public showcase for WorkWizard. It contains project documentation, brand assets, and research papers — not source code. The codebase, ADRs, and operational data live in a private repository.
-
-## ✨ Why WorkWizard
-
-Practice is where learning consolidates, and it is exactly where students disengage. A teacher cannot hand-write a Minecraft version of a geometry sheet for one student and a Marvel version for another, so every student receives the same generic exercises.
-
-WorkWizard removes that constraint. It ingests a teacher's existing worksheet and rewrites each exercise inside the student's chosen interest, treating the source objectives and answer protection as testable constraints. The result is a print-ready PDF for teacher review: the model runs once, and the student works offline on paper. Whether the approach improves engagement or attainment is a question for pilot evaluation to answer.
-
-Built for the German K-12 system with full DE/EN bilingual output, grade-aware adaptation across seven grade bands, and research-backed pedagogical guidance driving prompt construction and quality scoring.
-
-> **Status:** MVP `v0.1.0`, pre-pilot and under active development, with output quality being continuously optimised. Frontend on Vercel, backend on Railway.
-
-## ⚙️ How it works
+## How it works
 
 ```text
-Upload  ──▶  Personalise  ──▶  Transform  ──▶  Review  ──▶  Download
-PDF/DOCX     up to 5           AI rewriting    quality      accessible
-or photo     interests         per exercise    scored       PDF
+Upload  ──▶  Choose interests  ──▶  Rewrite  ──▶  Check  ──▶  Print
 ```
 
 | Step | What happens |
 | --- | --- |
-| **Upload** | Mistral OCR extracts structured text from PDF, DOCX, or image. MinerU is available as a self-hosted GDPR fallback. |
-| **Personalise** | Student picks up to 5 of 54 curated interests across 6 categories, all bilingual. |
-| **Transform** | Kimi K2.6 rewrites each exercise inside the student's interest context — bare equations become embedded mini word-problems. Every rewrite passes automated checks for source preservation, answer leakage, and length; an exercise with no passing version keeps its source text. |
-| **Review** | Original and transformed shown side by side with quality scores and answer-revelation checks. |
-| **Download** | WeasyPrint renders a per-grade styled PDF; accessibility criteria are tested and conformance is not claimed without an audit. |
+| **Upload** | The teacher uploads a PDF, Word file, photo or text file. Mistral OCR reads the text. Where data protection rules require it, a self-hosted reader (MinerU) can be used instead. |
+| **Choose interests** | The student picks up to five of 54 interests in six groups, all available in German and English. |
+| **Rewrite** | Kimi K2.6 rewrites each exercise around the student's interests. A bare sum such as `7 × 8` gets a short story around it, and the original sum is then shown unchanged. |
+| **Check** | Each rewritten exercise is checked in code: is the original task intact, has an answer leaked, is it too long? An exercise that fails keeps its original text. The teacher sees the original and the new version side by side. |
+| **Print** | WeasyPrint produces a PDF laid out for the student's age group. The layouts are tested against accessibility guidelines; we don't claim full compliance until an independent audit has been done. |
 
-## 🧩 Features
+## Features
 
-| Capability | Detail |
+| Feature | What it means |
 | --- | --- |
-| **Interest personalisation** | 54 interests across 6 categories (games, sports, TV and film, fantasy, superheroes, creative), bilingual EN/DE, each with its own roles, missions, settings, and details |
-| **Grade-aware pedagogy** | 7 grade bands (1-2 through 13) with calibrated scaffolding, Bloom's levels, and motivation emphasis |
-| **Answer protection** | Bilingual regex guard rejects any output that leaks a solution; enforced as a hard constraint |
-| **Quality scoring** | Per-exercise acceptance in code (source preservation, answer leaks, length), plus one structured LLM-judge call and at most one targeted repair on the per-exercise pipeline. Output that never passes is replaced by the source exercise. An offline evaluation harness scores recorded worksheet runs, including consistency across repeated runs. |
-| **RAG enrichment** | Curated knowledge base lookup with quality scoring and age-appropriateness (forbidden-topic) checks |
-| **Narrative diversity** | Anti-repetition engine ensuring varied narrative contexts; bare equations embedded in short mini-scenes within a grade-calibrated sentence limit (numbers in the story, then the original equation) |
-| **Model routing** | Per-exercise pipeline: K2.6 instant mode, a two-step compile-then-write path for answer-critical numeric exercise types, one call for everything else |
-| **Engine selection** | Two transformation engines, chosen by deployment configuration: the per-exercise pipeline, or tool-assisted agent sessions over groups of tasks. The agent engine splits the worksheet without editing source text and checks every task in code. Both engines end in the same answer guard. |
-| **Accessible output** | WeasyPrint and Jinja2 templates, with applicable [WCAG 2.2](https://www.w3.org/TR/WCAG22/) AA criteria as a test target and per-grade CSS; no conformance claim without an audit |
-| **Print-first design** | Screen time is subtracted rather than stacked; transformation is bounded, and the student works offline |
+| **Interests** | 54 interests in six groups (games, sports, TV and film, fantasy and adventure, superheroes, making things), each with its own characters, missions, settings and details in German and English |
+| **Age groups** | Seven age groups (grades 1–2 to grade 13), each with its own sentence length, level of support and type of thinking asked for |
+| **Answers stay hidden** | The model never receives the answer, and a check in German and English rejects any output that gives a solution away |
+| **Quality checks** | Every exercise is accepted or rejected in code. In the per-exercise engine, an AI reviewer also scores each exercise, followed by at most one repair attempt. An exercise that never passes is replaced by the original. A separate evaluation harness measures recorded runs on a fixed set of real worksheets, including how consistent repeated runs are. |
+| **Story details** | Characters and settings come from a curated collection, with topics unsuitable for younger children filtered out |
+| **Variety** | Story settings change across a worksheet so exercises don't repeat each other |
+| **Two engines** | Chosen in configuration: a per-exercise engine, or an agent engine that works through groups of tasks with tools, keeps the source text as it is and checks every task in code. Both finish with the same answer check. |
+| **Accessible PDFs** | WeasyPrint and Jinja2 templates with layouts per age group, tested against [WCAG 2.2](https://www.w3.org/TR/WCAG22/) level AA criteria; no compliance claim without an audit |
+| **Made for paper** | The computer is used to make the worksheet; the student works on paper |
 
-## 🏗️ Architecture
+## The research behind it
+
+<details>
+<summary><strong>Show the 13 frameworks</strong></summary>
+<br />
+
+WorkWizard's design draws on 13 frameworks from learning science and motivation research, expressed in the software as 16 labels (three of them are parts of self-determination theory, and scaffolding is part of the zone of proximal development). The per-exercise engine picks labels according to the type of content. The agent engine uses up to eight of them on each task: autonomy, narrative transportation, prior knowledge and cognitive load for the story setting, and scaffolding, the zone of proximal development, worked examples and metacognition for hints.
+
+| Framework | Main source | What it shapes |
+| --- | --- | --- |
+| Cognitive load theory | Sweller (1988) | How much each step asks a student to hold in mind |
+| Zone of proximal development | Vygotsky (1978) | How much help a hint gives |
+| Bloom's taxonomy | Anderson & Krathwohl (2001) | What kind of thinking a task asks for |
+| Self-determination theory | Ryan & Deci (2000, 2017) | Choice and interest as sources of motivation |
+| Flow | Csikszentmihalyi (1990) | Keeping a task hard enough to engage without frustrating |
+| Growth mindset | Dweck (2006) | Praising effort and method, not just results |
+| Discovery learning | Bruner (1961) | Guiding students with questions |
+| Dual coding | Paivio (1971); Mayer (2009) | Pairing words with pictures, more for younger children |
+| Narrative transportation | Green & Brock (2000) | How a story can draw a reader in |
+| Worked examples | Sweller (2011) | Fully worked steps first, removed over time |
+| Prior knowledge | Ausubel (1968) | Linking new ideas to what the student already knows |
+| Metacognition | Flavell (1979); Schraw & Dennison (1994) | Prompts to plan and check one's own work |
+| Cognitive activation | Burge, Lenkeit & Sizmur (2015) | Asking students to reason, not only to recall |
+
+In the per-exercise engine, five further techniques switch on when the age group and type of content call for them: how difficulty is framed, linking the task to something the student values, how success and mistakes are explained, whether practice is grouped or mixed, and worked examples. Three more (self-explanation prompts, a choice of how to answer, and spaced review for returning students) are built but switched off.
+
+The research on these ideas, with sources and limits, is summarised in the [K-12 frameworks report](docs/research/k12-pedagogical-frameworks.md). These frameworks inform the design. They are not evidence that WorkWizard itself improves results.
+
+</details>
+
+## Architecture
 
 ```text
       ┌─────────────┐              ┌─────────────┐              ┌─────────────┐
@@ -146,43 +157,13 @@ or photo     interests         per exercise    scored       PDF
 | Stage | Role |
 | --- | --- |
 | Extraction | Document to structured text (Mistral OCR, MinerU fallback) |
-| Language detection | Zero-dependency EN/DE heuristic |
-| Grade detection | Readability, vocabulary, math-complexity signals |
-| RAG enrichment | Interest entities, characters, and settings from a curated knowledge base |
-| Prompt building | Grade-, subject-, and pedagogy-aware prompt construction with narrative-diversity gating |
-| Transformation | Kimi K2.6 (256K context): admission-controlled parallel per-exercise dispatch, or tool-assisted agent sessions over groups of tasks; SSE progress streaming |
-| Quality gate | Answer-revelation detection and source-correspondence checks on every output; LLM judge and at most one repair on the per-exercise pipeline; code-checked acceptance per task on the agent engine |
-| PDF generation | WeasyPrint and Jinja2 with per-grade CSS; optional illustrations via OpenAI GPT Image |
-
-</details>
-
-## 🎓 Pedagogical foundation
-
-<details>
-<summary><strong>Expand: 13 active frameworks within a 13-framework taxonomy</strong></summary>
-<br />
-
-The running backend uses all 13 frameworks in the pedagogical taxonomy through 16 routed guidance labels. Three labels are Self-Determination Theory sub-labels and one (instructional scaffolding) is a Zone of Proximal Development sub-concept; the remaining labels map directly to the other framework concepts. The agent engine reports a fixed set of labels per task instead of routing by content type. On the per-exercise pipeline, conditional pedagogical blocks operationalize difficulty framing, interleaved versus blocked practice, worked examples, attribution framing, and value connection. These frameworks guide design; they are not evidence that WorkWizard itself improves outcomes.
-
-| Framework | Citation | Role |
-| --- | --- | --- |
-| Cognitive Load Theory | Sweller (1988, 2024) | Working-memory chunk limits per age |
-| Zone of Proximal Development | Vygotsky (1978) | Scaffolding calibration |
-| Bloom's Taxonomy | Anderson & Krathwohl (2001) | Cognitive level targeting |
-| Self-Determination Theory | Ryan & Deci (2000, 2017) | Intrinsic motivation via interest alignment |
-| Flow Theory | Csikszentmihalyi (1990) | Challenge-skill balance |
-| Growth Mindset | Dweck (2006) | Process praise over outcome praise |
-| Discovery Learning | Bruner | Guided inquiry, Socratic prompts |
-| Dual Coding Theory | Paivio (1971), Mayer (2009) | Visual hierarchy fading with age |
-| Narrative Transportation | Green & Brock (2000) | Interest-driven immersion |
-| Worked Examples Effect | Sweller (2011) | Full to faded to minimal |
-| Prior Knowledge Activation | Ausubel | Everyday-to-academic bridging |
-| Metacognition | Flavell, Schraw & Dennison | Predict-plan-check cues |
-| Cognitive Activation | Burge, Lenkeit & Sizmur (2015) | Reasoning beyond recall |
-
-Five mechanisms apply on the per-exercise pipeline where grade band and content type call for them: difficulty framing, value connection, attribution framing, worksheet structure (blocked or interleaved), and worked examples. Self-explanation prompting, response choice (UDL), and spaced review for returning students exist as optional blocks and are disabled. Bare equations are embedded in mini word-problems before the original equation is presented unchanged.
-
-Evidence notes and source links are maintained in the [K-12 frameworks report](docs/research/k12-pedagogical-frameworks.md). These frameworks guide design; they are not evidence that WorkWizard itself improves outcomes.
+| Language detection | EN/DE heuristic with no external dependencies |
+| Grade detection | Readability, vocabulary and maths-complexity signals |
+| Enrichment | Interest characters, settings and details from a curated knowledge base |
+| Prompt building | Prompts built for grade, subject and teaching approach, with a check against repeated story settings |
+| Transformation | Kimi K2.6 (256K context): parallel per-exercise calls with admission control, or tool-assisted agent sessions over groups of tasks; progress streamed over SSE |
+| Quality gate | Answer-leak detection and source-correspondence checks on every output; AI judge and at most one repair on the per-exercise engine; acceptance in code per task on the agent engine |
+| PDF generation | WeasyPrint and Jinja2 with CSS per grade band; optional illustrations via OpenAI GPT Image |
 
 </details>
 
@@ -192,12 +173,12 @@ Evidence notes and source links are maintained in the [K-12 frameworks report](d
 | --- | --- |
 | Frontend | React 19, TypeScript 5.9, Vite 7.3, i18n DE/EN |
 | Backend | Python 3.12, FastAPI 0.115+, Pydantic v2, structlog |
-| AI | Kimi K2.6 (Moonshot, 256K context, instant mode), Mistral OCR, OpenAI GPT Image 1.5 Mini (PDF illustrations) |
+| AI | Kimi K2.6 (Moonshot AI, 256K context, instant mode), Mistral OCR, OpenAI GPT Image 1.5 Mini (PDF illustrations) |
 | Data | Supabase Postgres (pgvector provisioned; retrieval is deterministic key lookup) |
-| Testing | pytest (~5,800 tests, 145 modules), Vitest (~740 tests / 41 files) and Playwright (6 specs) |
+| Testing | pytest (about 5,800 tests in 145 modules), Vitest (742 tests in 41 files) and Playwright (6 specs) |
 | Infrastructure | Docker Compose, nginx, GitHub Actions, Vercel, Railway |
 
-## 🔌 API
+## API
 
 Routes are mounted under `/api/v1/...`. Probes: `GET /healthz` (liveness), `GET /readyz` (readiness), `GET /health` (diagnostics).
 
@@ -216,46 +197,46 @@ Routes are mounted under `/api/v1/...`. Probes: `GET /healthz` (liveness), `GET 
 | `POST` | `/api/v1/survey/event` | Record an anonymous survey funnel event |
 | `POST` | `/api/v1/survey/contact` | Submit a survey contact message |
 
-Admin-token gated routes cover survey administration (including erasure of one respondent's data), quality review, and cache invalidation. Optional shared API key may protect cost-bearing routes in some deployments. Full interactive reference at `/docs` when enabled.
+Admin-token routes cover survey administration (including erasure of one respondent's data), quality review and cache invalidation. Some deployments protect cost-bearing routes with an optional shared API key. The interactive reference is at `/docs` when enabled.
 
-## 🔒 Security
+## Security
 
-- Credentials exclusively via environment variables; no secrets in source
-- Per-IP rate limiting on transform, upload, PDF, and interest routes
+- Credentials only in environment variables; no secrets in source
+- Per-IP rate limiting on transform, upload, PDF and interest routes
 - Explicit CORS allowlist, no wildcard in production
 - Non-root containers and digest-pinned base images
 - Pydantic v2 validation at every request boundary
-- SAST (bandit) on every CI run
-- Request ceilings to prevent worker exhaustion (~280 s non-streaming; longer SSE budget for large worksheets)
-- Survey: no IP address or user-agent stored, contact details only with recorded consent, erasure of one respondent's data on request, 18-month retention
-- No end-user authentication in v0.1.0 — pilot will run under teacher-supervised access once the MVP is test-ready
+- Static security analysis (bandit) on every CI run
+- Request time limits so workers can't be tied up (about 280 s for normal requests; longer for streamed progress on large worksheets)
+- Survey: no IP address or user agent stored, contact details only with recorded consent, erasure of one respondent's data on request, 18-month retention
+- No user accounts in v0.1.0; the pilot will run with teachers supervising access
 
 See [SECURITY.md](SECURITY.md) for the full security policy.
 
-## 📚 Documentation
+## Documentation
 
-- [Architecture overview](ARCHITECTURE.md) — high-level system design and tech stack
-- [Security policy](SECURITY.md) — security posture and vulnerability reporting
-- [Contributing guidelines](CONTRIBUTING.md) — bug reports, feature suggestions, interest and market survey
-- [Changelog](CHANGELOG.md) — notable changes per release
-- [Research library](docs/research/README.md) — index of public research documents
-- [K–12 pedagogical, psychological, and engagement frameworks](docs/research/k12-pedagogical-frameworks.md) — 13-framework taxonomy, citations, and design context
-- [WorkWizard Research Foundation](docs/research/workwizard-research-foundation.md) — research basis for the product
-- [Press Kit](PRESS_KIT.md) — product boilerplate, fact sheet, screenshots, brand assets, and press FAQ
+- [Architecture overview](ARCHITECTURE.md): system design and tech stack
+- [Security policy](SECURITY.md): security approach and how to report a vulnerability
+- [Contributing guidelines](CONTRIBUTING.md): bug reports, suggestions and the survey
+- [Changelog](CHANGELOG.md): notable changes in each release
+- [Research library](docs/research/README.md): index of the public research documents
+- [K–12 pedagogical, psychological and engagement frameworks](docs/research/k12-pedagogical-frameworks.md): what learning science says about good worksheets, with sources
+- [WorkWizard Research Foundation](docs/research/workwizard-research-foundation.md): the evidence behind the product
+- [Press kit](PRESS_KIT.md): boilerplate text, fact sheet, screenshots, brand assets and press FAQ
 
-## 🤝 Contributing
+## Contributing
 
-This is a proprietary project and external code contributions are not accepted at this time. Bug reports and feature suggestions are welcome through [GitHub Issues](https://github.com/Made-in-Jurgistan/workwizard-public/issues), and visitors can share feedback through the in-app interest and market survey at [workwizard-demo.vercel.app/survey](https://workwizard-demo.vercel.app/survey).
+WorkWizard is proprietary, and we don't accept outside code contributions at the moment. Bug reports and suggestions are welcome through [GitHub Issues](https://github.com/Made-in-Jurgistan/workwizard-public/issues), and anyone can give feedback through the survey at [workwizard-demo.vercel.app/survey](https://workwizard-demo.vercel.app/survey).
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-## 🔄 Changelog
+## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for notable changes per release.
+See [CHANGELOG.md](CHANGELOG.md) for notable changes in each release.
 
-## ⚖️ License
+## License
 
-This software is proprietary. All rights are reserved by the copyright holder. Unauthorised copying, modification, distribution, or commercial use of any part of this repository is prohibited. For licensing inquiries, contact **madeinjurgistan@gmail.com**.
+This software is proprietary and all rights are reserved by the copyright holder. Copying, modifying, distributing or commercially using any part of this repository without permission is not allowed. For licensing questions, email **madeinjurgistan@gmail.com**.
 
 The full terms are in [LICENSE.md](LICENSE.md).
 

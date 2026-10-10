@@ -17,7 +17,7 @@
 <h1>Contributing to WorkWizard</h1>
 
 <p>
-  <strong>Interest-driven worksheet personalisation for K-12 classrooms</strong>
+  <strong>Worksheets rewritten around what each student cares about</strong>
 </p>
 
 <p>
@@ -34,40 +34,40 @@
 
 ---
 
-WorkWizard is a proprietary project under active development, with output
-quality being continuously optimised. External code contributions are not
-accepted at this time. However, we welcome community engagement in the
-following ways.
+WorkWizard is a proprietary project that we are still developing, so we don't
+accept outside code contributions at the moment. There are other ways to help,
+and we'd be glad to hear from you.
 
 ## Bug Reports
 
 Found a bug? Please [open a GitHub issue](https://github.com/Made-in-Jurgistan/workwizard-public/issues)
 with:
 
-1. **Summary** — one-line description of the problem
-2. **Steps to reproduce** — numbered list, as specific as possible
-3. **Expected behaviour** — what you expected to happen
-4. **Actual behaviour** — what happened instead
-5. **Environment** — browser, OS, device (if applicable)
-6. **Screenshots** — if the issue is visual
+1. **Summary**: one-line description of the problem
+2. **Steps to reproduce**: numbered list, as specific as possible
+3. **Expected behaviour**: what you expected to happen
+4. **Actual behaviour**: what happened instead
+5. **Environment**: browser, OS, device (if applicable)
+6. **Screenshots**: if the issue is visual
 
 ## Feature Suggestions
 
 Have an idea? Please [open a GitHub issue](https://github.com/Made-in-Jurgistan/workwizard-public/issues)
 with the `enhancement` label and:
 
-1. **Problem** — what educational or usability problem does this solve?
-2. **Proposal** — describe the feature at a high level
-3. **Alternatives** — any workarounds or alternative approaches you considered
-4. **Audience** — who benefits? (teachers, students, specific grade bands)
+1. **Problem**: what educational or usability problem does this solve?
+2. **Proposal**: describe the feature at a high level
+3. **Alternatives**: any workarounds or alternative approaches you considered
+4. **Audience**: who benefits? (teachers, students, specific grade bands)
 
 ## Pedagogical Feedback
 
-Teachers, parents, students, and school administrators can share feedback directly through the in-app interest and market survey at
+Teachers, parents, students and school leaders can give feedback through our survey at
 [workwizard-demo.vercel.app/survey](https://workwizard-demo.vercel.app/survey).
-The current instrument version is `2026-10-04-neutral-intro` (Core path by default; append `?deep=1` for the Full diagnostic).
-This is the preferred channel for feedback about exercise quality, engagement,
-and classroom fit.
+It is the best place to tell us what you think about the quality of the exercises,
+whether students would engage with them, and how they would fit into a classroom.
+The short version opens by default; add `?deep=1` to the address for the longer one.
+The current survey version is `2026-10-04-neutral-intro`.
 
 ## What We Cannot Accept
 
@@ -82,7 +82,7 @@ and classroom fit.
 - Be respectful and constructive
 - Issues that are off-topic or spam will be closed
 
-Thank you for helping make WorkWizard better.
+Thanks for taking the time to help.
 
 ---
 

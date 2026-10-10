@@ -1,10 +1,10 @@
-# Research & evidence library
+# Research library
 
-Public research documents that support WorkWizard's product narrative, pedagogy, and go-to-market story.
+The research documents behind WorkWizard's teaching approach and the problem it tries to solve.
 
-| Document | Audience | Purpose |
-|----------|----------|---------|
-| [k12-pedagogical-frameworks.md](k12-pedagogical-frameworks.md) | Educators, product | Learning-science → worksheet design taxonomy |
-| [workwizard-research-foundation.md](workwizard-research-foundation.md) | Investors, GTM | Market problem validation (130+ sources) |
+| Document | Written for | What it covers |
+|----------|-------------|----------------|
+| [k12-pedagogical-frameworks.md](k12-pedagogical-frameworks.md) | Teachers and anyone who designs learning materials | What learning science and motivation research say about good worksheets |
+| [workwizard-research-foundation.md](workwizard-research-foundation.md) | Parents, teachers, journalists and investors | The evidence on student motivation, school results, screens in school and the EdTech market, with 129 sources |
 
-**Survey instrument:** Current version is `2026-10-04-neutral-intro` (Core path by default; `?deep=1` for the Full diagnostic). Submissions from an earlier instrument version are rejected, and the respondent is asked to reload the survey; see [CHANGELOG.md](../../CHANGELOG.md).
+**Survey:** The current survey version is `2026-10-04-neutral-intro`. The short version opens by default; add `?deep=1` to the address for the longer one. Answers sent from an older version of the survey are not accepted, and the respondent is asked to reload the page. See the [changelog](../../CHANGELOG.md).
