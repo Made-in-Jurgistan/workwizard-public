@@ -25,10 +25,10 @@
 
 ---
 
-This document provides a high-level architecture overview of WorkWizard.
-Implementation details, internal data models, and infrastructure specifics
-are not disclosed. The MVP is under active development, with output quality
-being continuously optimised.
+This document gives a high-level overview of WorkWizard's architecture.
+Implementation details, internal data models and infrastructure specifics
+are not disclosed. WorkWizard is an MVP (version 0.1.0), live on Vercel and
+Railway and not yet piloted in a school.
 
 ## System at a Glance
 
@@ -41,51 +41,70 @@ being continuously optimised.
                                            │
                           ┌────────────────┼────────────────┐
                     ┌─────▼─────┐    ┌─────▼─────┐    ┌─────▼─────┐
-                    │  Mistral  │    │  Kimi K2  │    │  OpenAI   │
-                    │    OCR    │    │ Transform │    │ GPT Image │
+                    │  Mistral  │    │ Kimi K2.6 │    │  OpenAI   │
+                    │    OCR    │    │ Transform │    │   Image   │
                     └───────────┘    └───────────┘    └───────────┘
 ```
+
+| Provider | Role |
+|----------|------|
+| Mistral OCR | Reads uploaded PDFs and photos; MinerU is a self-hosted alternative |
+| Kimi K2.6 (Moonshot AI) | Rewrites the worksheet's tasks in agent sessions |
+| OpenAI GPT Image 1.5 Mini | Optional illustrations in the PDF |
+| Supabase | Interest story kits and anonymous survey data |
 
 ## Pipeline
 
 ```text
 Upload  ──▶  Personalise  ──▶  Transform  ──▶  Review  ──▶  Download
-PDF/DOCX     up to 5           AI rewriting    quality      accessible
-or photo     interests         per exercise    scored       PDF
+PDF/DOCX     up to 5           agent           original     accessible
+or photo     interests         sessions        side by side PDF
 ```
 
 | Step | What happens |
 |------|--------------|
-| **Upload** | OCR extracts structured text from PDF, DOCX, or image |
-| **Personalise** | Student picks up to 5 of 54 curated bilingual interests |
-| **Transform** | K2.6 rewrites each exercise inside the interest context; bare equations become embedded mini word-problems with strategy hints; every rewrite is checked in code before it is accepted |
-| **Review** | Original and transformed shown side by side with quality scores |
-| **Download** | Per-grade styled PDF for offline student work |
+| **Upload** | Text is extracted from a PDF, Word file, photo or text file; the grade band is detected and confirmed by the teacher |
+| **Personalise** | The student picks up to 5 of 54 curated bilingual interests |
+| **Transform** | Worksheets that print their answers, and worksheets of subjects that gain nothing from a story, are turned away before any model call. The worksheet is split into tasks without changing its text. Kimi K2.6 agent sessions rewrite groups of tasks around the chosen interests and check each task in code; a task that never passes keeps its original text. A final answer guard scans the whole worksheet |
+| **Review** | Original and personalised versions are shown side by side with the detected subject, grade band and the frameworks applied |
+| **Download** | A PDF laid out for the grade band, for the student to complete on paper |
 
 ## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
-| Frontend | React 19, TypeScript 5.x, Vite, Tailwind CSS |
-| Backend | Python 3.12, FastAPI, Pydantic v2, structlog |
-| AI | Kimi K2.6 (transform and judge, instant mode), Mistral OCR, OpenAI GPT Image 1.5 Mini (PDF illustrations) |
-| Data | Supabase Postgres (pgvector provisioned; retrieval is deterministic key lookup) |
-| Testing | pytest, Vitest, Playwright |
-| Infrastructure | Docker Compose, nginx, GitHub Actions, Vercel, Railway |
+| Frontend | React 19, TypeScript 5, Vite 7, Tailwind CSS 4 |
+| Backend | Python 3.12, FastAPI, Pydantic v2 |
+| AI | Kimi K2.6 (Moonshot AI, 256K context), Mistral OCR, OpenAI GPT Image 1.5 Mini (PDF illustrations) |
+| PDF | WeasyPrint |
+| Data | Supabase Postgres |
+| Testing | pytest (5,900+ tests), Vitest (700+ tests), Playwright (3 specs) |
+| Infrastructure | Docker, GitHub Actions, Vercel, Railway |
+
+## Coverage
+
+| Dimension | Scope |
+|-----------|-------|
+| Worksheets | Any worksheet: work in class, homework, test preparation |
+| Grade bands | 7: grades 1–2, 3–4, 5–6, 7–8, 9–10, 11–12 and 13 |
+| Interests | 54 in 6 groups of 9; up to 5 per student; some offered only from a certain grade |
+| Subjects | 14 domains, 37 subdomains. Mathematics, science, language arts, social studies (geography, economics), world languages, technology, *Sachunterricht* and mixed sheets are personalised. History, civics, physical education, arts, music, and religion and ethics are turned away; in grades 1–4 history and civics count as *Sachunterricht* |
+| Languages | German and English |
+| Pedagogy | 8 framework labels: cognitive load, zone of proximal development, scaffolding, self-determination autonomy support, narrative transportation, worked examples, prior knowledge, metacognition |
 
 ## Key Design Principles
 
-- **Engagement-first** — engagement is the core product goal and comes from relevance to the interest, not decoration; pedagogy is the responsible frame
-- **Print-first** — the model runs once; the student works offline on paper
-- **Answer protection** — a hard constraint; answers are never revealed in output
-- **Bilingual by design** — DE/EN throughout, never mixed in output
-- **Grade-aware** — 7 grade bands with calibrated scaffolding and a grade-scaled word budget
-- **Subject-aware** — hint discipline and evaluation criteria adapt to subject domain
-- **Pedagogically grounded** — all 13 frameworks active (16 routed labels)
-- **Two transformation engines** — selected by deployment configuration. The per-exercise pipeline rewrites one exercise per unit of work; the agent engine splits the worksheet without editing source text, then runs tool-assisted model sessions over groups of tasks. Both engines end in the same answer guard
-- **Quality-scored** — per-exercise acceptance in code (source preservation, answer leaks, length). The per-exercise pipeline adds one LLM-as-judge call (K2.6 instant mode) and at most one repair; the agent engine accepts each task on its own checks. Output that never passes is replaced by the source exercise
-- **Risk-adjusted generation** — on the per-exercise pipeline, the solution strategy of answer-critical numeric exercise types is compiled in a separate step before the narrative is written; other exercise types use a single call with the same answer-protection checks. On both engines the computed answer is never included in any model input
-- **Bounded parallelism** — large worksheets transform in admission-controlled waves so provider limits are respected; production UI streams progress over SSE
+- **Engagement through relevance** — engagement comes from the student's own interest carrying the task, not from decoration; pedagogy is the responsible frame
+- **Print-first** — the computer is used to make the worksheet; the student works on paper
+- **Answer protection** — a hard constraint: the model that rewrites a task never receives its answer, code verifies that every answer is unchanged, and no output that reveals an answer is returned
+- **Acceptance in code** — every task passes deterministic checks (original task intact, answer unchanged, no leak, length per grade band, age-appropriate topics) before it is accepted; a task that never passes is printed as in the original
+- **Source text kept** — task text, numbers, blanks and formulas stay exactly as printed; the story is added around them
+- **Bilingual by design** — German and English throughout, never mixed in one worksheet
+- **Grade-aware** — 7 grade bands with their own sentence and word limits, hint rules and PDF layout
+- **Subject-aware** — subjects that gain nothing from a story are turned away instead of personalised
+- **Pedagogically grounded** — 8 frameworks, recorded per task: four for the story context, four for the strategy hints
+- **Bounded spend** — every worksheet runs within a fixed budget of model calls and time; progress is streamed to the browser
+- **Measured** — an evaluation harness runs a fixed set of worksheets through the real pipeline and scores the results, including how consistent repeated runs are
 
 ## What Is Not Disclosed
 
@@ -95,7 +114,7 @@ The following are proprietary and not documented in this public repository:
 - Prompt structures and orchestration logic
 - Internal data models and database schema
 - Deployment URLs and infrastructure addresses
-- ADRs and internal documentation
+- Internal documentation and design records
 - Configuration files and environment variable details
 
 For licensing inquiries: **madeinjurgistan@gmail.com**

@@ -276,7 +276,7 @@ The EdTech market is large, but its size tells us nothing about learning. The mo
 
 German young people already spend several hours a day on games, social media and video (see 1.2). Most learning apps are themselves screen-based, so each one adds to that time. If an app adds screen time, it should have to show a learning benefit.
 
-> **Our design rule.** The AI runs before the student sees anything, and the learning happens on paper. WorkWizard is meant to take screen time out of homework.
+> **Our design rule.** The AI runs before the student sees anything, and the learning happens on paper. WorkWizard is meant to take screen time out of worksheet practice, in class, at home and in test preparation.
 
 **Risk two: weaker attention**
 
@@ -405,7 +405,7 @@ WorkWizard draws on decades of research in developmental psychology, cognitive s
 
 **What WorkWizard does today**
 
-- A teacher uploads a worksheet (PDF, DOCX, TXT, JPG/JPEG, PNG, GIF, BMP, TIFF or WEBP, up to 10 MB). Mistral OCR extracts the text.
+- A teacher uploads a worksheet (PDF, DOCX, TXT, JPG/JPEG, PNG, GIF, BMP, TIFF or WEBP, up to 10 MB). Mistral OCR extracts the text, with MinerU as fallback.
 - Each student picks up to 5 interests from 54, grouped in 6 categories of 9: video games, sports, TV and film, fantasy and adventure, superheroes, and creative making. Interests are available in German and English.
 - Kimi K2.6 (Moonshot AI) rewrites each task inside the chosen interest, calibrated to one of 7 grade bands of the German system (1–2, 3–4, 5–6, 7–8, 9–10, 11–12 and 13).
 - The answers are never shown to the model or to the student. Every rewritten task is checked in code, and a task that fails its checks is replaced by the original task.
@@ -472,33 +472,34 @@ These advantages are small and vary by task, learner, text and device. On the ta
 
 ### 4.3 Pedagogical framework taxonomy
 
-WorkWizard's design draws on a taxonomy of 13 pedagogical frameworks, expressed as 16 labels: self-determination theory has three labels (`sdt`, `sdt_autonomy`, `competence_feedback`), and scaffolding is treated as part of the zone of proximal development.
-
-The engine running in production applies 8 of these labels to each task. Four shape the story context: autonomy support, narrative transportation, prior knowledge activation and cognitive load. Four shape the hints: scaffolding, zone of proximal development, worked examples and metacognition. The other frameworks inform the overall design and our quality checks, but they do not shape every exercise.
+WorkWizard uses a taxonomy of eight pedagogical frameworks, each with one label. The engine records, for each personalised task, the frameworks its story context and hints apply. Four shape the story context: autonomy support, narrative transportation, prior knowledge activation and cognitive load. Four shape the hints: scaffolding, zone of proximal development, worked examples and metacognition.
 
 **Frameworks in the taxonomy**
 
-| Framework | Labels | Primary evidence |
-|---|---|---|
-| Cognitive Load Theory | `cognitive_load` | [Sweller (1988)](https://doi.org/10.1207/s15516709cog1202_4); Cowan (2001, 2010); Gathercole et al. (2004) |
-| Zone of Proximal Development | `zpd` | [Vygotsky (1978)](https://psycnet.apa.org/record/1978-36052-000); Pearson & Gallagher (1983) |
-| Scaffolding | `scaffolding` | [Wood, Bruner & Ross (1976)](https://doi.org/10.1111/j.1469-7610.1976.tb00381.x); Pea (2004) |
-| Bloom's Taxonomy | `bloom` | [Anderson & Krathwohl (2001)](https://www.pearson.com/en-us/subject-catalog/p/blooms-taxonomy/P2000000053) |
-| Self-Determination Theory | `sdt`, `sdt_autonomy`, `competence_feedback` | [Ryan & Deci (2000, 2017, 2020)](https://selfdeterminationtheory.org/); [Wang et al. (2024)](https://www.sciencedirect.com/science/article/abs/pii/S0023969024000572); [Hattie & Timperley (2007)](https://doi.org/10.3102/003465430298487) |
-| Dual Coding Theory | `dual_coding` | [Paivio (1971, 1990)](https://psycnet.apa.org/record/1971-22793-001); [Mayer (2009, 2021)](https://www.cambridge.org/highereducation/books/multimedia-learning/FB7E79A165D24D47CEACEB4D2C426ECD) |
-| Growth Mindset | `growth_mindset` | [Dweck (2006)](https://www.penguinrandomhouse.com/books/44330/mindset-by-carol-s-dweck-phd/); [Yeager et al., *Nature* (2019)](https://doi.org/10.1038/s41586-019-1466-y); [teachers' growth mindset meta-analysis, *Educational Psychology Review* (2024)](https://link.springer.com/article/10.1007/s10648-024-09925-7) |
-| Flow Theory | `flow` | [Csikszentmihalyi (1990)](https://www.goodreads.com/book/show/66354.Flow) |
-| Discovery Learning | `discovery_learning` | [Bruner (1961, 1966)](https://psycnet.apa.org/record/1962-00777-001) |
-| Narrative Transportation | `narrative_transportation` | [Green & Brock (2000)](https://www.researchgate.net/publication/229608417_Narrative_Impact); Jensen et al. (2016) |
-| Worked Examples Effect | `worked_examples` | [Sweller (2011)](https://doi.org/10.1016/B978-0-12-387691-1.00002-8); Renkl & Atkinson (2003); Kalyuga et al. (2003) |
-| Prior Knowledge Activation | `prior_knowledge` | [Ausubel (1968)](https://openlibrary.org/books/OL26705958M/Educational_Psychology_A_Cognitive_View) |
-| Metacognition | `metacognition` | [Flavell (1979)](https://doi.org/10.1037/0003-066x.34.10.906) |
-| Cognitive Activation | `cognitive_activation` | Klieme et al. |
+| Framework | Label | Shapes | Primary evidence |
+|---|---|---|---|
+| Self-Determination Theory, autonomy support | `sdt_autonomy` | Story context | [Ryan & Deci (2000, 2017, 2020)](https://selfdeterminationtheory.org/); [Wang et al. (2024)](https://www.sciencedirect.com/science/article/abs/pii/S0023969024000572) |
+| Narrative Transportation | `narrative_transportation` | Story context | [Green & Brock (2000)](https://www.researchgate.net/publication/229608417_Narrative_Impact); Jensen et al. (2016) |
+| Prior Knowledge Activation | `prior_knowledge` | Story context | [Ausubel (1968)](https://openlibrary.org/books/OL26705958M/Educational_Psychology_A_Cognitive_View) |
+| Cognitive Load Theory | `cognitive_load` | Story context | [Sweller (1988)](https://doi.org/10.1207/s15516709cog1202_4); Cowan (2001, 2010); Gathercole et al. (2004) |
+| Scaffolding | `scaffolding` | Hints | [Wood, Bruner & Ross (1976)](https://doi.org/10.1111/j.1469-7610.1976.tb00381.x); Pea (2004) |
+| Zone of Proximal Development | `zpd` | Hints | [Vygotsky (1978)](https://psycnet.apa.org/record/1978-36052-000); Pearson & Gallagher (1983) |
+| Worked Examples Effect | `worked_examples` | Hints | [Sweller (2011)](https://doi.org/10.1016/B978-0-12-387691-1.00002-8); Renkl & Atkinson (2003); Kalyuga et al. (2003) |
+| Metacognition | `metacognition` | Hints | [Flavell (1979)](https://doi.org/10.1037/0003-066x.34.10.906) |
 
-**Informs the design, not applied to worksheets**
+**Related research, not part of the engine**
+
+The following frameworks are well studied and discussed in this document and in the K-12 frameworks guide. WorkWizard does not encode them.
 
 | Framework | Primary evidence |
 |---|---|
+| Bloom's Taxonomy | [Anderson & Krathwohl (2001)](https://www.pearson.com/en-us/subject-catalog/p/blooms-taxonomy/P2000000053) |
+| Competence feedback (Self-Determination Theory) | [Hattie & Timperley (2007)](https://doi.org/10.3102/003465430298487) |
+| Dual Coding Theory | [Paivio (1971, 1990)](https://psycnet.apa.org/record/1971-22793-001); [Mayer (2009, 2021)](https://www.cambridge.org/highereducation/books/multimedia-learning/FB7E79A165D24D47CEACEB4D2C426ECD) |
+| Growth Mindset | [Dweck (2006)](https://www.penguinrandomhouse.com/books/44330/mindset-by-carol-s-dweck-phd/); [Yeager et al., *Nature* (2019)](https://doi.org/10.1038/s41586-019-1466-y); [teachers' growth mindset meta-analysis, *Educational Psychology Review* (2024)](https://link.springer.com/article/10.1007/s10648-024-09925-7) |
+| Flow Theory | [Csikszentmihalyi (1990)](https://www.goodreads.com/book/show/66354.Flow) |
+| Discovery Learning | [Bruner (1961, 1966)](https://psycnet.apa.org/record/1962-00777-001) |
+| Cognitive Activation | Klieme et al. |
 | Spaced Practice | [Ebbinghaus (1885)](https://archive.org/details/memorycontributi00ebbiuoft); Cepeda et al. (2006) |
 
 Spaced review would need a record of each student's earlier sessions. WorkWizard does not keep one yet, so worksheets contain no spaced-review item.

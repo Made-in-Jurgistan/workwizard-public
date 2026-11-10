@@ -34,9 +34,8 @@
 
 ---
 
-WorkWizard is a proprietary project that we are still developing, so we don't
-accept outside code contributions at the moment. There are other ways to help,
-and we'd be glad to hear from you.
+WorkWizard is a proprietary project and doesn't accept outside code
+contributions. There are other ways to help, and we'd be glad to hear from you.
 
 ## Bug Reports
 
@@ -62,12 +61,15 @@ with the `enhancement` label and:
 
 ## Pedagogical Feedback
 
-Teachers, parents, students and school leaders can give feedback through our survey at
+Parents, teachers (including tutors), students from grade 3 and school leaders can
+give feedback through our survey at
 [workwizard-demo.vercel.app/survey](https://workwizard-demo.vercel.app/survey).
-It is the best place to tell us what you think about the quality of the exercises,
-whether students would engage with them, and how they would fit into a classroom.
-The short version opens by default; add `?deep=1` to the address for the longer one.
-The current survey version is `2026-10-04-neutral-intro`.
+It is about practising with worksheets in every situation: in class, as homework and
+before a test. It asks first how practice goes today, then shows two example
+worksheets next to their personalised versions, and asks what you think and whether
+you would try it. It takes 2 to 5 minutes, is anonymous, and asks nothing about money.
+At the end you can see how others in your role answered and try WorkWizard on a real
+worksheet. The current survey version is `v3`.
 
 ## What We Cannot Accept
 

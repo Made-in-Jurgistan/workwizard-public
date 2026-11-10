@@ -1,3 +1,3 @@
-# Moved
+# K-12 pedagogical frameworks
 
-This document now lives at [k12-pedagogical-frameworks.md](docs/research/k12-pedagogical-frameworks.md).
+The document is at [docs/research/k12-pedagogical-frameworks.md](docs/research/k12-pedagogical-frameworks.md).

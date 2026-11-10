@@ -32,43 +32,62 @@ Implementation details are not disclosed.
 ## Secrets Management
 
 - All credentials exclusively via environment variables — never in source
-- No secrets, API keys, or tokens in this public repository
+- Secrets are redacted from logs and error responses
+- No secrets, API keys or tokens in this public repository
 
 ## Input Validation
 
 - Pydantic v2 validation at every request boundary
-- File upload: max 10 MB, extension allowlist (PDF, DOCX, TXT, PNG, JPG, WEBP, GIF, BMP, TIFF)
-- Interest selection: max 5 from curated catalog
-- Language field: enum-restricted to `de` / `en`
+- File upload: max 10 MB; extension and file-type allowlist (PDF, DOCX, TXT, PNG, JPG/JPEG, WEBP, GIF, BMP, TIFF), with file-signature checks for every type except TXT
+- Interest selection: 1 to 5 from the curated catalog; interests above the student's grade band are rejected
+- Language: German or English only
+- Worksheet length and the model calls spent on one worksheet are bounded
+
+## Prompt Injection
+
+- Untrusted worksheet text is sanitised before it reaches a model: hidden characters and look-alike letters are normalised, instruction-override phrases are flagged and removed, and markup that could pose as instructions is neutralised
+- The sanitiser is defence in depth beside the deterministic answer checks
 
 ## Answer Protection (Hard Constraint)
 
-- Bilingual regex guard rejects any output that leaks a solution
-- Answer-key sections are stripped from the source worksheet before processing
-- The computed answer is never included in any model input
-- Answer-revelation detection is a hard check in the per-exercise quality gate
-- A failing exercise gets at most one repair attempt on the per-exercise pipeline; if it still fails, the source exercise is used
-- On the agent engine, every task is checked in code and a task that never passes is printed as in the source; the model receives a verdict on whether the answer is unchanged, never the computed value
-- Both engines pass their output through the same answer guard
+- A printed answer-key section is removed from the worksheet before processing
+- A worksheet that prints its answers outside an answer key is rejected before any model call
+- The model that rewrites a task never receives its answer
+- Every task is checked in code; the model learns only whether an answer is unchanged, never the value, and a task whose answer changed or cannot be verified is not accepted
+- A task that never passes its checks keeps its original text
+- A bilingual answer guard scans the whole assembled worksheet; an output that reveals an answer is not returned
+
+## Paid Image Generation
+
+- Illustrations are generated only for cues that the server itself signed in the personalised worksheet; signatures expire after 24 hours
+- An edited or unsigned cue renders without an image, and the PDF is still produced
+- The number of images per PDF is capped
 
 ## Survey Data
 
-- Anonymous: no IP address or user-agent is stored, and no third-party fonts or trackers are loaded
-- Server-side validation of every answer against the current instrument version
-- Contact details are stored only after the respondent ticks a separate consent box for each purpose; students cannot leave contact details
-- Erasure of one respondent's data on request, covering answers, lead status, and contact messages
+- Anonymous: no IP address or user agent is stored, and no third-party fonts or trackers are loaded
+- Server-side validation of every answer against the current survey version (`v3`); answers from an outdated version are rejected and the respondent is asked to reload
+- Contact details are stored only when an adult chooses a pilot or launch news and ticks the consent box for that purpose; students never reach a contact field
+- Erasure of one respondent's data on request: their contact details only, or all their answers
 - 18-month retention window, enforced by a scheduled job
 - Administration routes require an admin token; destructive operations (full reset, respondent erasure) require a separate token
-- Static survey pages are served with a Content-Security-Policy that disallows inline scripts
+- Survey pages are served with a Content-Security-Policy that disallows inline scripts
 
 ## Rate Limiting
 
-- Per-IP rate limiting on transform, upload, PDF, and interest routes
-- Request ceilings to prevent worker exhaustion (~280 s non-streaming; longer budget for SSE streaming on large worksheets)
+- Per-IP rate limiting on upload, transform, PDF, interest and survey routes, and a cap on concurrent streamed transforms per client
+- Request ceilings to prevent worker exhaustion (~280 s non-streaming; a longer budget for streamed progress on large worksheets)
 
-## CORS
+## CORS and Security Headers
 
-- Explicit allowlist — no wildcard in production
+- Explicit allowlist; a wildcard origin is rejected at startup
+- Security headers on every response, including a restrictive Content-Security-Policy, `X-Frame-Options: DENY` and HSTS in production
+
+## Database
+
+- Row-level security on every table
+- The browser has no database access; all data access goes through the backend API
+- Survey tables are reachable only from the server
 
 ## Container Security
 
@@ -78,13 +97,14 @@ Implementation details are not disclosed.
 ## CI/CD Security
 
 - SAST (bandit) and dependency audits (pip-audit, npm audit) on every CI run
+- GitHub Actions pinned to commit SHAs
 - No secrets in build logs
 
 ## Known Limitations (v0.1.0)
 
-- No end-user authentication — pilot will run under teacher-supervised access once the MVP is test-ready
+- No end-user authentication — the pilot will run with teachers supervising access
 - No audit log
-- MVP under active development — output quality is being continuously optimised
+- A documented data-protection review is required before the school pilot
 
 ## Vulnerability Reporting
 

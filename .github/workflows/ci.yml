@@ -20,7 +20,7 @@ jobs:
       - name: Verify required files exist
         run: |
           set -eu
-          for f in README.md PRESS_KIT.md ARCHITECTURE.md SECURITY.md CHANGELOG.md CONTRIBUTING.md LICENSE.md docs/research/README.md docs/research/k12-pedagogical-frameworks.md docs/research/workwizard-research-foundation.md; do
+          for f in README.md PRESS_KIT.md ARCHITECTURE.md SECURITY.md CONTRIBUTING.md LICENSE.md docs/research/README.md docs/research/k12-pedagogical-frameworks.md docs/research/workwizard-research-foundation.md; do
             if [ ! -f "$f" ]; then
               echo "ERROR: Missing required file: $f"
               exit 1
