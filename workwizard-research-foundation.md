@@ -1,3 +1,3 @@
-# Moved
+# WorkWizard Research Foundation
 
-This document now lives at [workwizard-research-foundation.md](docs/research/workwizard-research-foundation.md).
+The document is at [docs/research/workwizard-research-foundation.md](docs/research/workwizard-research-foundation.md).

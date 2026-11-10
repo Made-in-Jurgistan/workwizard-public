@@ -44,11 +44,10 @@
 - [Features](#features)
 - [The research behind it](#the-research-behind-it)
 - [Technology](#technology)
-- [Timeline](#timeline)
 - [Founder and company](#founder-and-company)
 - [Press FAQ](#press-faq)
 - [What works today and what is missing](#what-works-today-and-what-is-missing)
-- [Why now](#why-now)
+- [Market timing](#market-timing)
 - [Quotes](#quotes)
 - [Press release template](#press-release-template)
 - [Press coverage](#press-coverage)
@@ -69,17 +68,18 @@ a child who plays Minecraft: *"Your chest room is 8 blocks long and 5 blocks wid
 many blocks do you need for the floor?"* The maths and the answer haven't changed. The
 setting has, and the setting is the part a child notices first.
 
-The teacher uploads a worksheet as a PDF, a Word file, a photo or plain text. The
-student picks up to five interests from a list of 54, which includes Minecraft,
-football, Pokémon, Harry Potter, Spider-Man and baking. WorkWizard rewrites each
-exercise around those interests and produces a PDF ready to print. The student then
-works on paper with a pen. The learning goal stays the one the teacher set, and the
-answers are never printed or hinted at.
+It works with any worksheet: work in class, homework or test preparation. The
+worksheet is uploaded as a PDF, a Word file, a photo or plain text. The student picks
+up to five interests from a list of 54, which includes Minecraft, football, Pokémon,
+Harry Potter, Spider-Man and baking. WorkWizard rewrites each exercise around those
+interests and produces a PDF ready to print. The student then works on paper with a
+pen. The learning goal stays the one the teacher set, and the answers are never
+printed or hinted at.
 
 WorkWizard is built for German schools (grades 1 to 13) and works in German and
-English. It adjusts language and support to seven age groups, from grades 1–2 up to
-grade 13. It is an early version (0.1.0) that we are still improving, and it has not
-yet been tried in a school.
+English. It adjusts language and support to seven grade bands, from grades 1–2 up to
+grade 13. It is an MVP (version 0.1.0), live on the web and not yet piloted in a
+school.
 
 ### The problem
 
@@ -118,7 +118,7 @@ that, and we will report what it finds.
 | Worksheet apps | Add more time on a screen | Uses the screen once, then the child works on paper |
 | Gamified learning | Rewards with points and badges, which can lose their pull once the novelty fades | Makes the topic itself the thing the child enjoys |
 | General AI chatbots | Can do the work for the child | Rewrites the question and keeps the answer hidden |
-| New learning platforms | Bring their own content that teachers have to learn | Works with the teacher's own worksheet |
+| Separate learning platforms | Bring their own content that teachers have to learn | Works with the teacher's own worksheet |
 
 We don't know of another product that combines all four: it starts from the teacher's
 own material, uses the student's interests instead of points and badges, keeps the
@@ -152,11 +152,11 @@ about.
 | **Tagline** | Worksheets rewritten around what each student cares about |
 | **Made by** | Made in Jurgistan |
 | **Founded** | 2025 |
-| **Status** | Version 0.1.0, early product, not yet piloted in schools |
-| **For** | Schools in Germany, grades 1 to 13 |
+| **Status** | MVP version 0.1.0, live, not yet piloted in schools |
+| **For** | Schools in Germany, grades 1 to 13; any worksheet, in class, as homework or for test preparation |
 | **Languages** | German and English |
 | **Runs on** | Web browser, nothing to install |
-| **Price** | Not set yet |
+| **Price** | Not set |
 | **Survey** | [workwizard-demo.vercel.app/survey](https://workwizard-demo.vercel.app/survey) |
 | **Public repository** | [github.com/Made-in-Jurgistan/workwizard-public](https://github.com/Made-in-Jurgistan/workwizard-public) |
 | **Licence** | Proprietary |
@@ -168,12 +168,13 @@ about.
 |---|---|
 | Interests to choose from | 54, in 6 groups of 9 |
 | Interests per student | Up to 5 |
-| Age groups | 7 (grades 1–2, 3–4, 5–6, 7–8, 9–10, 11–12 and 13) |
+| Grade bands | 7 (grades 1–2, 3–4, 5–6, 7–8, 9–10, 11–12 and 13) |
+| Subjects recognised | 14 domains with 37 subdomains; 8 domains are personalised |
 | File types accepted | PDF, Word (DOCX), plain text and images (PNG, JPG, WEBP, GIF, BMP, TIFF) |
 | Largest file | 10 MB |
-| Teaching research it draws on | 13 frameworks from learning science and motivation research |
+| Teaching frameworks applied | 8, recorded on every personalised exercise |
 | Sources in the research foundation | 129 |
-| Automated tests | About 5,800 for the server and about 740 for the app |
+| Automated tests | More than 5,900 for the server, more than 700 for the app and 3 end-to-end test suites |
 
 ---
 
@@ -193,7 +194,7 @@ uploads a worksheet they already use, and the student picks up to five interests
 from Minecraft to football to Marvel. Each exercise is rewritten around those
 interests. The learning goal stays the same, the answers are never revealed, and the
 result is a PDF that the student completes on paper. WorkWizard is built for German
-schools, works in German and English, and adjusts to seven age groups from grade 1 to
+schools, works in German and English, and adjusts to seven grade bands from grade 1 to
 grade 13.
 
 ### Long (under 200 words)
@@ -205,11 +206,11 @@ German 15-year-olds scored lower than ever before in maths, reading and science.
 teacher has time to write a Minecraft version of a
 geometry sheet for one child and a Marvel version for another.
 
-WorkWizard does that rewriting. A teacher uploads a worksheet they already use. The
-software reads the text, works out the grade level, and rewrites each exercise around
-interests the student chooses from a list of 54. The learning goal stays the same, the
-answers are checked so they never appear, and the result is a PDF laid out for the
-student's age.
+WorkWizard does that rewriting, for work in class, homework and test preparation. A
+teacher uploads a worksheet they already use. The software reads the text, works out
+the grade level, and rewrites each exercise around interests the student chooses from
+a list of 54. The learning goal stays the same, the answers are checked so they never
+appear, and the result is a PDF laid out for the student's age.
 
 The product works in German and English, covers grades 1 to 13, and draws on
 129 research sources. Students use a screen only while the worksheet is being made and
@@ -226,11 +227,11 @@ Upload  ──▶  Choose interests  ──▶  Rewrite  ──▶  Check  ─�
 
 | Step | What happens |
 |------|--------------|
-| **Upload** | The teacher uploads a worksheet: PDF, Word file, photo or plain text. WorkWizard reads the text from it. |
+| **Upload** | A worksheet is uploaded: PDF, Word file, photo or plain text. WorkWizard reads the text from it and suggests a grade band, which the teacher confirms. |
 | **Choose interests** | The student picks up to five of 54 interests. |
-| **Rewrite** | AI rewrites each exercise around those interests, matching the language to the student's age group. |
-| **Check** | Every rewritten exercise is checked automatically. If an exercise fails, the original is used instead. The teacher sees the original and the new version side by side. |
-| **Print** | WorkWizard produces a PDF laid out for the student's age group. |
+| **Rewrite** | AI writes a short situation from those interests around each exercise, keeps the exercise itself as printed, and adds up to two hints on how to approach it. The language matches the student's grade band. |
+| **Check** | Every rewritten exercise is checked automatically: the task must be intact, the answer unchanged and not given away. If an exercise never passes, the original is used instead. The teacher sees the original and the personalised version side by side. |
+| **Print** | WorkWizard produces a PDF laid out for the student's grade band. |
 
 ---
 
@@ -313,41 +314,37 @@ something without our written permission.
 
 | Feature | What it means |
 |---------|---------------|
-| **Interests** | 54 interests in six groups, each with its own characters, settings and details in German and English |
-| **Age-appropriate** | Seven age groups from grades 1–2 to grade 13, each with its own sentence length, level of support and type of thinking asked for |
-| **Answers stay hidden** | WorkWizard never gives the AI the answer, and every rewritten exercise is checked so that no solution is given away. If a check fails, the original exercise is used. |
-| **Quality checks** | Each exercise is checked for whether the original task is still intact, whether an answer has leaked and whether it is too long. We also measure the system on a fixed set of real worksheets. |
-| **Content suitable for the age group** | Story details come from a curated collection, with topics that aren't suitable for younger children filtered out |
-| **Variety** | Stories change from exercise to exercise so a worksheet doesn't repeat itself |
-| **Readable PDFs** | Layouts are designed for each age group and tested against international accessibility guidelines (WCAG 2.2, level AA). An independent audit has not yet been done, so we don't claim full compliance. |
+| **Interests** | 54 interests in six groups, each with its own roles, missions, settings and details in German and English |
+| **Age-appropriate** | Seven grade bands from grades 1–2 to grade 13, each with its own sentence length, word limits and level of support |
+| **Answers stay hidden** | WorkWizard never gives the AI that rewrites an exercise its answer, and every rewritten exercise is checked so that no solution is given away. If a check fails, the original exercise is used. |
+| **Quality checks** | Each exercise is checked in code: is the original task intact, is the answer unchanged, has an answer leaked, is it too long for the grade band? We also measure the system on a fixed set of worksheets. |
+| **Content suitable for the age group** | Story details come from a curated collection, topics unsuitable for the grade band are checked for, and some interests are offered only from a certain grade |
+| **Variety** | People and story openings change from exercise to exercise so a worksheet doesn't repeat itself |
+| **Subjects that suit a story** | Maths, science, languages, geography, economics, technology and *Sachunterricht* are personalised. History, civics, physical education, arts, music, and religion and ethics are turned away, because a story adds nothing there; in grades 1 to 4, history and civics count as *Sachunterricht*. |
+| **Readable PDFs** | Layouts are designed for each grade band and tested against international accessibility guidelines (WCAG 2.2, level AA). An independent audit has not yet been done, so we don't claim full compliance. |
 | **Made for paper** | The computer is used to make the worksheet; the student works on paper |
 
 ---
 
 ## The research behind it
 
-WorkWizard's design draws on 13 frameworks from learning science and motivation
-research. They shape things like how much text a young reader can handle at once, how
-much help a hint should give, and why a choice of topic can matter to a child. The
-version running today uses up to eight of them on each exercise. The research on
-these ideas, with sources and limits, is summarised in the
+WorkWizard applies eight frameworks from learning science and motivation research to
+every personalised exercise. Four shape the story around the exercise and four shape
+the hints. They decide things like how much text a young reader can handle at once,
+how much help a hint should give, and why a choice of topic can matter to a child. The
+research on these and related ideas, with sources and limits, is summarised in the
 [K-12 pedagogical frameworks report](docs/research/k12-pedagogical-frameworks.md).
 
 | Framework | Main source | What it shapes in WorkWizard |
 |-----------|-------------|------------------------------|
-| Cognitive load theory | Sweller (1988) | How much information each step asks a student to hold in mind |
-| Zone of proximal development | Vygotsky (1978) | How much help a hint gives |
-| Bloom's taxonomy | Anderson & Krathwohl (2001) | What kind of thinking a task asks for |
-| Self-determination theory | Ryan & Deci (2000, 2017) | Choice and interest as sources of motivation |
-| Flow | Csikszentmihalyi (1990) | Keeping a task hard enough to engage without frustrating |
-| Growth mindset | Dweck (2006) | Praising effort and method, not just results |
-| Discovery learning | Bruner (1961) | Guiding students with questions |
-| Dual coding | Paivio (1971); Mayer (2009) | Pairing words with pictures, more for younger children |
-| Narrative transportation | Green & Brock (2000) | How a story can draw a reader in |
-| Worked examples | Sweller (2011) | Starting with fully worked steps and removing them over time |
-| Prior knowledge | Ausubel (1968) | Linking new ideas to things the student already knows |
-| Metacognition | Flavell (1979); Schraw & Dennison (1994) | Prompts to plan and check one's own work |
-| Cognitive activation | Burge, Lenkeit & Sizmur (2015) | Asking students to reason, not only to recall |
+| Self-determination theory, autonomy support | Ryan & Deci (2000) | The student's own choice of interest carries the exercise |
+| Narrative transportation | Green & Brock (2000) | A setting that draws the student in |
+| Prior knowledge | Ausubel (1968) | Linking the exercise to what the student knows about the interest |
+| Cognitive load theory | Sweller (1988) | One idea per step, nothing that distracts from the task |
+| Scaffolding | Wood, Bruner & Ross (1976) | Hints that support without solving |
+| Zone of proximal development | Vygotsky (1978) | How much help a hint gives at each grade band |
+| Worked examples | Sweller (2011) | A hint shows a step, never the answer |
+| Metacognition | Flavell (1979) | Prompts to plan an approach and check the result |
 
 > These frameworks inform the design. They are not evidence that WorkWizard itself
 > improves results. That is what the pilot is for.
@@ -365,22 +362,11 @@ which cites 129 sources.
 |------|-------------|
 | Website | React 19, TypeScript, Vite, Tailwind CSS |
 | Server | Python 3.12, FastAPI |
-| AI | Kimi K2.6 by Moonshot AI (rewriting and checking), Mistral OCR (reading uploaded files), OpenAI GPT Image 1.5 Mini (optional illustrations) |
+| AI | Kimi K2.6 by Moonshot AI (rewriting exercises), Mistral OCR (reading uploaded files), OpenAI GPT Image 1.5 Mini (optional illustrations) |
+| PDF | WeasyPrint |
 | Database | Supabase (Postgres) |
 | Testing | pytest, Vitest, Playwright |
 | Hosting | Vercel and Railway |
-
----
-
-## Timeline
-
-| When | What |
-|------|------|
-| 2025 | Made in Jurgistan founded; first WorkWizard concept |
-| 2025–2026 | Research foundation compiled |
-| Early 2026 | Server built; teaching framework taxonomy designed |
-| April 2026 | Version 0.1.0 released |
-| 2026 | Improving output quality and looking for partner schools for a pilot |
 
 ---
 
@@ -455,8 +441,18 @@ answers stay hidden.
 
 ### Who is it for?
 
-Teachers and students in German schools, from grade 1 to grade 13. It works in German
-and in English.
+Teachers, students and parents in Germany, from grade 1 to grade 13. It works with any
+worksheet, whether it is used in class, as homework or for test preparation, and it
+works in German and in English.
+
+### Which worksheets does it work with?
+
+Worksheets in maths, science, German, English and other languages, geography,
+economics, technology and *Sachunterricht*. Worksheets in history, civics, physical
+education, arts, music, and religion and ethics are turned away, because a story adds
+nothing to them and in history or civics it would blur fact with fiction. In grades 1
+to 4, history and civics content counts as *Sachunterricht* and is personalised. A
+worksheet that prints its answers outside an answer key is also turned away.
 
 ### Does it replace teachers?
 
@@ -466,11 +462,12 @@ the rewriting a teacher has no time for, and that is all it does.
 
 ### Does it give students the answers?
 
-No. The software works out the answer to each exercise only so it can check the
-rewritten version against it. That answer is never given to the AI that does the
-rewriting and is never shown to the student. Every rewritten exercise is checked
-automatically, in German and English, to make sure it doesn't give a solution away. If
-an exercise can't pass those checks, the student gets the original exercise instead.
+No. The software works out the answer to each exercise only so it can check that the
+rewritten version still has the same answer. That answer is never given to the AI that
+does the rewriting and is never shown to the student. Every rewritten exercise is
+checked automatically, in German and English, to make sure it doesn't give a solution
+away, and the finished worksheet is checked once more as a whole. If an exercise can't
+pass those checks, the student gets the original exercise instead.
 
 ### Is this more screen time?
 
@@ -479,13 +476,12 @@ paper.
 
 ### Why paper?
 
-Many countries have become more cautious about screens in school. UNESCO counts
-national school phone bans in 114 education systems, 58% of those it tracks, up from
-24% in 2023. Sweden has moved back to printed books and paper since 2023, the
-Netherlands has banned phones, tablets and smartwatches in classrooms since 2024, and
-France has banned phones in primary and lower secondary schools since 2018. In PISA
-2025, a third of German students (33%) said classmates are distracted by devices in
-most or all science lessons.
+Many countries are cautious about screens in school. UNESCO counts national school
+phone bans in 114 education systems, 58% of countries. Sweden is steering schools back
+to printed books, paper and pens, the Netherlands largely bans phones, tablets and
+smartwatches from classrooms, and France bans phones in primary and lower secondary
+schools. In PISA 2025, a third of German students (33%) said classmates are distracted
+by devices in most or all science lessons.
 
 There is also research on what psychologists call the production effect: people tend
 to remember material better when they say it aloud or write it down than when they
@@ -494,24 +490,25 @@ does the learning on paper.
 
 ### Which AI does it use?
 
-Kimi K2.6 from Moonshot AI rewrites the exercises and helps check them. Mistral OCR
-reads the text from uploaded files and photos. OpenAI GPT Image 1.5 Mini can add
-illustrations to the PDF. None of these AI models is ever given the answer to an
-exercise.
+Kimi K2.6 from Moonshot AI rewrites the exercises; code checks every rewritten
+exercise. Mistral OCR reads the text from uploaded files and photos. OpenAI GPT Image
+1.5 Mini can add illustrations to the PDF. The AI that rewrites an exercise is never
+given its answer.
 
 ### Is it GDPR-compliant?
 
-We designed it with EU data protection law in mind. For schools that need it, the text
-reading can be switched to a self-hosted tool instead of an outside service. Version
-0.1.0 has no
-user accounts yet. The pilot will run with teachers supervising access.
+It is designed with EU data protection law in mind. WorkWizard collects no personal
+data about students, and the survey stores no IP addresses. For schools that need it,
+the text reading can run on a self-hosted tool instead of an outside service. Version
+0.1.0 has no user accounts; the pilot will run with teachers supervising access, and a
+documented data-protection review comes before it.
 
 ### Has it been tried in classrooms?
 
-Not yet. We are still improving the quality of the rewritten worksheets. When the
-pilot runs, it will look at whether students are more engaged, whether learning goals
-stay intact, whether any answers leak, whether the worksheets are accessible, how much
-work it creates for teachers, and whether any group of students is worse off.
+Not yet. When the pilot runs, it will look at whether students are more engaged,
+whether learning goals stay intact, whether any answers leak, whether the worksheets
+are accessible, how much work it creates for teachers, and whether any group of
+students is worse off.
 
 ### Is the code open source?
 
@@ -524,46 +521,51 @@ Email **madeinjurgistan@gmail.com** to talk about joining the pilot.
 
 ### What comes after the pilot?
 
-The pilot results will decide what we work on in the next version.
+The pilot results decide what we work on next.
 
 ---
 
 ## What works today and what is missing
 
-WorkWizard is an early product. Here is what it can and can't do yet.
+WorkWizard is an MVP. Here is what it can and can't do.
 
 ### What works today
 
 - Uploading PDFs, Word files, images and text, and reading the text out of them
-- Recognising the grade level and the subject (8 subject areas, 38 topics)
-- Choosing from 54 interests, filtered by age, in German and English
-- Rewriting every exercise of a worksheet with AI, several exercises at once
-- Automatic checks on every exercise, with the original used if a check fails
+- Recognising the grade band and the subject (14 subject domains, 37 subdomains), and
+  turning away subjects that gain nothing from a story
+- Turning away worksheets that print their answers
+- Choosing from 54 interests in German and English, some offered only from a certain
+  grade
+- Rewriting the exercises of a worksheet with AI, several groups of exercises at once
+- Automatic checks in code on every exercise, with the original used if an exercise
+  never passes
 - Checks in German and English that stop answers from leaking
-- PDFs laid out for each age group, with accessibility features built in and tested
-  (a formal accessibility audit is still to come)
+- PDFs laid out for each grade band, with optional illustrations and accessibility
+  features built in and tested (a formal accessibility audit is still to come)
 - German and English throughout: the website, the processing and the worksheets
-- About 5,800 automated tests for the server and about 740 for the app
+- More than 5,900 automated tests for the server, more than 700 for the app and 3
+  end-to-end test suites
 
 ### What is missing
 
 | Missing | Current state | Planned for |
 |---------|---------------|-------------|
-| User accounts | No logins yet | Phase 1 |
-| Payments | No subscriptions or billing | After user accounts |
-| Classes | No classes, assignments or sharing | Phase 1 |
-| Usage data | No analytics on use or engagement | Phase 1 |
-| Parental consent | The survey follows GDPR; the product still needs consent flows for children | Phase 1 |
-| Pilot results | No school has used it yet | Phase 2 |
-| More languages | Only German and English so far | Later |
+| User accounts | No logins | Phase 1 (pilot-ready) |
+| Teacher dashboard | No saved worksheets or history | Phase 1 (pilot-ready) |
+| Usage limits | No per-user usage tracking or cost limits | Phase 1 (pilot-ready) |
+| Pilot results | No school has used it | Phase 2 (pilot) |
+| Product analytics | No data on use or engagement | Phase 2 (pilot) |
+| Payments | No subscriptions or billing | Phase 3 (scale) |
+| More languages | German and English only | Phase 3 (scale) |
 
 ---
 
-## Why now
+## Market timing
 
 We think three things make this a good moment.
 
-1. **AI has become cheap enough.** Kimi K2.6 costs $0.95 per million tokens of input
+1. **AI is cheap enough.** Kimi K2.6 costs $0.95 per million tokens of input
    and $4.00 per million tokens of output (a token is a word or part of a word), so
    making a personal worksheet for every student is affordable.
 2. **Governments are rethinking screens in school.** Sweden, the Netherlands and France
@@ -625,7 +627,7 @@ WorkWizard [announcement] for schools in Germany
 [Main paragraph: what it is, who it is for and how it works, in plain language.]
 
 [Quote from Jürgen Van Der Haegen, founder:]
-"[An approved quote from this press kit, or a new approved statement.]"
+"[An approved quote from this press kit, or another approved statement.]"
 
 [Background: how this fits WorkWizard's aim of worksheets built around students'
 interests and completed on paper.]
@@ -646,7 +648,7 @@ Press contact: madeinjurgistan@gmail.com
 
 ## Press coverage
 
-There has been no press coverage yet. Articles will be listed here once they appear.
+There is no press coverage to list. Articles about WorkWizard will be listed here.
 
 ---
 
@@ -663,19 +665,26 @@ There has been no press coverage yet. Articles will be listed here once they app
 
 Anyone can give us feedback through our survey at
 [workwizard-demo.vercel.app/survey](https://workwizard-demo.vercel.app/survey). It is
-anonymous and available in German and English, and it is aimed at parents, teachers,
-students and school leaders.
+anonymous, available in German and English, takes 2 to 5 minutes, and is aimed at
+parents, teachers (including tutors), students from grade 3 and school leaders. The
+current version is `v3`.
 
-It asks about the problems people have with homework and worksheets today, what they
-value and what they currently use, before it shows anything about WorkWizard. It then
-shows a short demo for the respondent's age group: an ordinary worksheet next to two
-personalised versions with the same answers. After that it asks what people think,
-whether they'd join a pilot, what they'd pay, and (in the longer version) whether
-they'd recommend it.
+It is about practising with worksheets in every situation: in class, as homework and
+before a test. It first asks how practice goes today and why it goes badly when it
+does, before it shows anything about WorkWizard. Everyone then sees the same two
+examples, a maths sheet set in football and a grammar sheet set in The Simpsons, each
+next to its original. Students choose which sheet they would start first. Adults say
+what they think and whether they would try it or join a pilot. The survey asks nothing
+about money.
 
-The survey doesn't store IP addresses or link answers to names. Contact details are
-kept only if someone chooses to leave them, and anyone can ask for their answers to be
-deleted. A few simple checks filter out rushed or duplicate answers.
+At the end, parents and teachers see how others in their role answered, once enough
+people have taken part, and anyone can try WorkWizard on a real worksheet.
+
+The survey doesn't store IP addresses or names. Contact details are kept only if an
+adult chooses a pilot or launch news and agrees to be contacted for that purpose;
+students never give contact details. Anyone can ask for their answers to be deleted,
+and answers are kept for 18 months. A few simple checks filter out rushed or duplicate
+answers.
 
 ---
 
