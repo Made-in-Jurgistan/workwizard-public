@@ -51,7 +51,7 @@ Railway and not yet piloted in a school.
 | Mistral OCR | Reads uploaded PDFs and photos; MinerU is a self-hosted alternative |
 | Kimi K2.6 (Moonshot AI) | Rewrites the worksheet's tasks in agent sessions |
 | OpenAI GPT Image 1.5 Mini | Optional illustrations in the PDF |
-| Supabase | Interest story kits and anonymous survey data |
+| Supabase | Anonymous survey data |
 
 ## Pipeline
 
@@ -77,8 +77,8 @@ or photo     interests         sessions        side by side PDF
 | Backend | Python 3.12, FastAPI, Pydantic v2 |
 | AI | Kimi K2.6 (Moonshot AI, 256K context), Mistral OCR, OpenAI GPT Image 1.5 Mini (PDF illustrations) |
 | PDF | WeasyPrint |
-| Data | Supabase Postgres |
-| Testing | pytest (5,900+ tests), Vitest (700+ tests), Playwright (3 specs) |
+| Data | Supabase Postgres (survey data); interest catalogue and story kits are bundled with the backend |
+| Testing | pytest (7,200+ tests), Vitest (650+ tests), Playwright (3 specs) |
 | Infrastructure | Docker, GitHub Actions, Vercel, Railway |
 
 ## Coverage
@@ -87,7 +87,7 @@ or photo     interests         sessions        side by side PDF
 |-----------|-------|
 | Worksheets | Any worksheet: work in class, homework, test preparation |
 | Grade bands | 7: grades 1–2, 3–4, 5–6, 7–8, 9–10, 11–12 and 13 |
-| Interests | 54 in 6 groups of 9; up to 5 per student; some offered only from a certain grade |
+| Interests | 54 in 6 groups of 9, each offered at every grade; up to 5 per student |
 | Subjects | 14 domains, 37 subdomains. Mathematics, science, language arts, social studies (geography, economics), world languages, technology, *Sachunterricht* and mixed sheets are personalised. History, civics, physical education, arts, music, and religion and ethics are turned away; in grades 1–4 history and civics count as *Sachunterricht* |
 | Languages | German and English |
 | Pedagogy | 8 framework labels: cognitive load, zone of proximal development, scaffolding, self-determination autonomy support, narrative transportation, worked examples, prior knowledge, metacognition |
