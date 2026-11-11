@@ -94,7 +94,7 @@ Upload  ──▶  Choose interests  ──▶  Rewrite  ──▶  Check  ─�
 
 | Feature | What it means |
 | --- | --- |
-| **Interests** | 54 interests in six groups (games, sports, TV and film, fantasy and adventure, superheroes, making things), each with its own story kit of roles, missions, settings, events and details in German and English. Some interests are offered only from a certain grade upward. |
+| **Interests** | 54 interests in six groups (games, sports, TV and film, fantasy and adventure, superheroes, making things), each with its own story kit of characters, roles, missions, settings, events, details, quantities and facts in German and English. Every interest is offered at every grade; the story is pitched to the grade band. |
 | **Grade bands** | Seven grade bands (1–2, 3–4, 5–6, 7–8, 9–10, 11–12 and 13), each with its own sentence and word limits, topics suitable for the age group and PDF layout |
 | **Answers stay hidden** | The model that rewrites a task is never given its answer. Code checks that the answer is unchanged and that no output gives a solution away, in German and English. |
 | **Checked in code** | A task is printed in its rewritten form only when every check passes; otherwise it is printed as in the original |
@@ -159,7 +159,7 @@ The wider research on these and related ideas, with sources and limits, is summa
 | --- | --- |
 | Extraction | Document to structured text (Mistral OCR, MinerU fallback; Word and text files read directly) |
 | Grade and language detection | Grade band from readability and vocabulary signals; German or English from the text |
-| Story kits | Roles, missions, settings, events and details of the chosen interests from a curated collection |
+| Story kits | The characters, roles, missions, settings, events, details, quantities and facts of the chosen interests from a curated collection, for the worksheet's grade band and language |
 | Worksheet checks | Sheets that print their answers, and sheets of subjects that gain nothing from a story, are turned away before any model call |
 | Personalisation | The worksheet is split into tasks without changing its text; Kimi K2.6 agent sessions rewrite groups of tasks, and every task is checked in code; progress is streamed to the browser |
 | Answer guard | The assembled worksheet is scanned for revealed answers |
@@ -174,8 +174,8 @@ The wider research on these and related ideas, with sources and limits, is summa
 | Frontend | React 19, TypeScript 5, Vite 7, Tailwind CSS 4, German and English interface |
 | Backend | Python 3.12, FastAPI, Pydantic v2 |
 | AI | Kimi K2.6 by Moonshot AI (256K context), Mistral OCR, OpenAI GPT Image 1.5 Mini (PDF illustrations) |
-| Data | Supabase Postgres |
-| Testing | pytest (5,900+ tests), Vitest (700+ tests) and Playwright (3 specs) |
+| Data | Supabase Postgres (survey data); interest catalogue and story kits are bundled with the backend |
+| Testing | pytest (7,200+ tests), Vitest (650+ tests) and Playwright (3 specs) |
 | Infrastructure | Docker, GitHub Actions, Vercel, Railway |
 
 ## API

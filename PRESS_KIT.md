@@ -174,7 +174,7 @@ about.
 | Largest file | 10 MB |
 | Teaching frameworks applied | 8, recorded on every personalised exercise |
 | Sources in the research foundation | 129 |
-| Automated tests | More than 5,900 for the server, more than 700 for the app and 3 end-to-end test suites |
+| Automated tests | More than 7,200 for the server, more than 650 for the app and 3 end-to-end test suites |
 
 ---
 
@@ -314,11 +314,11 @@ something without our written permission.
 
 | Feature | What it means |
 |---------|---------------|
-| **Interests** | 54 interests in six groups, each with its own roles, missions, settings and details in German and English |
+| **Interests** | 54 interests in six groups, each with its own story kit of characters, roles, missions, settings, events, details, quantities and facts in German and English |
 | **Age-appropriate** | Seven grade bands from grades 1–2 to grade 13, each with its own sentence length, word limits and level of support |
 | **Answers stay hidden** | WorkWizard never gives the AI that rewrites an exercise its answer, and every rewritten exercise is checked so that no solution is given away. If a check fails, the original exercise is used. |
 | **Quality checks** | Each exercise is checked in code: is the original task intact, is the answer unchanged, has an answer leaked, is it too long for the grade band? We also measure the system on a fixed set of worksheets. |
-| **Content suitable for the age group** | Story details come from a curated collection, topics unsuitable for the grade band are checked for, and some interests are offered only from a certain grade |
+| **Content suitable for the age group** | Story details come from a curated collection and are pitched to the grade band, and topics unsuitable for the grade band are checked for. Every interest is offered at every grade |
 | **Variety** | People and story openings change from exercise to exercise so a worksheet doesn't repeat itself |
 | **Subjects that suit a story** | Maths, science, languages, geography, economics, technology and *Sachunterricht* are personalised. History, civics, physical education, arts, music, and religion and ethics are turned away, because a story adds nothing there; in grades 1 to 4, history and civics count as *Sachunterricht*. |
 | **Readable PDFs** | Layouts are designed for each grade band and tested against international accessibility guidelines (WCAG 2.2, level AA). An independent audit has not yet been done, so we don't claim full compliance. |
@@ -535,8 +535,7 @@ WorkWizard is an MVP. Here is what it can and can't do.
 - Recognising the grade band and the subject (14 subject domains, 37 subdomains), and
   turning away subjects that gain nothing from a story
 - Turning away worksheets that print their answers
-- Choosing from 54 interests in German and English, some offered only from a certain
-  grade
+- Choosing from 54 interests in German and English, each offered at every grade
 - Rewriting the exercises of a worksheet with AI, several groups of exercises at once
 - Automatic checks in code on every exercise, with the original used if an exercise
   never passes
@@ -544,7 +543,7 @@ WorkWizard is an MVP. Here is what it can and can't do.
 - PDFs laid out for each grade band, with optional illustrations and accessibility
   features built in and tested (a formal accessibility audit is still to come)
 - German and English throughout: the website, the processing and the worksheets
-- More than 5,900 automated tests for the server, more than 700 for the app and 3
+- More than 7,200 automated tests for the server, more than 650 for the app and 3
   end-to-end test suites
 
 ### What is missing
