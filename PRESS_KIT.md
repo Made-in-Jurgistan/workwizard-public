@@ -174,7 +174,7 @@ about.
 | Largest file | 10 MB |
 | Teaching frameworks applied | 8, recorded on every personalised exercise |
 | Sources in the research foundation | 129 |
-| Automated tests | More than 7,200 for the server, more than 650 for the app and 3 end-to-end test suites |
+| Automated tests | More than 7,200 for the server, more than 740 for the app and 3 end-to-end test suites |
 
 ---
 
@@ -498,7 +498,7 @@ given its answer.
 ### Is it GDPR-compliant?
 
 It is designed with EU data protection law in mind. WorkWizard collects no personal
-data about students, and the survey stores no IP addresses. For schools that need it,
+data about students, and the survey stores no IP address with any answer. For schools that need it,
 the text reading can run on a self-hosted tool instead of an outside service. Version
 0.1.0 has no user accounts; the pilot will run with teachers supervising access, and a
 documented data-protection review comes before it.
@@ -517,7 +517,9 @@ assets and research papers, but no source code.
 
 ### How can a school take part?
 
-Email **madeinjurgistan@gmail.com** to talk about joining the pilot.
+Teachers, tutors and school leaders can put themselves on the pilot list at the end of
+the survey, or email **madeinjurgistan@gmail.com**. The pilot starts once WorkWizard is
+ready for use with a class.
 
 ### What comes after the pilot?
 
@@ -543,7 +545,9 @@ WorkWizard is an MVP. Here is what it can and can't do.
 - PDFs laid out for each grade band, with optional illustrations and accessibility
   features built in and tested (a formal accessibility audit is still to come)
 - German and English throughout: the website, the processing and the worksheets
-- More than 7,200 automated tests for the server, more than 650 for the app and 3
+- A survey for parents, teachers, tutors, students and school leaders, with a pilot list
+  and confirmed sign-ups
+- More than 7,200 automated tests for the server, more than 740 for the app and 3
   end-to-end test suites
 
 ### What is missing
@@ -663,27 +667,33 @@ There is no press coverage to list. Articles about WorkWizard will be listed her
 ## Survey
 
 Anyone can give us feedback through our survey at
-[workwizard-demo.vercel.app/survey](https://workwizard-demo.vercel.app/survey). It is
-anonymous, available in German and English, takes 2 to 5 minutes, and is aimed at
-parents, teachers (including tutors), students from grade 3 and school leaders. The
-current version is `v3`.
+[workwizard-demo.vercel.app/survey](https://workwizard-demo.vercel.app/survey). It
+asks for no name, is available in German and English, takes 3 to 6 minutes, and is
+aimed at parents, teachers, tutors, students from grade 3 and school leaders.
 
 It is about practising with worksheets in every situation: in class, as homework and
 before a test. It first asks how practice goes today and why it goes badly when it
-does, before it shows anything about WorkWizard. Everyone then sees the same two
-examples, a maths sheet set in football and a grammar sheet set in The Simpsons, each
-next to its original. Students choose which sheet they would start first. Adults say
-what they think and whether they would try it or join a pilot. The survey asks nothing
-about money.
+does, before it shows anything about WorkWizard. Then it shows two example worksheets,
+a maths sheet and a language sheet pitched to the respondent's grade band, each next to
+its personalised version, with general themes such as football and space. Students
+choose which sheet they would start first. Adults say which version would be started
+and whether they would use it.
 
-At the end, parents and teachers see how others in their role answered, once enough
-people have taken part, and anyone can try WorkWizard on a real worksheet.
+Afterwards, adults can take part further, every step optional: news and the survey's
+results, a real worksheet sent in as test material with a preview of it personalised,
+a 20-minute demonstration on their own sheet, a non-binding place on the pilot list for
+when WorkWizard is ready for use with a class, permission to quote what they wrote, an
+offer to help, and one optional question about price. Nothing is sold. Teachers and
+tutors get a class code so their class can take the student survey and they can see
+the class's result. Parents, teachers and tutors see how others in their role
+answered, once enough people have taken part.
 
-The survey doesn't store IP addresses or names. Contact details are kept only if an
-adult chooses a pilot or launch news and agrees to be contacted for that purpose;
-students never give contact details. Anyone can ask for their answers to be deleted,
-and answers are kept for 18 months. A few simple checks filter out rushed or duplicate
-answers.
+The survey stores no IP address with any answer and asks students for no name and no
+contact details. An adult's email is used only for the purposes they tick and only
+after they confirm it through a link; each purpose can be withdrawn on its own.
+Uploaded worksheets are kept private and never published. Anyone can ask for their
+data to be deleted, and data is kept for at most 18 months. Checks filter out rushed,
+repeated or bulk answers.
 
 ---
 

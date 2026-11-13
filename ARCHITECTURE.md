@@ -51,7 +51,7 @@ Railway and not yet piloted in a school.
 | Mistral OCR | Reads uploaded PDFs and photos; MinerU is a self-hosted alternative |
 | Kimi K2.6 (Moonshot AI) | Rewrites the worksheet's tasks in agent sessions |
 | OpenAI GPT Image 1.5 Mini | Optional illustrations in the PDF |
-| Supabase | Anonymous survey data |
+| Supabase | Survey answers, confirmation emails (Auth) and uploaded worksheets (private storage) |
 
 ## Pipeline
 
@@ -77,8 +77,8 @@ or photo     interests         sessions        side by side PDF
 | Backend | Python 3.12, FastAPI, Pydantic v2 |
 | AI | Kimi K2.6 (Moonshot AI, 256K context), Mistral OCR, OpenAI GPT Image 1.5 Mini (PDF illustrations) |
 | PDF | WeasyPrint |
-| Data | Supabase Postgres (survey data); interest catalogue and story kits are bundled with the backend |
-| Testing | pytest (7,200+ tests), Vitest (650+ tests), Playwright (3 specs) |
+| Data | Supabase Postgres, Auth and Storage for the survey; interest catalogue and story kits are bundled with the backend |
+| Testing | pytest (7,200+ tests), Vitest (740+ tests), Playwright (3 specs) |
 | Infrastructure | Docker, GitHub Actions, Vercel, Railway |
 
 ## Coverage

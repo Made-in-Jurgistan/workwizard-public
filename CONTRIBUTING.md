@@ -61,15 +61,18 @@ with the `enhancement` label and:
 
 ## Pedagogical Feedback
 
-Parents, teachers (including tutors), students from grade 3 and school leaders can
-give feedback through our survey at
+Parents, teachers, tutors, students from grade 3 and school leaders can give feedback
+through our survey at
 [workwizard-demo.vercel.app/survey](https://workwizard-demo.vercel.app/survey).
 It is about practising with worksheets in every situation: in class, as homework and
 before a test. It asks first how practice goes today, then shows two example
-worksheets next to their personalised versions, and asks what you think and whether
-you would try it. It takes 2 to 5 minutes, is anonymous, and asks nothing about money.
-At the end you can see how others in your role answered and try WorkWizard on a real
-worksheet. The current survey version is `v3`.
+worksheets next to their personalised versions, and asks what you think. It takes 3
+to 6 minutes and asks for no name.
+
+Afterwards, adults can take part further if they like: get news and the survey's
+results, send in a real worksheet and see it personalised, book a short demonstration
+on their own sheet, join the pilot list for when WorkWizard is ready for use with a
+class, or offer to help. Every step is optional.
 
 ## What We Cannot Accept
 

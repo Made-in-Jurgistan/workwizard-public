@@ -174,8 +174,8 @@ The wider research on these and related ideas, with sources and limits, is summa
 | Frontend | React 19, TypeScript 5, Vite 7, Tailwind CSS 4, German and English interface |
 | Backend | Python 3.12, FastAPI, Pydantic v2 |
 | AI | Kimi K2.6 by Moonshot AI (256K context), Mistral OCR, OpenAI GPT Image 1.5 Mini (PDF illustrations) |
-| Data | Supabase Postgres (survey data); interest catalogue and story kits are bundled with the backend |
-| Testing | pytest (7,200+ tests), Vitest (650+ tests) and Playwright (3 specs) |
+| Data | Supabase Postgres, Auth and Storage for the survey (answers, confirmation emails, uploaded worksheets); interest catalogue and story kits are bundled with the backend |
+| Testing | pytest (7,200+ tests), Vitest (740+ tests) and Playwright (3 specs) |
 | Infrastructure | Docker, GitHub Actions, Vercel, Railway |
 
 ## API
@@ -193,9 +193,17 @@ Application routes are mounted under `/api/v1/...`.
 | `POST` | `/api/v1/ai-transformation/transform/stream` | Personalise a worksheet with streamed progress |
 | `POST` | `/api/v1/pdf/generate` | Generate a PDF |
 | `GET` | `/api/v1/pdf/download/{cache_key}` | Download a generated PDF |
-| `POST` | `/api/v1/survey/submit` | Submit an anonymous survey response |
+| `POST` | `/api/v1/survey/session` | Start a survey session (a signed token every other survey call carries) |
+| `POST` | `/api/v1/survey/submit` | Submit the answers of a session once |
 | `POST` | `/api/v1/survey/event` | Record an anonymous survey funnel event |
+| `POST` | `/api/v1/survey/contact` | Leave an email for one or more purposes, each with its own consent |
+| `POST` | `/api/v1/survey/commitment` | A pilot declaration, a demo booking, permission to quote or an offer to help |
+| `POST` | `/api/v1/survey/sheet` | Upload up to three real worksheets as test material |
+| `POST` | `/api/v1/survey/price` | The optional price question at the end |
+| `POST` | `/api/v1/survey/confirm` | Confirm an email address from the link in the confirmation email |
+| `GET` `POST` | `/api/v1/survey/withdraw` | Withdraw one or more email purposes |
 | `GET` | `/api/v1/survey/peers` | How other respondents in the same role answered, shown from 30 responses per role |
+| `GET` | `/api/v1/survey/class/{code}` | A class's choices in the student survey, shown from 5 answers |
 
 Survey administration, including erasure of one respondent's data, is limited to admin-token holders.
 
@@ -208,7 +216,7 @@ Survey administration, including erasure of one respondent's data, is limited to
 - Non-root containers and digest-pinned base images
 - Static security analysis (bandit) and dependency audits on every CI run
 - Request time limits so workers can't be tied up (about 280 s for normal requests; longer for streamed progress on large worksheets)
-- Survey: no IP address or user agent stored, contact details only with recorded consent, erasure of one respondent's data on request, 18-month retention
+- Survey: server-signed sessions; no IP address or user agent stored with any answer; an email counts only after its owner confirms it through a link; uploaded worksheets are kept private and never published; erasure of one respondent's data on request; 18-month retention
 - No user accounts in v0.1.0; the pilot will run with teachers supervising access
 
 See [SECURITY.md](SECURITY.md) for the full security policy.
