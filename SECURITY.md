@@ -39,7 +39,7 @@ Implementation details are not disclosed.
 
 - Pydantic v2 validation at every request boundary
 - File upload: max 10 MB; extension and file-type allowlist (PDF, DOCX, TXT, PNG, JPG/JPEG, WEBP, GIF, BMP, TIFF), with file-signature checks for every type except TXT
-- Interest selection: 1 to 5 from the curated catalog; interests above the student's grade band are rejected
+- Interest selection: 1 to 5 from the curated catalog; every interest is offered at every grade
 - Language: German or English only
 - Worksheet length and the model calls spent on one worksheet are bounded
 
@@ -65,10 +65,12 @@ Implementation details are not disclosed.
 
 ## Survey Data
 
-- Anonymous: no IP address or user agent is stored, and no third-party fonts or trackers are loaded
-- Server-side validation of every answer against the current survey version (`v3`); answers from an outdated version are rejected and the respondent is asked to reload
-- Contact details are stored only when an adult chooses a pilot or launch news and ticks the consent box for that purpose; students never reach a contact field
-- Erasure of one respondent's data on request: their contact details only, or all their answers
+- Signed sessions: the server issues every session and signs a token that every survey call carries, so no one can write to another respondent's session; each session submits once
+- Server-side validation of every answer against the survey's questions and answer codes; answers from an outdated version of the survey are rejected and the respondent is asked to reload
+- No IP address or user agent is stored with any answer, and no third-party fonts or trackers are loaded. To catch bulk submissions, completions are counted per day under a one-way, daily-salted hash of the network address; the count is never linked to answers and is deleted after 7 days
+- An email is stored only for a purpose the adult ticks (launch news and results, a preview, a demo, the pilot list, an offer to help), and counts only after its owner confirms it through the link in one confirmation email; opening the link alone confirms nothing. Each purpose can be withdrawn on its own. Students never reach a contact field
+- Uploaded worksheets: at most three files of 10 MB, file type read from the file's content, the uploader confirms the rights and that the sheet holds no personal data; files are stored privately, never published and never processed by the public API
+- Erasure of one respondent's data on request: their contact details only, or all their answers, with their files
 - 18-month retention window, enforced by a scheduled job
 - Administration routes require an admin token; destructive operations (full reset, respondent erasure) require a separate token
 - Survey pages are served with a Content-Security-Policy that disallows inline scripts
